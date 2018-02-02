@@ -17,5 +17,7 @@ const Style = {
         height: '300px',
         marginRight: '5px',
         marginLeft: '5px',
+        position: 'absolute',
+        top: '50%'
     }
 }
