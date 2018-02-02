@@ -1,0 +1,22 @@
+#Search:focus {
+  border-bottom: 1px solid white;
+}
+
+#Search:active {
+  border-bottom: 1px solid white;
+}
+
+#searchButton {
+  left: -20;
+}
+
+/* icon prefix focus color */
+.input-field .prefix.active {
+  color: #ffffff;
+  opacity: 0.7;
+}
+
+::-webkit-input-placeholder { /* WebKit browsers */
+  color: white;
+  opacity: .7;
+}
