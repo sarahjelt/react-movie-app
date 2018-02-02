@@ -13,9 +13,8 @@ export const Navbar = () => (
         <li><Link to='/login'>Login</Link></li>
       </ul>
       <div className='input-field col s4 right' style={Style.container}>
-        <i class='material-icons prefix'>search</i>
+        <i className='material-icons prefix'>search</i>
         <input placeholder='Search...' id='Search' type='text' />
-        {/*<label for="Search">Email</label>*/}
       </div>
     </div>
   </nav>

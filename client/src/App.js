@@ -10,7 +10,7 @@ import { Navbar } from './components/Navbar'
 // import SignUp from './pages/SignUp'
 // import UserFriends from './pages/UserFriends'
 // import UserLists from './pages/UserLists'
-// import UserProfile from './pages/UserProfile'
+import UserProfile from './pages/UserProfile'
 // import UserShelf from './pages/UserShelf'
 
 class App extends Component {
@@ -22,6 +22,7 @@ class App extends Component {
                 <Switch>
                     <Route exact path="/" component={Home} />
                     <Route exact path="/home" component={Home} />
+                    <Route exact path="/user" component={UserProfile} />
                 </Switch>
             </div>
         </Router>

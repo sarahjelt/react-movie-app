@@ -9,3 +9,14 @@ $(document).ready(function() {
         swipe: true,
     })
 })
+
+$(document).ready(function() {
+    $('.userHeader').slick({
+      dots: false,
+      infinite: true,
+      autoplay: true,
+      speed: 500,
+      fade: true,
+      cssEase: 'linear'
+    })
+})
