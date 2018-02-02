@@ -6,7 +6,7 @@ import Home from './pages/Home'
 import Login from './pages/Login'
 // import Media from './pages/Media'
 // import NoMatch from './pages/NoMatch'
-// import SignUp from './pages/SignUp'
+import SignUp from './pages/SignUp'
 // import UserFriends from './pages/UserFriends'
 // import UserLists from './pages/UserLists'
 // import UserProfile from './pages/UserProfile'
@@ -21,6 +21,7 @@ class App extends Component {
                     <Route exact path="/" component={Home} />
                     <Route exact path="/home" component={Home} />
                     <Route exact path="/login" component={Login} />
+                    <Route exact path="/signup" component={SignUp} />
                 </Switch>
             </div>
         </Router>

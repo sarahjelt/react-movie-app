@@ -13,7 +13,7 @@ export const LoginForm = (props) => {
                 handleInputChange={props.handleInputChange}
             />
             <Input
-                inputType='text'
+                inputType='password'
                 inputName='loginPassword'
                 inputLabel='password'
                 placeholder='password'
