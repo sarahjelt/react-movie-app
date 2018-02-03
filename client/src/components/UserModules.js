@@ -1,10 +1,16 @@
 import React from 'react';
 
 export const UserModules = (props) => (
-    <div className='userModules' style={Style.container}>
-        {props.headerItems.map((item, key) =>
-            <img style={Style.img} src={item} key={item} alt='poster'/>
-        )}
+    <div className='userModules row' style={Style.container}>
+        <div className='col s4' style={Style.modules}>
+            <h4>Lists</h4>
+        </div>
+        <div className='col s4' style={Style.modules}>
+            <h4>Shelves</h4>
+        </div>
+        <div className='col s4' style={Style.modules}>
+            <h4>Reviews</h4>
+        </div>
     </div>
 )
 
@@ -18,7 +24,7 @@ const Style = {
         alignItems: 'center',
         justifyContent: 'center'
     },
-    img: {
-        width: 'inherit'
+    modules: {
+        border: '1px solid black'
     }
 }
