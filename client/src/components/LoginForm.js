@@ -30,8 +30,11 @@ export const LoginForm = (props) => {
 
 const Style = {
     container: {
-        width: '50%',
-        marginRight: '25%',
-        marginLeft: '25%'
+        width: '60%',
+        marginRight: '20%',
+        marginLeft: '20%',
+        padding: '8%',
+        border: '2px solid black',
+        marginBottom: '8%'
     }
 }
