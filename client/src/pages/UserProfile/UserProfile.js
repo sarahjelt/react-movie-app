@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { UserHeader } from '../../components/UserHeader';
 import { Avatar } from '../../components/Avatar';
 import { UserInfo } from '../../components/UserInfo';
+import { UserModules } from '../../components/UserModules';
 
 class UserProfile extends Component {
   // state = {
@@ -29,6 +30,7 @@ class UserProfile extends Component {
         <Avatar 
           userImage='https://dw9to29mmj727.cloudfront.net/properties/2016/432-SeriesThumbnails_SM__400x320.jpg'
         />
+        <UserModules />
       </div>
     )
   }
