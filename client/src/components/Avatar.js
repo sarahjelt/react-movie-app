@@ -11,7 +11,8 @@ const Style = {
         textAlign: 'center',
         position: 'absolute',
         top: '300px',
-        left: 'calc(50% - 140px)'
+        left: 'calc(50% - 140px)',
+        clear: 'both'
     },
     image: {
         verticalAlign: 'middle',
