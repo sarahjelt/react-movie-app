@@ -1,5 +1,6 @@
 import React from 'react';
 import {Carousel} from '../../components/Carousel'
+import {AboutInfoBanner} from "../../components/AboutInfoBanner";
 
 class Home extends React.Component {
     render() {
@@ -8,6 +9,7 @@ class Home extends React.Component {
                 <Carousel
                     carouselItems={carouselItemsArr}
                 />
+                <AboutInfoBanner/>
             </div>
         )
     }
