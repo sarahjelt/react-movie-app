@@ -18,9 +18,9 @@ const userSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Media"
     }],
-    friends: [
-        
-    ],
+    friends: [{
+        type: String
+    }],
     recommendations: [{
         type: Schema.Types.ObjectId,
         ref: "Review"
