@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { UserHeader } from '../../components/UserHeader';
+import { Avatar } from '../../components/Avatar';
+import { UserInfo } from '../../components/UserInfo';
 
 class UserProfile extends Component {
   // state = {
@@ -19,9 +21,15 @@ class UserProfile extends Component {
 
   render() {
     return (
-      <UserHeader 
-        headerItems={this.userHeaderArr}
-      />
+      <div>
+        <UserHeader 
+          headerItems={this.userHeaderArr}
+        />
+        <UserInfo />
+        <Avatar 
+          userImage='https://dw9to29mmj727.cloudfront.net/properties/2016/432-SeriesThumbnails_SM__400x320.jpg'
+        />
+      </div>
     )
   }
 };
