@@ -5,7 +5,7 @@ import './Navbar.css';
 export const Navbar = () => (
   <nav>
     <div className='nav-wrapper cyan darken-1'>
-      <Link to='/home' className='brand-logo center'>Movies and TV!</Link>
+      <a href='/home' className='brand-logo center'>Movies and TV!</a>
       <ul id='nav-mobile' className='left hide-on-sm-and-down'>
         <li><Link to='/friends'>Friends</Link></li>
         <li><Link to='/lists'>Lists</Link></li>
