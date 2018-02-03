@@ -2,16 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="816879f7-fea2-4bc8-8c57-013b6a03479f" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/client/build/asset-manifest.json" afterPath="$PROJECT_DIR$/client/build/asset-manifest.json" />
-      <change beforePath="$PROJECT_DIR$/client/build/index.html" afterPath="$PROJECT_DIR$/client/build/index.html" />
-      <change beforePath="$PROJECT_DIR$/client/build/service-worker.js" afterPath="$PROJECT_DIR$/client/build/service-worker.js" />
-      <change beforePath="$PROJECT_DIR$/client/build/static/css/main.65027555.css" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/client/build/static/css/main.65027555.css.map" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/client/build/static/js/main.0c83bf3f.js" afterPath="" />
-      <change beforePath="$PROJECT_DIR$/client/build/static/js/main.0c83bf3f.js.map" afterPath="" />
       <change beforePath="$PROJECT_DIR$/client/public/js/logic.js" afterPath="$PROJECT_DIR$/client/public/js/logic.js" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/Navbar.js" afterPath="$PROJECT_DIR$/client/src/components/Navbar.js" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -59,8 +50,8 @@
       <file leaf-file-name="logic.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/public/js/logic.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="21" column="6" lean-forward="false" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
+            <state relative-caret-position="150">
+              <caret line="10" column="2" lean-forward="false" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
               <folding />
             </state>
           </provider>
@@ -129,8 +120,8 @@
         <option value="$PROJECT_DIR$/client/src/App.js" />
         <option value="$PROJECT_DIR$/client/src/pages/SignUp/SignUp.js" />
         <option value="$PROJECT_DIR$/client/src/pages/SignUp/index.js" />
-        <option value="$PROJECT_DIR$/client/public/js/logic.js" />
         <option value="$PROJECT_DIR$/client/src/components/Navbar.js" />
+        <option value="$PROJECT_DIR$/client/public/js/logic.js" />
       </list>
     </option>
   </component>
@@ -287,12 +278,12 @@
       <option name="presentableId" value="Default" />
       <updated>1517529278247</updated>
       <workItem from="1517529285942" duration="1493000" />
-      <workItem from="1517675178436" duration="712000" />
+      <workItem from="1517675178436" duration="862000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10974000" />
+    <option name="totallyTimeSpent" value="11124000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="51" y="28" width="1389" height="837" extended-state="0" />
@@ -673,8 +664,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/client/public/js/logic.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="6" lean-forward="false" selection-start-line="21" selection-start-column="6" selection-end-line="21" selection-end-column="6" />
+        <state relative-caret-position="150">
+          <caret line="10" column="2" lean-forward="false" selection-start-line="10" selection-start-column="2" selection-end-line="10" selection-end-column="2" />
           <folding />
         </state>
       </provider>
