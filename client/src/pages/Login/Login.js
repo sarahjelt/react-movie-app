@@ -1,11 +1,8 @@
 import React from 'react';
 import {LoginForm} from '../../components/LoginForm'
+import {PageInfoTitle} from '../../components/PageInfoTitle'
 
 export default class Login extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
     state = {
         loginUsername: '',
         loginPassword: '',
@@ -24,10 +21,16 @@ export default class Login extends React.Component {
 
     render() {
         return (
-            <LoginForm
-                handleInputChange={this.handleInputChange}
-                handleButtonPress={this.handleButtonPress}
-            />
+            <div>
+                <PageInfoTitle
+                    title='LOGIN'
+                    subtitle='Welcome back! See what your friends have been watching.'
+                />
+                <LoginForm
+                    handleInputChange={this.handleInputChange}
+                    handleButtonPress={this.handleButtonPress}
+                />
+            </div>
         )
     }
 }
