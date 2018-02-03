@@ -6,7 +6,7 @@ import { Navbar } from './components/Navbar'
 // import Explore from './pages/Explore'
 import Login from './pages/Login'
 // import Media from './pages/Media'
-// import NoMatch from './pages/NoMatch'
+import { NoMatch } from './pages/NoMatch/NoMatch'
 import SignUp from './pages/SignUp'
 // import UserFriends from './pages/UserFriends'
 // import UserLists from './pages/UserLists'
@@ -25,6 +25,7 @@ class App extends Component {
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/signup" component={SignUp} />
                     <Route exact path="/user" component={UserProfile} />
+                    <Route component={NoMatch} />
                 </Switch>
             </div>
         </Router>

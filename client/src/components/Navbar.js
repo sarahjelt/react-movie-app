@@ -11,6 +11,7 @@ export const Navbar = () => (
         <li><Link to='/lists'>Lists</Link></li>
         <li><Link to='/shelves'>Shelves</Link></li>
         <li><Link to='/login'>Login</Link></li>
+        <li><Link to='/user'>Profile</Link></li>
       </ul>
       <form action='#' className='input-field col s4 right' style={Style.container}>
         <i className='material-icons prefix'>search</i>
