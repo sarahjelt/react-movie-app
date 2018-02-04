@@ -3,7 +3,7 @@ const db = require("../models");
 module.exports = {
     findAllUsers: function(req, res) {
         db.User
-          .find()
+          .find(req.query)
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
     },
@@ -34,7 +34,7 @@ module.exports = {
     },
     findAllMedia: function(req, res) {
         db.Media
-          .find()
+          .find(req.query)
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
     },
@@ -65,7 +65,7 @@ module.exports = {
     },
     findAllReviews: function(req, res) {
         db.Review
-          .find()
+          .find(req.query)
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
     },
