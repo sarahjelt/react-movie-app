@@ -10,10 +10,6 @@ const reviewSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "User"
     },
-    synoposis: {
-        type: String,
-        required: true
-    },
     mediaItem: {
         type: Schema.Types.ObjectId,
         ref: "Media"
@@ -21,7 +17,8 @@ const reviewSchema = new Schema({
     body: {
         type: String,
         required: true
-    }   
+    },
+    timestamps: true   
 });
 
 const Review = mongoose.model("Review", reviewSchema);

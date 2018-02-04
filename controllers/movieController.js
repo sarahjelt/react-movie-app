@@ -4,7 +4,6 @@ module.exports = {
     findAllUsers: function(req, res) {
         db.User
           .find(req.query)
-          .then(console.log(req.query))
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
     },
@@ -36,7 +35,6 @@ module.exports = {
     findAllMedia: function(req, res) {
         db.Media
           .find(req.query)
-          .then(console.log(req.query))
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
     },
@@ -68,7 +66,6 @@ module.exports = {
     findAllReviews: function(req, res) {
         db.Review
           .find(req.query)
-          .then(console.log(req.query))
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
     },

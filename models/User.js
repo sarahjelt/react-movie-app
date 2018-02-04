@@ -15,17 +15,28 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    lists: [{
+        type: Schema.Types.ObjectId,
+        ref: "Media",
+        body: String,
+        title: String,
+    }],
+    img: {
+        type: String
+    },
     shelf: [{
         type: Schema.Types.ObjectId,
         ref: "Media"
     }],
     friends: [{
-        type: String
+        type: Schema.Types.ObjectId,
+        ref: "User"
     }],
     recommendations: [{
         type: Schema.Types.ObjectId,
         ref: "Review"
-    }]   
+    }], 
+    timestamps: true  
 });
 
 const User = mongoose.model("User", userSchema);
