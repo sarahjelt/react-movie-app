@@ -1,3 +1,5 @@
 module.exports = {
-    MovieApp: require("./MovieApp")
+    Media: require("./Media"),
+    Review: require('./Review'),
+    User: require('./User')
 };
