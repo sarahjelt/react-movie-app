@@ -18,7 +18,10 @@ export default class Explore extends React.Component {
 
     componentDidMount() {
         API.searchByQuery(this.state.searchValue)
-            .then(res => this.parseResultsFromAPICall(res))
+            .then(res => {
+                console.log(res)
+                this.parseResultsFromAPICall(res)
+            })
     }
 
     setSearchParamsFromMatch = (props) => {
@@ -34,7 +37,7 @@ export default class Explore extends React.Component {
         results.forEach(mediaItem => {
             if (mediaItem.media_type === "tv" || mediaItem.media_type === "movie") {
                 let mediaItemObj = {
-                    title: mediaItem.name !== undefined ? mediaItem.name : mediaItem.original_title,
+                    title: mediaItem.name !== undefined ? mediaItem.name : mediaItem.title,
                     date: mediaItem.first_air_date !== undefined ? mediaItem.first_air_date : mediaItem.release_date,
                     overview: mediaItem.overview,
                     mediaType: mediaItem.media_type,
@@ -42,6 +45,22 @@ export default class Explore extends React.Component {
                 }
 
                 savedResults.push(mediaItemObj)
+            } else if (mediaItem.media_type === 'person') {
+                let personKnownForArr = mediaItem.known_for
+
+                personKnownForArr.forEach(mediaItem => {
+                    if (mediaItem.media_type === "tv" || mediaItem.media_type === "movie") {
+                        let mediaItemObj = {
+                            title: mediaItem.name !== undefined ? mediaItem.name : mediaItem.title,
+                            date: mediaItem.first_air_date !== undefined ? mediaItem.first_air_date : mediaItem.release_date,
+                            overview: mediaItem.overview,
+                            mediaType: mediaItem.media_type,
+                            posterPath: mediaItem.poster_path
+                        }
+
+                        savedResults.push(mediaItemObj)
+                    }
+                })
             }
         })
 
@@ -73,6 +92,7 @@ const Style = {
         width: '60%',
         marginLeft: '20%',
         marginRight: '20%',
+        marginBottom: '15%',
     },
     searchTextTitle: {
         fontSize: '20px',
