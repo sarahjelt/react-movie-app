@@ -69,6 +69,10 @@ export default class Explore extends React.Component {
         })
     }
 
+    handleAddButtonPress = (title, date, overview, posterPath, mediaType) => {
+        console.log(['you pressed the add button', title, date, overview, posterPath, mediaType])
+    }
+
     render() {
         return (
             <div style={Style.container}>
@@ -79,7 +83,9 @@ export default class Explore extends React.Component {
                         date={result.date}
                         overview={result.overview}
                         mediaType={result.mediaType}
+                        posterPath={result.posterPath}
                         key={index}
+                        handleAddButtonPress={this.handleAddButtonPress}
                     />
                 ))}
             </div>

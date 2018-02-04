@@ -8,7 +8,13 @@ export const ExploreResultItem = (props) => (
             <p style={Style.itemDate}>{props.date}</p>
             <p style={Style.itemOverview}>{props.overview}</p>
         </div>
-        <a style={Style.fabButton} className="btn-floating btn-large waves-effect waves-light red"><i className="material-icons">add</i></a>
+        <a
+            style={Style.fabButton}
+            className="btn-floating btn-large waves-effect waves-light red"
+            onClick={() => props.handleAddButtonPress(props.title, props.date, props.overview, props.posterPath, props.mediaType)}
+        >
+            <i className="material-icons">add</i>
+        </a>
     </div>
 )
 
