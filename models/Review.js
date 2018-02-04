@@ -10,7 +10,7 @@ const reviewSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "User"
     },
-    synoposis: {
+    synopsis: {
         type: String,
         required: true
     },

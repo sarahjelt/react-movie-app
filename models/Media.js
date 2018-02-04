@@ -10,7 +10,7 @@ const mediaSchema = new Schema({
         type: String,
         required: true
     },
-    synoposis: {
+    synopsis: {
         type: String,
         required: true
     },
