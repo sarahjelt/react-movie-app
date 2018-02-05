@@ -35,8 +35,11 @@ const userSchema = new Schema({
     recommendations: [{
         type: Schema.Types.ObjectId,
         ref: "Review"
-    }], 
-    timestamps: true  
+    }],
+    timestamps: {
+        type: Date,
+        createdAt: 'created_at'
+    }
 });
 
 const User = mongoose.model("User", userSchema);
