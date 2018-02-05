@@ -5,7 +5,8 @@ const userSchema = new Schema({
     email: {
         type: String,
         unique: true,
-        required: true
+        required: true,
+        match: [/.+\@.+\..+/, "Please enter a valid e-mail address"]
     },
     name: {
         type: String,
@@ -35,12 +36,10 @@ const userSchema = new Schema({
     recommendations: [{
         type: Schema.Types.ObjectId,
         ref: "Review"
-    }],
-    timestamps: {
-        type: Date,
-        createdAt: 'created_at'
-    }
-});
+    }], 
+},
+    { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } }
+);
 
 const User = mongoose.model("User", userSchema);
 

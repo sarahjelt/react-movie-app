@@ -8,6 +8,7 @@ const app = express();
 const jwt = require('express-jwt');
 const jwks = require('jwks-rsa');
 const cors = require('cors');
+const User = require('./models/User.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -39,6 +40,23 @@ mongoose.Promise = global.Promise;
 mongoose.connect(
   process.env.MONGODB_URI || "mongodb://localhost/react-movie-app",
 );
+
+// var dummyData = {
+//   email: "blatde91@gmail.com",
+//   name: "Daniel",
+//   password: "Sup",
+//   lists: []
+// };
+
+// User.create(dummyData)
+//   .then(function(dbExample) {
+//     console.log(dbExample);
+//   })
+//   .catch(function(err) {
+//     console.log(err.message);
+//   });
+
+
 
 app.use(authCheck);
 

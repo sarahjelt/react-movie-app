@@ -21,12 +21,9 @@ const mediaSchema = new Schema({
     recommendations: [{
         type: Schema.Types.ObjectId,
         ref: "Review"
-    }],
-    timestamps: {
-        type: Date,
-        createdAt: 'created_at'
-    }
-});
+
+    }]
+}, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } });
 
 const Media = mongoose.model("Media", mediaSchema);
 
