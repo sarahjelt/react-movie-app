@@ -96,7 +96,15 @@ export default class Explore extends React.Component {
         //     .then(res => console.log(res))
 
         API.getMediaItemIdIfExists(mediaItem)
-            .then(res => console.log(res))
+            .then(res => {
+                console.log([res.data.length === 0, res.data])
+                if (res.data.length < 1) {
+                    console.log('this item does not exist in the db, so we should add it')
+                    API.addMediaItemToDB(mediaItem)
+                } else {
+                    console.log('this item already exists in the db')
+                }
+            })
     }
 
     render() {

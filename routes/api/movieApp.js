@@ -14,8 +14,12 @@ router
 
 router
   .route("/media")
-  .get(movieController.findMediaBySynopsis)
+  .get(movieController.findAllMedia)
   .post(movieController.createMedia);
+
+router
+  .route("/media/validate")
+  .post(movieController.findMediaBySynopsis)
 
 router
   .route("/media/:id")

@@ -45,7 +45,7 @@ module.exports = {
           .catch(err => res.status(422).json(err));
     },
     findMediaBySynopsis: function(req, res) {
-        console.log('findMediaBySynopsis', req)
+        console.log('findMediaBySynopsis', req.body)
 
         db.Media
             .find({synopsis: req.body.synopsis})
@@ -53,6 +53,8 @@ module.exports = {
             .catch(err => res.status(422).json(err))
     },
     createMedia: function(req, res) {
+        console.log('hitting the /media post route, trying to createMedia:', req.body)
+
         db.Media
           .create(req.body)
           .then(dbModel => res.json(dbModel))
