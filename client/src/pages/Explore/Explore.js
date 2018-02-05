@@ -69,6 +69,36 @@ export default class Explore extends React.Component {
         })
     }
 
+    handleAddButtonPress = (title, date, synopsis, img, mediaType) => {
+        console.log(['you pressed the add button', title, date, synopsis, img, mediaType])
+        let userId = 1
+        let mediaItem = {
+            title,
+            date,
+            synopsis,
+            img,
+            mediaType
+        }
+
+        let userData = {
+            userId,
+            mediaItem
+        }
+
+        // (1) check if mediaItem is already in the db,
+        // (2) if id exists, use that id, else
+        // (3) create/post new mediaItem to the db
+        // (4) once created, .then add mediaItem to the user's shelf
+
+        // API.addMediaItemToUserShelf(userData)
+
+        // API.addMediaItemToDB(mediaItem)
+        //     .then(res => console.log(res))
+
+        API.getMediaItemIdIfExists(mediaItem)
+            .then(res => console.log(res))
+    }
+
     render() {
         return (
             <div style={Style.container}>
@@ -79,7 +109,9 @@ export default class Explore extends React.Component {
                         date={result.date}
                         overview={result.overview}
                         mediaType={result.mediaType}
+                        posterPath={result.posterPath}
                         key={index}
+                        handleAddButtonPress={this.handleAddButtonPress}
                     />
                 ))}
             </div>

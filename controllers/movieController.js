@@ -44,6 +44,14 @@ module.exports = {
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
     },
+    findMediaBySynopsis: function(req, res) {
+        console.log('findMediaBySynopsis', req)
+
+        db.Media
+            .find({synopsis: req.body.synopsis})
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err))
+    },
     createMedia: function(req, res) {
         db.Media
           .create(req.body)

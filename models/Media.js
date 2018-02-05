@@ -21,6 +21,7 @@ const mediaSchema = new Schema({
     recommendations: [{
         type: Schema.Types.ObjectId,
         ref: "Review"
+
     }]
 }, { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } });
 

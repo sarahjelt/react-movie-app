@@ -14,7 +14,7 @@ router
 
 router
   .route("/media")
-  .get(movieController.findAllMedia)
+  .get(movieController.findMediaBySynopsis)
   .post(movieController.createMedia);
 
 router
