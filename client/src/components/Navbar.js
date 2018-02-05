@@ -9,13 +9,18 @@ export const Navbar = (props) => (
       <a href='/home' className='brand-logo center'>Movies and TV!</a>
       <ul id='nav-mobile' className='left hide-on-small-only'>
           {
-            (isLoggedIn() ) ? <Link to='/user'>Profile</Link> : ''
+            (isLoggedIn() ) ? <li><a href='/user'>Profile</a></li> : ''
           }
         <li><Link to='/friends'>Friends</Link></li>
         <li><Link to='/lists'>Lists</Link></li>
         <li><Link to='/shelves'>Shelves</Link></li>
           {
-            (isLoggedIn()) ? ( <li className="purple log" style={Style.log} onClick={() => logout()}>Log out </li> ) : ( <li className="log" style={Style.log} onClick={() => login()}>Log In</li> )
+            (isLoggedIn()) ? ( 
+              <li className="log" onClick={() => logout()}><Link to='#'>Log Out
+              </Link></li> ) : 
+            ( 
+              <li className="log" onClick={() => login()}><Link to='#'>Log In
+              </Link></li> )
           }
       </ul>
       <form action={formActionDeterminer(props.searchValue)} className='input-field col s4 right' style={Style.container}>
@@ -39,8 +44,5 @@ const formActionDeterminer = (searchValue) => {
 const Style = {
   container: {
     marginRight: 15
-  },
-  log: {
-    cursor: 'pointer'
   }
 }

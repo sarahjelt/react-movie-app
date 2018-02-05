@@ -6,7 +6,7 @@ const ACCESS_TOKEN_KEY = 'access_token';
 
 const CLIENT_ID = 'c4NjZEOPC3GODFhXaggjJQImQVH26mBH';
 const CLIENT_DOMAIN = 'teamgudetama.auth0.com';
-const REDIRECT = 'http://localhost:3000/user';
+const REDIRECT = 'http://localhost:3000/callback';
 const SCOPE = 'write:reviews';
 const AUDIENCE = 'https://react-movie-app.com';
 
@@ -27,7 +27,7 @@ export function login() {
 export function logout() {
   clearIdToken();
   clearAccessToken();
-  BrowserRouter.push('/');
+  window.location.replace('/');
 }
 
 export function requireAuth(nextState, replace) {
