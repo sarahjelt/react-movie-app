@@ -8,10 +8,10 @@ import Login from './pages/Login'
 // import Media from './pages/Media'
 import { NoMatch } from './pages/NoMatch/NoMatch'
 import SignUp from './pages/SignUp'
-// import UserFriends from './pages/UserFriends'
-// import UserLists from './pages/UserLists'
+import UserFriends from './pages/UserFriends'
+import UserLists from './pages/UserLists'
 import UserProfile from './pages/UserProfile'
-// import UserShelf from './pages/UserShelf'
+import UserShelf from './pages/UserShelf'
 import { requireAuth } from './utils/AuthService'
 import Callback from './components/Callback'
 
@@ -42,6 +42,9 @@ class App extends Component {
                     <Route exact path="/user" component={UserProfile} onEnter={requireAuth} />
                     <Route exact path="/explore" component={Explore} />
                     <Route path="/callback" component={Callback} />
+                    <Route exact path="/lists" component={UserLists} />
+                    <Route exact path="/shelves" component={UserShelf} />
+                    <Route exact path="/friends" component={UserFriends} />
                     <Route path="/explore/:query" component={Explore} />
                     <Route component={NoMatch} />
                 </Switch>
