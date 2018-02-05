@@ -10,7 +10,7 @@ class Callback extends Component {
   componentDidMount() {
     setAccessToken();
     setIdToken();
-    window.location.href = "/";
+    window.location.href = "/user";
   }
 
   render() {
