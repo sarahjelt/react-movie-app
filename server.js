@@ -8,7 +8,6 @@ const app = express();
 const jwt = require('express-jwt');
 const jwks = require('jwks-rsa');
 const cors = require('cors');
-const User = require('./models/User.js');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -42,13 +41,13 @@ mongoose.connect(
 );
 
 // var dummyData = {
-//   email: "blatde91@gmail.com",
-//   name: "Daniel",
-//   password: "Sup",
-//   lists: []
+//   title: "KiKi's Delivery Service",
+//   mediaType: "Movie",
+//   synopsis: "A coming of age movie about adjusting to living on your own at 13",
+//   img: "picture of kiki"
 // };
 
-// User.create(dummyData)
+// Media.create(dummyData)
 //   .then(function(dbExample) {
 //     console.log(dbExample);
 //   })

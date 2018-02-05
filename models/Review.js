@@ -10,10 +10,6 @@ const reviewSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "User"
     },
-    synopsis: {
-        type: String,
-        required: true
-    },
     mediaItem: {
         type: Schema.Types.ObjectId,
         ref: "Media"
