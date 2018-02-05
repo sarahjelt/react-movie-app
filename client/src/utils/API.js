@@ -11,15 +11,11 @@ export default {
         console.log('adding userData to the db', userData)
     },
     addMediaItemToDB: function(mediaItem) {
-        console.log(mediaItem, 'adding to the db')
-        return axios.post('/media', mediaItem)
-            .then(res => console.log(res))
+        return axios.post('/api/movieApp/media', mediaItem)
     },
     getMediaItemIdIfExists: function(mediaItem) {
         console.log('mediaItem, finding the id', mediaItem)
-        return axios.get('/media', mediaItem)
-            .then(res => console.log(res))
-        // error saying res.json() isn't a function? 
+        return axios.post('/api/movieApp/media/validate', mediaItem)
     },
     //the below functions are all kind of work-in-progressy at this point
     // getUserData: function() {
