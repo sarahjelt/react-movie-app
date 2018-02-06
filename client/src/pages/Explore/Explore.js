@@ -1,5 +1,5 @@
 import React from 'react';
-import API from '../../utils/API'
+import API from '../../utils/API';
 import {ExploreResultItem} from "../../components/ExploreResultItem";
 
 export default class Explore extends React.Component {
