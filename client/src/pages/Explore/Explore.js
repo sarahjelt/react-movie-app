@@ -81,30 +81,21 @@ export default class Explore extends React.Component {
             mediaItem
         }
 
-        // (1) check if mediaItem is already in the db,
-        // (2) if id exists, use that id, else
-        // (3) create/post new mediaItem to the db
-        // (4) once created, .then add mediaItem to the user's shelf
-
-        // API.addMediaItemToUserShelf(userData)
-
-        // API.addMediaItemToDB(mediaItem)
-        //     .then(res => console.log(res))
-
         API.getMediaItemIdIfExists(mediaItem)
             .then(res => {
                 console.log([res.data.length === 0, res.data])
                 if (res.data.length < 1) {
                     console.log('this item does not exist in the db, so we should add it')
                     API.addMediaItemToDB(mediaItem)
-                      //  .then(res => {
-                    //      getMediaItemIdIfExists(mediaItem)
-                    //          .then(res => {
-                    //              let mediaItemId = res.data[0]._id
-                    //              console.log(mediaItemId)
-                    // })
+                       .then(response => {
+                           API.getMediaItemIdIfExists(mediaItem)
+                               .then(res2 => {
+                                   let mediaItemId = res2.data[0]._id
+                                   console.log(['we added the item to the db and this is the new id for the mediaItem', mediaItemId])
+                               })
+                       })
                 } else {
-                    console.log('this item already exists in the db')
+                    console.log(['this item already exists in the db', res.data[0]._id])
                 }
             })
     }
