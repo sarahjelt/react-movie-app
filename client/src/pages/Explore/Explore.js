@@ -3,10 +3,6 @@ import API from '../../utils/API'
 import {ExploreResultItem} from "../../components/ExploreResultItem";
 
 export default class Explore extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
     state = {
         searchValue: '',
         results: []
@@ -101,6 +97,12 @@ export default class Explore extends React.Component {
                 if (res.data.length < 1) {
                     console.log('this item does not exist in the db, so we should add it')
                     API.addMediaItemToDB(mediaItem)
+                      //  .then(res => {
+                    //      getMediaItemIdIfExists(mediaItem)
+                    //          .then(res => {
+                    //              let mediaItemId = res.data[0]._id
+                    //              console.log(mediaItemId)
+                    // })
                 } else {
                     console.log('this item already exists in the db')
                 }
