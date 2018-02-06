@@ -2,7 +2,7 @@ import React from 'react';
 import './Input.css';
 
 export const Input = (props) => (
-    <div className="input-field">
+    <div className="input-field" style={Style.container}>
         <input
             id={props.inputName}
             type={props.inputType}
@@ -15,8 +15,6 @@ export const Input = (props) => (
 )
 
 const Style = {
-    container: {
-
-    }
+    container: {}
 }
 
