@@ -110,7 +110,7 @@ export default class Explore extends React.Component {
                         date={result.date}
                         overview={result.overview}
                         mediaType={result.mediaType}
-                        posterPath={result.posterPath}
+                        posterPath={`http://image.tmdb.org/t/p/w500/${result.posterPath}`}
                         key={index}
                         handleAddButtonPress={this.handleAddButtonPress}
                     />
