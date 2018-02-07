@@ -15,17 +15,11 @@ export const Navbar = (props) => (
             (isLoggedIn() ) ? <li><Link to='/friends'>Friends</Link></li> : ''
           }
           {
-            (isLoggedIn() ) ? <li><Link to='/lists'>Lists</Link></li> : ''
-          }
-          {
-            (isLoggedIn() ) ? <li><Link to='/shelves'>Shelves</Link></li> : ''
-          }
-          {
             (isLoggedIn()) ? ( 
               <li className="log" onClick={() => logout()}><Link to='#'>Log Out
               </Link></li> ) : 
             ( 
-              <li className="log" onClick={() => login()}><Link to='#'>Log In
+              <li id='login-button' className="log" onClick={() => login()}><Link to='#'>Log In
               </Link></li> )
           }
       </ul>
