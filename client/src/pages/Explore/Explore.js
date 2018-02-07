@@ -37,6 +37,7 @@ export default class Explore extends React.Component {
         results.forEach(mediaItem => {
             if (mediaItem.media_type === "tv" || mediaItem.media_type === "movie") {
                 let mediaItemObj = {
+                    id: mediaItem.id,
                     title: mediaItem.name !== undefined ? mediaItem.name : mediaItem.title,
                     date: mediaItem.first_air_date !== undefined ? mediaItem.first_air_date : mediaItem.release_date,
                     overview: mediaItem.overview,
@@ -51,6 +52,7 @@ export default class Explore extends React.Component {
                 personKnownForArr.forEach(mediaItem => {
                     if (mediaItem.media_type === "tv" || mediaItem.media_type === "movie") {
                         let mediaItemObj = {
+                            id: mediaItem.id,
                             title: mediaItem.name !== undefined ? mediaItem.name : mediaItem.title,
                             date: mediaItem.first_air_date !== undefined ? mediaItem.first_air_date : mediaItem.release_date,
                             overview: mediaItem.overview,
@@ -68,6 +70,10 @@ export default class Explore extends React.Component {
             results: savedResults
         })
     }
+
+    // goToMediaProfile = (id) => {
+    
+    // }
 
     handleAddButtonPress = (title, date, synopsis, img, mediaType) => {
         console.log(['you pressed the add button', title, date, synopsis, img, mediaType])
@@ -113,6 +119,7 @@ export default class Explore extends React.Component {
                 <p style={Style.searchTextTitle}>Search for: {this.props.match.params.query}</p>
                 {this.state.results.map((result, index) => (
                     <ExploreResultItem
+                        id={result.id}
                         title={result.title}
                         date={result.date}
                         overview={result.overview}

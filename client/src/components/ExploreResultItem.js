@@ -1,8 +1,11 @@
 import React from 'react';
+import Media from '../pages/Media';
 
 export const ExploreResultItem = (props) => (
     <div style={Style.container}>
-        <i style={Style.icon} className="large material-icons">{iconDeterminer(props.mediaType)}</i>
+        <a href={"/media/" + props.id}>
+            <i id={props.id} style={Style.icon} className="large material-icons">{iconDeterminer(props.mediaType)}</i>
+        </a>
         <div style={Style.innerContainer}>
             <p style={Style.itemTitle}>{props.title}</p>
             <p style={Style.itemDate}>{props.date}</p>
