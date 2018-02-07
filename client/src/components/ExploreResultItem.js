@@ -2,8 +2,9 @@ import React from 'react';
 import Media from '../pages/Media';
 
 export const ExploreResultItem = (props) => (
+    <div>
     <div style={Style.container}>
-        <a href={"/media/" + props.id}>
+        <a id={props.id} className='modal-trigger' href="#modal1">
             <i id={props.id} style={Style.icon} className="large material-icons">{iconDeterminer(props.mediaType)}</i>
         </a>
         <div style={Style.innerContainer}>
@@ -19,6 +20,9 @@ export const ExploreResultItem = (props) => (
             <i className="material-icons">add</i>
         </a>
     </div>
+
+    
+  </div>
 )
 
 const iconDeterminer = (mediaType) => {
