@@ -3,25 +3,39 @@ import Media from '../pages/Media';
 
 export const ExploreResultItem = (props) => (
     <div>
-    <div style={Style.container}>
-        <a id={props.id} className='modal-trigger' href="#modal1">
-            <i id={props.id} style={Style.icon} className="large material-icons">{iconDeterminer(props.mediaType)}</i>
-        </a>
-        <div style={Style.innerContainer}>
-            <p style={Style.itemTitle}>{props.title}</p>
-            <p style={Style.itemDate}>{props.date}</p>
-            <p style={Style.itemOverview}>{props.overview}</p>
+        <div style={Style.container}>
+            <a id={props.id} className='modal-trigger' href="#modal1">
+                <i id={props.id} style={Style.icon} className="large material-icons">{iconDeterminer(props.mediaType)}</i>
+            </a>
+            <div style={Style.innerContainer}>
+                <p style={Style.itemTitle}>{props.title}</p>
+                <p style={Style.itemDate}>{props.date}</p>
+                <p style={Style.itemOverview}>{props.overview}</p>
+            </div>
+            <a
+                style={Style.fabButton}
+                className="btn-floating btn-large waves-effect waves-light red"
+                onClick={() => props.handleAddButtonPress(props.title, props.date, props.overview, props.posterPath, props.mediaType)}
+            >
+                <i className="material-icons">add</i>
+            </a>
         </div>
-        <a
-            style={Style.fabButton}
-            className="btn-floating btn-large waves-effect waves-light red"
-            onClick={() => props.handleAddButtonPress(props.title, props.date, props.overview, props.posterPath, props.mediaType)}
-        >
-            <i className="material-icons">add</i>
-        </a>
-    </div>
 
-    
+      {/*  <div id={"modal" + props.id} className="modal">
+            <div className="card horizontal">
+                <div className="card-image">
+                  <img src="https://www.hollywoodreporter.com/sites/default/files/2011/03/got_-_official_poster.jpg" />
+                </div>
+                <div className="card-stacked">
+                  <div className="card-content">
+                    <p>I am a very simple card. I am good at containing small bits of information.</p>
+                  </div>
+                  <div className="card-action">
+                    <a href="#">This is a link</a>
+                  </div>
+                </div>
+            </div>
+        </div>*/}
   </div>
 )
 
