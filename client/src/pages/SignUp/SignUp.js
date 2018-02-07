@@ -2,10 +2,6 @@ import React from 'react';
 import {SignUpForm} from '../../components/SignUpForm'
 
 export default class SignUp extends React.Component {
-    constructor(props) {
-        super(props)
-    }
-
     state = {
         signUpFirstName: '',
         signUpLastName: '',

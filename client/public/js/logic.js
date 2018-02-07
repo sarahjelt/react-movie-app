@@ -28,3 +28,13 @@ $(document).ready(function() {
 //     endingTop: '4%'
 //   });
 // });
+
+$(document).ready(function() {
+    $('.grid').masonry({
+        // options
+        itemSelector: '.grid-item',
+        columnWidth: 70,
+        gutter: 10,
+    });
+})
+
