@@ -15,6 +15,8 @@ export const Input = (props) => (
 )
 
 const Style = {
-    container: {}
+    container: {
+        width: '100%',
+    }
 }
 
