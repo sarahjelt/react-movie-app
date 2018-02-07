@@ -2,7 +2,14 @@
   "name": "mern",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:3001/",
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:3001"
+    },
+    "/assets": {
+      "target": "http://localhost:3001"
+    }
+  },
   "dependencies": {
     "auth0-js": "^9.2.0",
     "jwt-decode": "^2.2.0",
