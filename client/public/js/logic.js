@@ -29,3 +29,18 @@ $(document).ready(function() {
         gutter: 10,
     });
 })
+
+$(document).ready(function() {
+    $('.friends-page').on('click', function() {
+        setTimeout(initiateMasonry, 0)
+    })
+})
+
+const initiateMasonry = () => {
+    $('.grid').masonry({
+        // options
+        itemSelector: '.grid-item',
+        columnWidth: 70,
+        gutter: 10,
+    });
+}

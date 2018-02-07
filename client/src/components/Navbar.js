@@ -12,7 +12,7 @@ export const Navbar = (props) => (
             (isLoggedIn() ) ? <li><a href='/user'>Profile</a></li> : ''
           }
           {
-            (isLoggedIn() ) ? <li><Link to='/friends'>Friends</Link></li> : ''
+            (isLoggedIn() ) ? <li className='friends-page'><Link to='/friends'>Friends</Link></li> : ''
           }
           {
             (isLoggedIn()) ? ( 
