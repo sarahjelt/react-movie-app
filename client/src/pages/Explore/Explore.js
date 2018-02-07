@@ -1,6 +1,8 @@
 import React from 'react';
 import API from '../../utils/API'
 import {ExploreResultItem} from "../../components/ExploreResultItem";
+import Media from "../Media";
+
 
 export default class Explore extends React.Component {
     state = {
@@ -68,7 +70,7 @@ export default class Explore extends React.Component {
     }
 
     // goToMediaProfile = (id) => {
-    
+
     // }
 
     handleAddButtonPress = (title, date, synopsis, img, mediaType) => {
@@ -122,6 +124,9 @@ export default class Explore extends React.Component {
                         handleAddButtonPress={this.handleAddButtonPress}
                     />
                 ))}
+                <Media 
+                
+                />
             </div>
         )
     }

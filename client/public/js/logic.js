@@ -21,6 +21,14 @@ $(document).ready(function() {
     })
 })
 
+// $(document).ready(function(){
+//   // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
+//   $('.modal').modal({
+//     startingTop: '4%',
+//     endingTop: '4%'
+//   });
+// });
+
 $(document).ready(function() {
     $('.grid').masonry({
         // options
@@ -29,3 +37,4 @@ $(document).ready(function() {
         gutter: 10,
     });
 })
+
