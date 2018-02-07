@@ -113,7 +113,7 @@ class UserFriends extends Component {
             />
             <a style={Style.searchButton} className="waves-effect waves-light btn"><i className="material-icons left">search</i>search</a>
           </div>
-          <div className="grid" style={Style.gridContainer}>
+          <div className="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 70, "gutter": 10 }' style={Style.gridContainer}>
             {this.renderFriendsList(this.props, this.state.userSearchResults)}
           </div>
         </div>
