@@ -25,6 +25,8 @@ export const ExploreResultItem = (props) => (
                 <i className="material-icons">add</i>
             </a>
         </div>
+
+     
         <Media
             posterPath={props.posterPath}
             indexOfOpenModal={props.indexOfOpenModal}
