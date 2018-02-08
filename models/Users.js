@@ -37,10 +37,19 @@ const userSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Review"
     }], 
+    id: {
+        type: String,
+        required: false
+    },
+    nickname: {
+        type: String,
+        required: false
+    },
+
 },
     { timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' } }
 );
 
-const User = mongoose.model("User", userSchema);
+const Users = mongoose.model("Users", userSchema);
 
-module.exports = User;
+module.exports = Users;

@@ -1,5 +1,5 @@
 module.exports = {
     Media: require("./Media"),
     Review: require('./Review'),
-    User: require('./User')
+    User: require('./Users')
 };

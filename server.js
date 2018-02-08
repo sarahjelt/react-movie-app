@@ -8,6 +8,8 @@ const app = express();
 const jwt = require('express-jwt');
 const jwks = require('jwks-rsa');
 const cors = require('cors');
+// const rc = require('./node_modules/rc/index.js');
+// const rcs = window.index.rc;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -37,8 +39,7 @@ app.use(routes);
 
 mongoose.Promise = global.Promise;
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/react-movie-app",
-);
+  process.env.MONGODB_URI || "mongodb://localhost/react-movie-app");
 
 // var dummyData = {
 //   title: "KiKi's Delivery Service",
