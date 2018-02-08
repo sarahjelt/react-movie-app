@@ -11,10 +11,10 @@ export const Media = (props) => (
       // </div>
           //<h2 class="header">Horizontal Card</h2>
 
-    <div id="modal1" className="modal">
+    <div id={divIdDeterminer(props.indexOfResultItem)} className={props.indexOfOpenModal === props.indexOfResultItem ? 'modal open' : 'modal'}>
         <div className="card horizontal">
             <div className="card-image">
-              <img src="https://www.hollywoodreporter.com/sites/default/files/2011/03/got_-_official_poster.jpg" />
+              <img src={props.posterPath} />
             </div>
             <div className="card-stacked">
               <div className="card-content">
@@ -28,6 +28,9 @@ export const Media = (props) => (
     </div>
   )
 
+const divIdDeterminer = (indexOfResultItem) => {
+    return `modal${indexOfResultItem}`
+}
 
 // const Style = {
 //   container: {
