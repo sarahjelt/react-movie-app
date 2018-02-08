@@ -4,7 +4,12 @@ import Media from '../pages/Media';
 export const ExploreResultItem = (props) => (
     <div>
         <div style={Style.container}>
-            <a id={props.id} className='modal-trigger' href="#modal1">
+            <a
+                id={props.id}
+                className='modal-trigger'
+                href={hrefDeterminer(props.indexOfResultItem)}
+                onClick={() => props.handleModalOpen(props.indexOfResultItem)}
+            >
                 <i id={props.id} style={Style.icon} className="large material-icons">{iconDeterminer(props.mediaType)}</i>
             </a>
             <div style={Style.innerContainer}>
@@ -21,26 +26,21 @@ export const ExploreResultItem = (props) => (
             </a>
         </div>
 
-      {/*  <div id={"modal" + props.id} className="modal">
-            <div className="card horizontal">
-                <div className="card-image">
-                  <img src="https://www.hollywoodreporter.com/sites/default/files/2011/03/got_-_official_poster.jpg" />
-                </div>
-                <div className="card-stacked">
-                  <div className="card-content">
-                    <p>I am a very simple card. I am good at containing small bits of information.</p>
-                  </div>
-                  <div className="card-action">
-                    <a href="#">This is a link</a>
-                  </div>
-                </div>
-            </div>
-        </div>*/}
+     
+        <Media
+            posterPath={props.posterPath}
+            indexOfOpenModal={props.indexOfOpenModal}
+            indexOfResultItem={props.indexOfResultItem}
+        />
   </div>
 )
 
 const iconDeterminer = (mediaType) => {
     return mediaType === "tv" ? 'live_tv' : 'local_movies';
+}
+
+const hrefDeterminer = (indexOfResultItem) => {
+    return `#modal${indexOfResultItem}`
 }
 
 const Style = {
