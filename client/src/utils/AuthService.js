@@ -7,7 +7,7 @@ const ACCESS_TOKEN_KEY = 'access_token';
 
 const CLIENT_ID = 'c4NjZEOPC3GODFhXaggjJQImQVH26mBH';
 const CLIENT_DOMAIN = 'teamgudetama.auth0.com';
-const REDIRECT = 'http://localhost:3000/callback';
+const REDIRECT = 'https://lit-bayou-61393.herokuapp.com/callback';
 const SCOPE = 'openid profile email';
 const AUDIENCE = 'https://react-movie-app.com';
 
