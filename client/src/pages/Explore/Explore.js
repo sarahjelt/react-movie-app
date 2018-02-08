@@ -7,7 +7,8 @@ import Media from "../Media";
 export default class Explore extends React.Component {
     state = {
         searchValue: '',
-        results: []
+        results: [],
+        indexOfOpenModal: null,
     }
 
     componentWillMount() {
@@ -73,6 +74,12 @@ export default class Explore extends React.Component {
 
     // }
 
+    handleModalOpen = (index) => {
+        this.setState({
+            indexOfOpenModal: index
+        })
+    }
+
     handleAddButtonPress = (title, date, synopsis, img, mediaType) => {
         console.log(['you pressed the add button', title, date, synopsis, img, mediaType])
         let userId = 1
@@ -121,7 +128,10 @@ export default class Explore extends React.Component {
                         mediaType={result.mediaType}
                         posterPath={`http://image.tmdb.org/t/p/w500/${result.posterPath}`}
                         key={index}
+                        indexOfResultItem={index}
+                        indexOfOpenModal={this.state.indexOfOpenModal}
                         handleAddButtonPress={this.handleAddButtonPress}
+                        handleModalOpen={this.handleModalOpen}
                     />
                 ))}
                 <Media 

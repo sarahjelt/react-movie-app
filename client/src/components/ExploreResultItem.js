@@ -3,30 +3,42 @@ import Media from '../pages/Media';
 
 export const ExploreResultItem = (props) => (
     <div>
-    <div style={Style.container}>
-        <a id={props.id} className='modal-trigger' href="#modal1">
-            <i id={props.id} style={Style.icon} className="large material-icons">{iconDeterminer(props.mediaType)}</i>
-        </a>
-        <div style={Style.innerContainer}>
-            <p style={Style.itemTitle}>{props.title}</p>
-            <p style={Style.itemDate}>{props.date}</p>
-            <p style={Style.itemOverview}>{props.overview}</p>
+        <div style={Style.container}>
+            <a
+                id={props.id}
+                className='modal-trigger'
+                href={hrefDeterminer(props.indexOfResultItem)}
+                onClick={() => props.handleModalOpen(props.indexOfResultItem)}
+            >
+                <i id={props.id} style={Style.icon} className="large material-icons">{iconDeterminer(props.mediaType)}</i>
+            </a>
+            <div style={Style.innerContainer}>
+                <p style={Style.itemTitle}>{props.title}</p>
+                <p style={Style.itemDate}>{props.date}</p>
+                <p style={Style.itemOverview}>{props.overview}</p>
+            </div>
+            <a
+                style={Style.fabButton}
+                className="btn-floating btn-large waves-effect waves-light red"
+                onClick={() => props.handleAddButtonPress(props.title, props.date, props.overview, props.posterPath, props.mediaType)}
+            >
+                <i className="material-icons">add</i>
+            </a>
         </div>
-        <a
-            style={Style.fabButton}
-            className="btn-floating btn-large waves-effect waves-light red"
-            onClick={() => props.handleAddButtonPress(props.title, props.date, props.overview, props.posterPath, props.mediaType)}
-        >
-            <i className="material-icons">add</i>
-        </a>
-    </div>
-
-    
+        <Media
+            posterPath={props.posterPath}
+            indexOfOpenModal={props.indexOfOpenModal}
+            indexOfResultItem={props.indexOfResultItem}
+        />
   </div>
 )
 
 const iconDeterminer = (mediaType) => {
     return mediaType === "tv" ? 'live_tv' : 'local_movies';
+}
+
+const hrefDeterminer = (indexOfResultItem) => {
+    return `#modal${indexOfResultItem}`
 }
 
 const Style = {

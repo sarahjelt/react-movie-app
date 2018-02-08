@@ -9,9 +9,9 @@ class UserProfile extends Component {
 
   // };
 
-  // componentDidMount() {
-
-  // };
+  componentDidMount() {
+    console.log(this.props)
+  };
 
   userHeaderArr =
     ['https://4.bp.blogspot.com/-SAWRO0xPu58/UCAy7Qfx3wI/AAAAAAAAK1Q/UrHXLDbO5LY/s1600/Kiki%27s+Delivery+Service+%281989%29+2.jpg',
