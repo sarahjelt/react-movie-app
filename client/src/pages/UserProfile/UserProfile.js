@@ -4,16 +4,15 @@ import { Avatar } from '../../components/Avatar';
 import { UserInfo } from '../../components/UserInfo';
 import { UserModules } from '../../components/UserModules';
 import { Footer } from '../../components/Footer';
+import API from '../../utils/API';
 
 class UserProfile extends Component {
   state = {
     reviews:[],
-    reviewBody: "",
     reviewMovie: "",
-    reviewTitle: "",
-    mediaItem: "",
+    reviewName: "",
     reviewBool: false,
-    reviewValue: "Please write your review here..."
+    reviewValue: ""
 
 
   };
@@ -35,23 +34,21 @@ class UserProfile extends Component {
 
   handleReviewSubmit= event => {
     event.preventDefault();
-    console.log("submitted");
-    // if (this.state.reviewBody && this.state.reviewMovie && this.state.reviewTitle) {
-    //   // API.saveReview({
-    //   //   headline: this.state.reviewTitle,
-    //   //   author: this.state.currentUser,
-    //   //   mediaItem: this.state.mediaItem,
-    //   //   body: this.state.reviewBody
-    //   // })
-    //   //  .then(res => this.loadReviews())
-    //   console.log(res.data)
-    // }
+    console.log(this.state.reviewValue, this.state.reviewName);
+      API.saveReview({
+        headline: this.state.reviewName,
+        author: "5a77a903dd1f581f28fbf335",
+        mediaItem: "5a77a903dd1f581f28fbf335",
+        body: this.state.reviewValue
+      })
+      .then(res => console.log('this happened', res));
+       
   };
 
   handleReviewChange = event => {
-    const { value } = event.target;
+    const { name, value } = event.target;
     this.setState({
-      reviewValue : value
+      [ name ] : value
     });
 
   };
@@ -80,8 +77,9 @@ class UserProfile extends Component {
           userImage='https://dw9to29mmj727.cloudfront.net/properties/2016/432-SeriesThumbnails_SM__400x320.jpg'
         />
         <UserModules 
-                      value={this.state.reviewValue}
+                      reviewValue={this.state.reviewValue}
                       reviewBool={this.state.reviewBool}
+                      reviewName={this.state.reviewName}
                       handleReviewSubmit={this.handleReviewSubmit}
                       reviewModalTrigger={this.reviewModalTrigger}
                       handleReviewChange={this.handleReviewChange} />

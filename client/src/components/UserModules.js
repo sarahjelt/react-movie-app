@@ -27,7 +27,8 @@ export const UserModules = (props) => (
         </div>
       </div>
     </div>
-    <ReviewModal value={props.value}
+    <ReviewModal reviewValue={props.reviewValue}
+                 reviewName={props.reviewName}
                  reviewBool={props.reviewBool}
                  handleReviewSubmit={props.handleReviewSubmit}
                  handleReviewChange={props.handleReviewChange}/>

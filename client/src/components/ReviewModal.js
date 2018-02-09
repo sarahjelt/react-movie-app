@@ -8,7 +8,8 @@ export const ReviewModal = (props) => (
                     <span>Add a Review</span>
                     <form onSubmit={(event) => props.handleReviewSubmit(event)}>
                         <label>Review:
-                            <textarea name='reviewValue' value={props.value} onChange={(event) => props.handleReviewChange(event)}/>
+                            <textarea placeholder='Name your review' name='reviewName' value={props.reviewName} onChange={(event) => props.handleReviewChange(event)}/>
+                            <textarea placeholder='Please write review here' name='reviewValue' value={props.reviewValue} onChange={(event) => props.handleReviewChange(event)}/>
                         </label>
                         <input type="submit" value="Submit" />
                     </form>
