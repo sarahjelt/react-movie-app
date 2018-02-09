@@ -23,6 +23,7 @@ router
 router
     .route("/user/shelf/:id")
     .get(movieController.getUserShelf)
+    .post(movieController.addMediaItemToShelf)
 
 router
     .route("/user/lists/:id")

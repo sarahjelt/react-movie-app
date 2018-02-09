@@ -4,18 +4,17 @@ import { Avatar } from '../../components/Avatar';
 import { UserInfo } from '../../components/UserInfo';
 import { UserModules } from '../../components/UserModules';
 import { Footer } from '../../components/Footer';
+import API from '../../utils/API'
 
 class UserProfile extends Component {
   state = {
     reviews:[],
-    reviewBody: "",
-    reviewMovie: "",
-    reviewTitle: "",
+    reviewBody: "i'm a body",
+    reviewMovie: "I'm a movie",
+    reviewTitle: "I'm a title",
     mediaItem: "",
     reviewBool: false,
-    reviewValue: "Please write your review here..."
-
-
+    reviewValue: "I'm a value"
   };
 
   componentDidMount() {
@@ -36,16 +35,15 @@ class UserProfile extends Component {
   handleReviewSubmit= event => {
     event.preventDefault();
     console.log("submitted");
-    // if (this.state.reviewBody && this.state.reviewMovie && this.state.reviewTitle) {
-    //   // API.saveReview({
-    //   //   headline: this.state.reviewTitle,
-    //   //   author: this.state.currentUser,
-    //   //   mediaItem: this.state.mediaItem,
-    //   //   body: this.state.reviewBody
-    //   // })
-    //   //  .then(res => this.loadReviews())
-    //   console.log(res.data)
-    // }
+    if (this.state.reviewBody && this.state.reviewMovie && this.state.reviewTitle) {
+      API.saveReview({
+        headline: this.state.reviewTitle,
+        author: '5a7bac9b921252711d2e794a',
+        mediaItem: '5a7bac9b921252711d2e794a',
+        body: this.state.reviewBody
+      })
+       .then(res => console.log(res))
+    }
   };
 
   handleReviewChange = event => {
