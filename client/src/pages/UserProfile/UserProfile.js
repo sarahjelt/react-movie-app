@@ -22,6 +22,11 @@ class UserProfile extends Component {
     console.log(this.props)
   };
 
+
+  componentWillMount() {
+
+  }
+
   // loadReviews = () => {
   //   API.getReviewsByUser()
   //     .then(res =>

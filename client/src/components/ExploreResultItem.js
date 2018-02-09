@@ -29,6 +29,9 @@ export const ExploreResultItem = (props) => (
             posterPath={props.posterPath}
             indexOfOpenModal={props.indexOfOpenModal}
             indexOfResultItem={props.indexOfResultItem}
+            overview={props.overview}
+            title={props.title}
+            date={props.date}
         />
   </div>
 )

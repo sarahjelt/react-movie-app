@@ -18,10 +18,13 @@ export const Media = (props) => (
             </div>
             <div className="card-stacked">
               <div className="card-content">
-                <p>I am a very simple card. I am good at containing small bits of information.</p>
+                <p>{props.title}</p>
+                <p>{props.date}</p>
+                <p>{props.overview}</p>
               </div>
               <div className="card-action">
-                <a href="#">This is a link</a>
+                <a href="#">Add To Shelf</a>
+                  <a href="#">Add To List</a>
               </div>
             </div>
         </div>

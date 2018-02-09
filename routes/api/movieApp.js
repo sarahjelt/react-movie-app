@@ -13,6 +13,22 @@ router
   .delete(movieController.removeUser);
 
 router
+    .route("/user/name/:name")
+    .get(movieController.findUserByName)
+
+router
+    .route("/user/email/:email")
+    .get(movieController.findUserByEmail)
+
+router
+    .route("/user/shelf/:id")
+    .get(movieController.getUserShelf)
+
+router
+    .route("/user/lists/:id")
+    .get(movieController.getUserLists)
+
+router
   .route("/media")
   .get(movieController.findAllMedia)
   .post(movieController.createMedia);
@@ -37,5 +53,9 @@ router
   .get(movieController.findReviewById)
   .put(movieController.updateReview)
   .delete(movieController.removeReview);
+
+router
+    .route("/review/user/:id")
+    .get(movieController.findReviewByUserId)
 
 module.exports = router;
