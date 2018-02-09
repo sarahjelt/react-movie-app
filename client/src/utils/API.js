@@ -37,10 +37,9 @@ export default {
         console.log('getUserReviews', id)
         return axios.get(`/api/movieApp/review/user/${id}`)
     },
-    addAReview: function(review) {
-        console.log('addAReview', review)
-        return axios.post(`api/movieApp/review`, review)
-    },
+    saveReview: function(reviewData) {
+        return axios.post('/api/movieApp/review', reviewData)
+    }
     //the below functions are all kind of work-in-progressy at this point
     // getUserData: function() {
     //   const url = `${BASE_URL}/api/user`;
