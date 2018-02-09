@@ -6,12 +6,55 @@ import { UserModules } from '../../components/UserModules';
 import { Footer } from '../../components/Footer';
 
 class UserProfile extends Component {
-  // state = {
+  state = {
+    reviews:[],
+    reviewBody: "",
+    reviewMovie: "",
+    reviewTitle: "",
+    mediaItem: "",
+    reviewBool: false,
+    reviewValue: "Please write your review here..."
 
-  // };
+
+  };
 
   componentDidMount() {
     console.log(this.props)
+  };
+
+  // loadReviews = () => {
+  //   API.getReviewsByUser()
+  //     .then(res =>
+  //       this.setState({ reviews: res.data }))
+  // };
+
+  handleReviewSubmit= event => {
+    event.preventDefault();
+    console.log("submitted");
+    // if (this.state.reviewBody && this.state.reviewMovie && this.state.reviewTitle) {
+    //   // API.saveReview({
+    //   //   headline: this.state.reviewTitle,
+    //   //   author: this.state.currentUser,
+    //   //   mediaItem: this.state.mediaItem,
+    //   //   body: this.state.reviewBody
+    //   // })
+    //   //  .then(res => this.loadReviews())
+    //   console.log(res.data)
+    // }
+  };
+
+  handleReviewChange = event => {
+    const { value } = event.target;
+    this.setState({
+      reviewValue : value
+    });
+
+  };
+
+  reviewModalTrigger = () => {
+    this.setState({
+      reviewBool: true
+    });
   };
 
   userHeaderArr =
@@ -31,7 +74,12 @@ class UserProfile extends Component {
         <Avatar 
           userImage='https://dw9to29mmj727.cloudfront.net/properties/2016/432-SeriesThumbnails_SM__400x320.jpg'
         />
-        <UserModules />
+        <UserModules 
+                      value={this.state.reviewValue}
+                      reviewBool={this.state.reviewBool}
+                      handleReviewSubmit={this.handleReviewSubmit}
+                      reviewModalTrigger={this.reviewModalTrigger}
+                      handleReviewChange={this.handleReviewChange} />
         <Footer />
       </div>
     )

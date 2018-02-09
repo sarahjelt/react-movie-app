@@ -17,6 +17,9 @@ export default {
         console.log('mediaItem, finding the id', mediaItem)
         return axios.post('/api/movieApp/media/validate', mediaItem)
     },
+    saveReview: function(reviewData) {
+        return axios.post('/api/movieApp/review', reviewData)
+    }
     //the below functions are all kind of work-in-progressy at this point
     // getUserData: function() {
     //   const url = `${BASE_URL}/api/user`;
