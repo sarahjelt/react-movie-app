@@ -3,6 +3,7 @@ import { UserHeader } from '../../components/UserHeader';
 import { Avatar } from '../../components/Avatar';
 import { UserInfo } from '../../components/UserInfo';
 import { UserModules } from '../../components/UserModules';
+import { Footer } from '../../components/Footer';
 
 class UserProfile extends Component {
   // state = {
@@ -31,6 +32,7 @@ class UserProfile extends Component {
           userImage='https://dw9to29mmj727.cloudfront.net/properties/2016/432-SeriesThumbnails_SM__400x320.jpg'
         />
         <UserModules />
+        <Footer />
       </div>
     )
   }
