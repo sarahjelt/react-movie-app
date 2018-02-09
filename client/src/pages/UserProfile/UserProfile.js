@@ -9,12 +9,10 @@ import API from '../../utils/API'
 class UserProfile extends Component {
   state = {
     reviews:[],
-    reviewBody: "i'm a body",
-    reviewMovie: "I'm a movie",
-    reviewTitle: "I'm a title",
-    mediaItem: "",
+    reviewMovie: "",
+    reviewName: "",
     reviewBool: false,
-    reviewValue: "I'm a value"
+    reviewValue: ""
   };
 
   componentDidMount() {
@@ -34,22 +32,20 @@ class UserProfile extends Component {
 
   handleReviewSubmit= event => {
     event.preventDefault();
-    console.log("submitted");
-    if (this.state.reviewBody && this.state.reviewMovie && this.state.reviewTitle) {
+    console.log(this.state.reviewValue, this.state.reviewName);
       API.saveReview({
-        headline: this.state.reviewTitle,
-        author: '5a7bac9b921252711d2e794a',
-        mediaItem: '5a7bac9b921252711d2e794a',
-        body: this.state.reviewBody
+        headline: this.state.reviewName,
+        author: "5a77a903dd1f581f28fbf335",
+        mediaItem: "5a77a903dd1f581f28fbf335",
+        body: this.state.reviewValue
       })
-       .then(res => console.log(res))
-    }
+      .then(res => console.log('this happened', res));
   };
 
   handleReviewChange = event => {
-    const { value } = event.target;
+    const { name, value } = event.target;
     this.setState({
-      reviewValue : value
+      [ name ] : value
     });
 
   };
@@ -78,8 +74,9 @@ class UserProfile extends Component {
           userImage='https://dw9to29mmj727.cloudfront.net/properties/2016/432-SeriesThumbnails_SM__400x320.jpg'
         />
         <UserModules 
-                      value={this.state.reviewValue}
+                      reviewValue={this.state.reviewValue}
                       reviewBool={this.state.reviewBool}
+                      reviewName={this.state.reviewName}
                       handleReviewSubmit={this.handleReviewSubmit}
                       reviewModalTrigger={this.reviewModalTrigger}
                       handleReviewChange={this.handleReviewChange} />
