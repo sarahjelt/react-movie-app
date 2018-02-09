@@ -13,12 +13,6 @@ export const UserModules = (props) => (
         <div className='card lime'>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>Shelf</span>
-            <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
           </div>
         </div>
       </div>
@@ -26,12 +20,6 @@ export const UserModules = (props) => (
         <div className='card teal'>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>Reviews</span>
-            <ul>
-              <li></li>
-              <li></li>
-              <li></li>
-              <li></li>
-            </ul>
           </div>
         </div>
       </div>
