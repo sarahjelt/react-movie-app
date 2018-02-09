@@ -13,6 +13,10 @@ class UserProfile extends Component {
     console.log(this.props)
   };
 
+  componentWillMount() {
+
+  }
+
   userHeaderArr =
     ['https://4.bp.blogspot.com/-SAWRO0xPu58/UCAy7Qfx3wI/AAAAAAAAK1Q/UrHXLDbO5LY/s1600/Kiki%27s+Delivery+Service+%281989%29+2.jpg',
       'https://www.movieposter.com/posters/archive/main/100/MPW-50006',

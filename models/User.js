@@ -16,12 +16,7 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    lists: [{
-        type: Schema.Types.ObjectId,
-        ref: "Media",
-        body: String,
-        title: String,
-    }],
+    lists: Array,
     img: {
         type: String
     },

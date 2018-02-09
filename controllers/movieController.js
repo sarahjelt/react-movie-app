@@ -13,6 +13,31 @@ module.exports = {
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
     },
+    findUserByName: function(req, res) {
+        db.User
+            .findOne({ name: req.params.name })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err))
+    },
+    findUserByEmail: function(req, res) {
+        db.User
+            .findOne({ name: req.params.email })
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err))
+    },
+    getUserShelf: function(req, res) {
+        db.User
+            .findOne({ _id: req.params.id})
+            .populate("Media")
+            .then(dbUser => res.json(dbUser))
+            .catch(err => res.status(422).json(err))
+    },
+    getUserLists: function(req, res) {
+        db.User
+            .findOne({_id: req.params.id})
+            .then(dbUser => res.json(dbUser))
+            .catch(err => res.status(422).json(err))
+    },
     createUser: function(req, res) {
         db.User
           .create(req.body)
@@ -45,16 +70,12 @@ module.exports = {
           .catch(err => res.status(422).json(err));
     },
     findMediaBySynopsis: function(req, res) {
-        console.log('findMediaBySynopsis', req.body)
-
         db.Media
             .find({synopsis: req.body.synopsis})
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err))
     },
     createMedia: function(req, res) {
-        console.log('hitting the /media post route, trying to createMedia:', req.body)
-
         db.Media
           .create(req.body)
           .then(dbModel => res.json(dbModel))
@@ -84,6 +105,13 @@ module.exports = {
           .findById(req.params.id)
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
+    },
+    findReviewByUserId: function(req, res) {
+        db.Review
+            .find({ author: req.params.id })
+            .populate("User")
+            .then(dbModel => res.json(dbModel))
+            .catch(err => res.status(422).json(err))
     },
     createReview: function(req, res) {
         db.Review

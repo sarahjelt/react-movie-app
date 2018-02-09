@@ -17,6 +17,30 @@ export default {
         console.log('mediaItem, finding the id', mediaItem)
         return axios.post('/api/movieApp/media/validate', mediaItem)
     },
+    findUserByName: function(query) {
+        console.log('findUserByName', query)
+        return axios.get(`/api/movieApp/user/name/${query}`)
+    },
+    findUserByEmail: function(query) {
+        console.log('findUserByEmail', query)
+        return axios.get(`/api/movieApp/user/email/${query}`)
+    },
+    getUserShelf: function(id) {
+        console.log('getUserShelfItems', id)
+        return axios.get(`/api/movieApp/user/shelf/${id}`)
+    },
+    getUserLists: function(id) {
+        console.log('getUserLists', id)
+        return axios.get(`/api/movieApp/user/lists/${id}`)
+    },
+    getUserReviews: function(id) {
+        console.log('getUserReviews', id)
+        return axios.get(`/api/movieApp/review/user/${id}`)
+    },
+    addAReview: function(review) {
+        console.log('addAReview', review)
+        return axios.post(`api/movieApp/review`, review)
+    },
     //the below functions are all kind of work-in-progressy at this point
     // getUserData: function() {
     //   const url = `${BASE_URL}/api/user`;
