@@ -16,6 +16,7 @@ var auth = new auth0.WebAuth({
 });
 
 export function login() {
+  console.log('login');
   auth.authorize({
     responseType: 'token id_token',
     redirectUri: REDIRECT,
