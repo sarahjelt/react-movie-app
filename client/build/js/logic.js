@@ -40,7 +40,7 @@ $(document).ready(function() {
 
 $(document).ready(function() {
     $('.friends-page').on('click', function() {
-        setTimeout(initiateMasonry, 0)
+        setTimeout(initiateMasonry, 500)
     })
 })
 

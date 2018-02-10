@@ -1,13 +1,12 @@
 import decode from 'jwt-decode';
 import auth0 from 'auth0-js';
-// import Auth0Lock from 'auth0-lock';
 
 const ID_TOKEN_KEY = 'id_token';
 const ACCESS_TOKEN_KEY = 'access_token';
 
 const CLIENT_ID = 'c4NjZEOPC3GODFhXaggjJQImQVH26mBH';
 const CLIENT_DOMAIN = 'teamgudetama.auth0.com';
-const REDIRECT = 'http://localhost:3000/callback';
+const REDIRECT = 'https://lit-bayou-61393.herokuapp.com/callback';
 const SCOPE = 'openid profile email';
 const AUDIENCE = 'https://react-movie-app.com';
 
@@ -17,6 +16,7 @@ var auth = new auth0.WebAuth({
 });
 
 export function login() {
+  console.log('login');
   auth.authorize({
     responseType: 'token id_token',
     redirectUri: REDIRECT,

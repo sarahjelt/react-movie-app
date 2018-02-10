@@ -58,6 +58,12 @@ module.exports = {
           .then(dbModel => res.json(dbModel))
           .catch(err => res.status(422).json(err));
     },
+    addMediaItemToShelf: function(req, res) {
+        db.User
+            .findOneAndUpdate({_id: req.params.id}, { $push: {shelf: req.body.mediaItemId}}, { new: true })
+            .then(dbUser => res.json(dbUser))
+            .catch(err => res.status(422).json(err))
+    },
     removeUser: function(req, res) {
         db.User
           .findById({ _id: req.params.id})
@@ -122,6 +128,7 @@ module.exports = {
             .catch(err => res.status(422).json(err))
     },
     createReview: function(req, res) {
+        console.log('trying to create review', req.body)
         db.Review
           .create(req.body)
           .then(dbModel => res.json(dbModel))
