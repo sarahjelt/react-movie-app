@@ -13,23 +13,16 @@ export const SignUpForm = (props) => {
             <form style={Style.container}>
                 <Input
                     inputType='text'
-                    inputName='signUpFirstName'
-                    inputLabel='First Name'
-                    placeholder='first name'
+                    inputName='signUpName'
+                    inputLabel='Name'
+                    placeholder='name'
                     handleInputChange={props.handleInputChange}
                 />
                 <Input
-                    inputType='text'
-                    inputName='signUpLastName'
-                    inputLabel='Last Name'
-                    placeholder='last name'
-                    handleInputChange={props.handleInputChange}
-                />
-                <Input
-                    inputType='text'
-                    inputName='signUpUsername'
-                    inputLabel='Username'
-                    placeholder='username'
+                    inputType='url'
+                    inputName='signUpImg'
+                    inputLabel='Image Url'
+                    placeholder='url'
                     handleInputChange={props.handleInputChange}
                 />
                 <Input

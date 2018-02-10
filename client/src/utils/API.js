@@ -51,6 +51,12 @@ export default {
     addItemToUserShelf: function(userId, mediaItemId) {
         return axios.post()
     },
+    authenticateUser: function(userData) {
+        return axios.post("/api/authenticate/signin", userData)
+    },
+    createNewUser: function(userData) {
+        return axios.post("/api/authenticate/signup", userData)
+    },
     //the below functions are all kind of work-in-progressy at this point
     // getUserData: function() {
     //   const url = `${BASE_URL}/api/user`;
