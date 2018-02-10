@@ -25,6 +25,10 @@ export default {
         console.log('findUserByEmail', query)
         return axios.get(`/api/movieApp/user/email/${query}`)
     },
+    findUserById: function(id) {
+        console.log('get all user data', id);
+        return axios.get(`/api/movieApp/user/${id}`)
+    },
     getUserShelf: function(id) {
         console.log('getUserShelfItems', id)
         return axios.get(`/api/movieApp/user/shelf/${id}`)
@@ -33,9 +37,9 @@ export default {
         console.log('getUserLists', id)
         return axios.get(`/api/movieApp/user/lists/${id}`)
     },
-    pushUserLists: function(id) {
-        console.log('pushUserLists', id)
-        return axios.put(`/api/movieApp/user/lists/${id}`)
+    pushUserLists: function(id, data) {
+        console.log('pushUserLists', id, data)
+        return axios.put(`/api/movieApp/user/lists/${id}`, data)
     },
     getUserReviews: function(id) {
         console.log('getUserReviews', id)

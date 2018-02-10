@@ -28,6 +28,7 @@ router
 router
     .route("/user/lists/:id")
     .get(movieController.getUserLists)
+    .put(movieController.pushUserLists);
 
 router
   .route("/media")
