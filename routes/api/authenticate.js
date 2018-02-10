@@ -8,13 +8,18 @@ var router = express.Router();
 var User = require("../../models/User");
 
 router.post('/signup', function(req, res) {
+    console.log('you hit the signup route', req.body)
     if (!req.body.email || !req.body.password) {
         res.json({success: false, msg: 'Please pass email and password.'});
     } else {
         var newUser = new User({
             email: req.body.email,
-            password: req.body.password
+            password: req.body.password,
+            name: req.body.name
         });
+
+
+
         // save the user
         newUser.save(function(err) {
             if (err) {

@@ -50,8 +50,9 @@ export default {
     authenticateUser: function() {
 
     },
-    createNewUser: function() {
-
+    createNewUser: function(userData) {
+        console.log('hitting createUser method', userData)
+        return axios.post("/api/authenticate/signup", userData)
     },
     //the below functions are all kind of work-in-progressy at this point
     // getUserData: function() {

@@ -1,5 +1,6 @@
 import React from 'react';
 import {SignUpForm} from '../../components/SignUpForm'
+import API from "../../utils/API";
 
 export default class SignUp extends React.Component {
     state = {
@@ -17,8 +18,16 @@ export default class SignUp extends React.Component {
     }
 
     handleButtonPress = (value, buttonName) => {
-        console.log(['you logged in as', this.state.signUpFirstName, this.state.signUpLastName, this.state.signUpUsername, this.state.signUpEmail, this.state.signUpPassword])
-        // call method here to register the user
+        console.log(['you logged in as', this.state.signUpEmail, this.state.signUpPassword])
+
+        let userData = {
+            email: this.state.signUpEmail,
+            password: this.state.signUpPassword,
+            name: this.state.signUpFirstName
+        }
+
+        API.createNewUser(userData)
+            .then(res => console.log(res))
     }
 
     render() {

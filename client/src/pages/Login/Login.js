@@ -1,6 +1,7 @@
 import React from 'react';
 import {LoginForm} from '../../components/LoginForm'
 import {PageInfoTitle} from '../../components/PageInfoTitle'
+import API from '../../utils/API'
 
 export default class Login extends React.Component {
     state = {
@@ -16,8 +17,10 @@ export default class Login extends React.Component {
 
     handleButtonPress = (value, buttonName) => {
         console.log(['you logged in as', this.state.loginUsername, this.state.loginPassword])
-        // call method here to login the user
+        API.createNewUser()
     }
+
+
 
     render() {
         return (
