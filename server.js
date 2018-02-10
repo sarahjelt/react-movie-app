@@ -25,7 +25,7 @@ const authCheck = jwt({
     }),
     // This is the identifier we set when we created the API
     audience: 'https://react-movie-app.com',
-    issuer: 'teamgudetama.auth0.com/',
+    issuer: 'teamgudetama.auth0.com',
     algorithms: ['RS256']
 });
 
@@ -38,7 +38,7 @@ app.use(routes);
 
 mongoose.Promise = global.Promise;
 mongoose.connect(
-  process.env.MONGODB_URI || "mongodb://localhost/react-movie-app",
+  process.env.MONGODB_URI || "mongodb://localhost/react-movie-app"
 );
 
 // var dummyData = {

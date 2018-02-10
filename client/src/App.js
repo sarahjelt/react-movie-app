@@ -39,7 +39,7 @@ class App extends Component {
                     <Route exact path="/home" component={Home} />
                     <Route exact path="/login" component={Login} />
                     <Route exact path="/signup" component={SignUp} />
-                    <Route exact path="/user" component={UserProfile} onEnter={requireAuth} />
+                    <Route exact path="/user" component={UserProfile} />
                     <Route exact path="/explore" component={Explore} />
                     <Route path="/callback" component={Callback} />
                     <Route exact path="/friends" component={UserFriends} />
