@@ -4,7 +4,7 @@ import { Avatar } from '../../components/Avatar';
 import { UserInfo } from '../../components/UserInfo';
 import { UserModules } from '../../components/UserModules';
 import { Footer } from '../../components/Footer';
-import API from '../../utils/API';
+import API from '../../utils/API'
 
 class UserProfile extends Component {
   state = {
@@ -16,8 +16,6 @@ class UserProfile extends Component {
     listName: "",
     listValue: "",
     listBool: false
-
-
   };
 
   componentDidMount() {
