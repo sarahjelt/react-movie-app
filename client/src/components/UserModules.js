@@ -1,6 +1,7 @@
 import React from 'react';
 import {ReviewModal} from './ReviewModal';
 import {ListModal} from './ListModal';
+import { ListRender } from './ListRender';
 
 export const UserModules = (props) => (
   <div>
@@ -9,6 +10,7 @@ export const UserModules = (props) => (
         <div className='card blue'>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>Lists</span>
+         
             <input href='#listModal' className='modal-trigger' type="button" onClick={() => props.listModalTrigger()} />
           </div>
         </div>

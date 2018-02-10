@@ -38,6 +38,14 @@ module.exports = {
             .then(dbUser => res.json(dbUser))
             .catch(err => res.status(422).json(err))
     },
+    pushUserLists: function(req, res) {
+        console.log('hit the controller', req.body)
+        var newList = { title: req.body.title, body: req.body.body}
+        db.User
+           .findOneAndUpdate({_id: req.params.id},{$push:{lists: newList}})
+           .then(dbUser => res.json(dbUser))
+           .catch(err => res.status(422).json(err))
+    },
     createUser: function(req, res) {
         db.User
           .create(req.body)

@@ -15,13 +15,17 @@ class UserProfile extends Component {
     reviewValue: "",
     listName: "",
     listValue: "",
-    listBool: false
+    listBool: false,
+    listResultName: [],
+    listResultBody: []
 
 
   };
 
+
   componentDidMount() {
-    console.log(this.props)
+    API.findUserById('5a77a903dd1f581f28fbf335')
+      .then(res => console.log(res))
   };
 
 
@@ -52,14 +56,8 @@ class UserProfile extends Component {
   handleListSubmit= event => {
     event.preventDefault();
     console.log(this.state.listValue, this.state.listName);
-    API.pushUserLists({ _id: '5a77a903dd1f581f28fbf335'},
-      { $push:
-        { lists: 
-          { title: this.state.listName,
-            body: this.state.listValue
-          }
-        }
-      })
+    let newList = {title: this.state.listName, body: this.state.listValue}
+    API.pushUserLists('5a77a903dd1f581f28fbf335', newList)
       .then(res => console.log('this happened', res));
   };
 
@@ -113,8 +111,10 @@ class UserProfile extends Component {
                       listName={this.state.listName}
                       listBool={this.state.listBool}
                       listModalTrigger={this.listModalTrigger}
+                      listResultName={this.state.listResultName}
+                      listResultBody={this.state.listResultBody}
                       handleListSubmit={this.handleListSubmit}
-                      handleEventChange={this.handleEventChange}/>
+        />
         <Footer />
       </div>
     )
