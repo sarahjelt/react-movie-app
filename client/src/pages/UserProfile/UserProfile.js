@@ -12,7 +12,10 @@ class UserProfile extends Component {
     reviewMovie: "",
     reviewName: "",
     reviewBool: false,
-    reviewValue: ""
+    reviewValue: "",
+    listName: "",
+    listValue: "",
+    listBool: false
 
 
   };
@@ -31,7 +34,8 @@ class UserProfile extends Component {
   //     .then(res =>
   //       this.setState({ reviews: res.data }))
   // };
-
+  
+  //Adds Review to the Schema
   handleReviewSubmit= event => {
     event.preventDefault();
     console.log(this.state.reviewValue, this.state.reviewName);
@@ -42,10 +46,25 @@ class UserProfile extends Component {
         body: this.state.reviewValue
       })
       .then(res => console.log('this happened', res));
-       
   };
 
-  handleReviewChange = event => {
+  //Adds Lists to the User Schema
+  handleListSubmit= event => {
+    event.preventDefault();
+    console.log(this.state.listValue, this.state.listName);
+    API.pushUserLists({ _id: '5a77a903dd1f581f28fbf335'},
+      { $push:
+        { lists: 
+          { title: this.state.listName,
+            body: this.state.listValue
+          }
+        }
+      })
+      .then(res => console.log('this happened', res));
+  };
+
+  //Handles the inputs made to the modals
+  handleEventChange = event => {
     const { name, value } = event.target;
     this.setState({
       [ name ] : value
@@ -53,9 +72,16 @@ class UserProfile extends Component {
 
   };
 
+  //These methods allow the Modals to open for their respective sections
   reviewModalTrigger = () => {
     this.setState({
       reviewBool: true
+    });
+  };
+
+  listModalTrigger = () => {
+    this.setState({
+      listBool: true
     });
   };
 
@@ -82,7 +108,13 @@ class UserProfile extends Component {
                       reviewName={this.state.reviewName}
                       handleReviewSubmit={this.handleReviewSubmit}
                       reviewModalTrigger={this.reviewModalTrigger}
-                      handleReviewChange={this.handleReviewChange} />
+                      handleEventChange={this.handleEventChange}
+                      listValue={this.state.listValue}
+                      listName={this.state.listName}
+                      listBool={this.state.listBool}
+                      listModalTrigger={this.listModalTrigger}
+                      handleListSubmit={this.handleListSubmit}
+                      handleEventChange={this.handleEventChange}/>
         <Footer />
       </div>
     )

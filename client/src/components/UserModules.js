@@ -1,5 +1,6 @@
 import React from 'react';
 import {ReviewModal} from './ReviewModal';
+import {ListModal} from './ListModal';
 
 export const UserModules = (props) => (
   <div>
@@ -8,6 +9,7 @@ export const UserModules = (props) => (
         <div className='card blue'>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>Lists</span>
+            <input href='#listModal' className='modal-trigger' type="button" onClick={() => props.listModalTrigger()} />
           </div>
         </div>
       </div>
@@ -31,7 +33,13 @@ export const UserModules = (props) => (
                  reviewName={props.reviewName}
                  reviewBool={props.reviewBool}
                  handleReviewSubmit={props.handleReviewSubmit}
-                 handleReviewChange={props.handleReviewChange}/>
+                 handleEventChange={props.handleEventChange}/>
+
+    <ListModal listValue={props.listValue}
+               listName={props.listName}
+               listBool={props.listBool}
+               handleListSubmit={props.handleListSubmit}
+               handleEventChange={props.handleEventChange}/>
   </div>
 )
 
