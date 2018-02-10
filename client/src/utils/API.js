@@ -33,6 +33,10 @@ export default {
         console.log('getUserLists', id)
         return axios.get(`/api/movieApp/user/lists/${id}`)
     },
+    pushUserLists: function(id) {
+        console.log('pushUserLists', id)
+        return axios.put(`/api/movieApp/user/lists/${id}`)
+    },
     getUserReviews: function(id) {
         console.log('getUserReviews', id)
         return axios.get(`/api/movieApp/review/user/${id}`)
