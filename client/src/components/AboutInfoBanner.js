@@ -1,26 +1,31 @@
 import React from 'react';
 import {SmallButton} from "./SmallButton";
-import { login, logout, isLoggedIn } from '../utils/AuthService';
+import {Link} from 'react-router-dom'
+// import { login, logout, isLoggedIn } from '../utils/AuthService';
 
 export const AboutInfoBanner = (props) => (
     <div style={Style.container}>
         <p style={Style.title}>Movies and TV!</p>
         <p style={Style.subtitle}>Connect with your friends to see what everyone's watching. Review, add, and track what's on your next watch list!</p>
         <div style={Style.buttonContainer}>
-            <div onClick={() => login()}>
+            <div>
+                <Link to="/login" >
                 <SmallButton
                     style={Style.buttonContainerItem}
                     title='login'
                     iconName='local_movies'
                 />
+                </Link>
             </div>
             <p style={Style.buttonContainerItem}> - OR - </p>
-            <div onClick={() => login()}>
-                <SmallButton
-                    style={Style.buttonContainerItem}
-                    title='sign up'
-                    iconName='movie_filter'
-                />
+            <div>
+                <Link to="/signup" >
+                    <SmallButton
+                        style={Style.buttonContainerItem}
+                        title='sign up'
+                        iconName='movie_filter'
+                    />
+                </Link>
             </div>
         </div>
     </div>
