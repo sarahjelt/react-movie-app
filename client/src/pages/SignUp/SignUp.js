@@ -4,9 +4,8 @@ import API from "../../utils/API";
 
 export default class SignUp extends React.Component {
     state = {
-        signUpFirstName: '',
-        signUpLastName: '',
-        signUpUsername: '',
+        signUpName: '',
+        signUpImg: '',
         signUpEmail: '',
         signUpPassword: ''
     }
@@ -23,7 +22,8 @@ export default class SignUp extends React.Component {
         let userData = {
             email: this.state.signUpEmail,
             password: this.state.signUpPassword,
-            name: this.state.signUpFirstName
+            name: this.state.signUpName,
+            img: this.state.signUpImg
         }
 
         API.createNewUser(userData)

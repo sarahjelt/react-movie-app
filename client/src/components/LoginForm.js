@@ -7,9 +7,9 @@ export const LoginForm = (props) => {
         <form style={Style.container}>
             <Input
                 inputType='text'
-                inputName='loginUsername'
-                inputLabel='username'
-                placeholder='username'
+                inputName='loginEmail'
+                inputLabel='email'
+                placeholder='email'
                 handleInputChange={props.handleInputChange}
             />
             <Input

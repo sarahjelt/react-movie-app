@@ -1,4 +1,4 @@
 module.exports = {
   'secret':'nodeauthsecret',
-  'database': "mongodb://localhost/react-movie-app"
+  'database': process.env.MONGODB_URI || "mongodb://localhost/react-movie-app"
 };
