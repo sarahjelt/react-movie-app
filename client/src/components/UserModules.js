@@ -10,7 +10,13 @@ export const UserModules = (props) => (
         <div className='card blue'>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>Lists</span>
-         
+            {props.lists.map((result, index)=>(
+              <ListRender
+                key={result.id}
+                title={result.title}
+                body={result.body}
+              />
+            ))}
             <input href='#listModal' className='modal-trigger' type="button" onClick={() => props.listModalTrigger()} />
           </div>
         </div>

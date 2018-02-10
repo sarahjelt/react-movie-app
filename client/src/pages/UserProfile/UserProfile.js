@@ -16,14 +16,20 @@ class UserProfile extends Component {
     listName: "",
     listValue: "",
     listBool: false,
-    listResultName: [],
-    listResultBody: []
+    lists: [
+      {
+        title: "",
+        body: ""
+      }
+    ]
   };
 
 
   componentDidMount() {
-    API.findUserById('5a77a903dd1f581f28fbf335')
-      .then(res => console.log(res))
+    API.getUserLists('5a77a903dd1f581f28fbf335')
+      .then(res => {
+        console.log(res)
+        this.setState({lists: res.data.lists})})
   };
 
 
@@ -112,6 +118,7 @@ class UserProfile extends Component {
                       listResultName={this.state.listResultName}
                       listResultBody={this.state.listResultBody}
                       handleListSubmit={this.handleListSubmit}
+                      lists={this.state.lists}
         />
         <Footer />
       </div>
