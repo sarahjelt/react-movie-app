@@ -2,6 +2,7 @@ import React from 'react';
 import {ReviewModal} from './ReviewModal';
 import {ListModal} from './ListModal';
 import { ListRender } from './ListRender';
+import { ReviewRender } from './ReviewRender';
 
 export const UserModules = (props) => (
   <div>
@@ -12,7 +13,7 @@ export const UserModules = (props) => (
             <span className='card-title' style={Style.titles}>Lists</span>
             {props.lists.map((result, index)=>(
               <ListRender
-                key={result.id}
+                key={index}
                 title={result.title}
                 body={result.body}
               />
@@ -32,6 +33,14 @@ export const UserModules = (props) => (
         <div className='card teal'>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>Reviews</span>
+            {props.reviews.map((result, index)=>(
+              <ReviewRender
+                key={index}
+                mediaItem={result.mediaItem.title}
+                headline={result.headline}
+                review={result.body}
+              />
+            ))}            
             <input href='#reviewModal' className='modal-trigger' type="button" onClick={() => props.reviewModalTrigger()} />
           </div>
         </div>
