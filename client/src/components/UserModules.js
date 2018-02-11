@@ -2,12 +2,13 @@ import React from 'react';
 import {ReviewModal} from './ReviewModal';
 import {ListModal} from './ListModal';
 import { ListRender } from './ListRender';
+import {ShelfModule} from './ShelfModule'
 
 export const UserModules = (props) => (
   <div>
     <div className='row' style={Style.container}>
       <div className='col s4'>
-        <div className='card blue'>
+        <div className='card red lighten-1'>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>Lists</span>
             {props.lists.map((result, index)=>(
@@ -21,15 +22,13 @@ export const UserModules = (props) => (
           </div>
         </div>
       </div>
+
+      <ShelfModule
+        shelf={props.shelf}
+      />
+
       <div className='col s4'>
-        <div className='card lime'>
-          <div className='card-content'>
-            <span className='card-title' style={Style.titles}>Shelf</span>
-          </div>
-        </div>
-      </div>
-      <div className='col s4'>
-        <div className='card teal'>
+        <div className='card red lighten-1'>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>Reviews</span>
             <input href='#reviewModal' className='modal-trigger' type="button" onClick={() => props.reviewModalTrigger()} />
@@ -56,6 +55,4 @@ const Style = {
       textAlign: "center",
       color: "white"
   }
-
-
 }

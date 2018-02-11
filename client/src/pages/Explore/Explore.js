@@ -127,14 +127,11 @@ export default class Explore extends React.Component {
     }
 
     handleShelfItemSubmit = (title, date, synopsis, img, mediaType) => {
-        console.log('trying to close the modal')
-        console.log(['you are trying to add an item to your shelf', title, date, synopsis, img, mediaType, this.state.radioToggleValue])
-
         this.setState({
             indexOfActiveAddModal: null
         })
 
-        let userId = '5a7f2c7ec65382c1d975d3f3'
+        let userId = this.state.userId
         let mediaItem = {
             title,
             date,
@@ -142,11 +139,6 @@ export default class Explore extends React.Component {
             img,
             mediaType
         }
-
-        // let userData = {
-        //     userId,
-        //     mediaItem
-        // }
 
         API.getMediaItemIdIfExists(mediaItem)
             .then(res => {

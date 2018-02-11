@@ -1,10 +1,10 @@
 import React from 'react';
 
 export const UserInfo = (props) => (
-    <div className="row blah">
+    <div className="row" style={Style.container}>
       <div>
         <div className="col s12 m6">
-          <div className="card red lighten-1" style={Style.cardContainerLeft}>
+          <div className="card cyan lighten-3" style={Style.cardContainerLeft}>
             <div className="card-content white-text">
             </div>
           </div>
@@ -13,7 +13,7 @@ export const UserInfo = (props) => (
       
       <div>
         <div className="col s12 m6">
-            <div className="card grey darken-1" style={Style.cardContainerRight}>
+            <div className="card red lighten-1" style={Style.cardContainerRight}>
                 <div className="card-content white-text">
                 <span className="card-title" style={Style.cardTitle}>{props.userName}</span>
                 </div>
@@ -25,7 +25,7 @@ export const UserInfo = (props) => (
 
 const Style = {
     container: {
-        paddingLeft: 20
+        marginBottom: '30px'
     },
     cardContainerLeft: {
         marginLeft: -15,
