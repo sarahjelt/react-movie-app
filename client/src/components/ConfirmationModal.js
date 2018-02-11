@@ -2,7 +2,9 @@ import React from 'react';
 import './ConfirmationModal.css'
 
 export const ConfirmationModal = (props) => (
-    <div className='confirmationModal' style={{visibility: props.indexOfResultItem === props.indexOfActiveAddModal ? 'visible': 'hidden'}}>
+    <div id={divIdDeterminer(props.id)}
+         className={props.indexOfActiveAddModal === props.id ? 'modal open' : 'modal'}
+    >
         <div className="card-panel cyan lighten-4" style={Style.container}>
             <div style={Style.closeIconContainer}>
                 <a style={Style.icon} className='waves waves-effect' onClick={() => props.handleConfirmationModalClose()}><i className="material-icons">clear</i></a>
@@ -36,7 +38,7 @@ export const ConfirmationModal = (props) => (
                     </p>
                     <a
                         style={Style.button}
-                        className="waves-effect waves-light btn red"
+                        className="waves-effect waves-light btn red modal-close"
                         onClick={() => props.handleShelfItemSubmit(props.title, props.date, props.overview, props.posterPath, props.mediaType)}
                     >
                         Add it to my shelf
@@ -47,20 +49,14 @@ export const ConfirmationModal = (props) => (
     </div>
 )
 
+const divIdDeterminer = (id) => {
+    return `modal${id}`
+}
+
 const Style = {
     container: {
-        display: 'flex',
-        flex: 1,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'absolute',
-        top: '18%',
-        left: '25%',
-        right: '25%',
-        bottom: '30%',
-        zIndex: 2000,
-        padding: '20px'
+        marginTop: '0px',
+        marginBottom: '1px',
     },
     text: {
         fontSize: '20px',
@@ -76,7 +72,7 @@ const Style = {
         alignContent: 'flex-end',
         alignItems: 'flex-end',
         width: '100%',
-        marginTop: '-20px',
+        marginTop: '-7px',
     },
     modalContent: {
         display: 'flex',
@@ -88,5 +84,6 @@ const Style = {
     },
     button: {
         marginTop: '30px',
+        marginBottom: '55px'
     }
 }

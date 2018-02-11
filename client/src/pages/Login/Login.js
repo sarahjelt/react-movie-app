@@ -37,15 +37,6 @@ export default class Login extends React.Component {
                 this.Auth.setToken(res.data.token);
                 window.location.replace("/user");
             })
-
-
-        // this.Auth.login(this.state.loginEmail, this.state.loginPassword)
-        //     .then(res => {
-        //         window.location.replace("/")
-        //     })
-        //     .catch(err => {
-        //         alert(err)
-        //     })
     }
 
 
