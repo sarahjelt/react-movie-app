@@ -2,18 +2,29 @@ import React from 'react';
 import API from '../../utils/API'
 import {ExploreResultItem} from "../../components/ExploreResultItem";
 import Media from "../Media";
+import AuthService from '../../components/modules/AuthService';
+import decode from 'jwt-decode';
 
 export default class Explore extends React.Component {
+    constructor(props) {
+        super(props);
+        this.Auth = new AuthService();
+    }
+
     state = {
         searchValue: '',
         results: [],
         indexOfOpenModal: null,
         indexOfActiveAddModal: null,
-        radioToggleValue: false
+        radioToggleValue: false,
+        userEmail: '',
+        userId: '',
+        userName: ''
     }
 
     componentWillMount() {
         this.setSearchParamsFromMatch(this.props)
+        this.setUserInfoInState()
     }
 
     componentDidMount() {
@@ -22,6 +33,21 @@ export default class Explore extends React.Component {
                 console.log(res)
                 this.parseResultsFromAPICall(res)
             })
+    }
+
+    setUserInfoInState = () => {
+        let userInfo = this.Auth.getProfile();
+        console.log(userInfo)
+
+        if (!userInfo) {
+            window.location.replace("/")
+        } else {
+            this.setState({
+                userEmail: userInfo.email,
+                userId: userInfo._id,
+                userName: userInfo.name,
+            })
+        }
     }
 
     setSearchParamsFromMatch = (props) => {

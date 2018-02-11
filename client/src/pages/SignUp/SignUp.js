@@ -1,6 +1,8 @@
 import React from 'react';
 import {SignUpForm} from '../../components/SignUpForm'
 import API from "../../utils/API";
+import AuthService from '../../components/modules/AuthService';
+import decode from 'jwt-decode';
 
 export default class SignUp extends React.Component {
     state = {

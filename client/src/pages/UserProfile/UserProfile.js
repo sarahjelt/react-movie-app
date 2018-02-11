@@ -8,7 +8,6 @@ import API from '../../utils/API'
 import AuthService from '../../components/modules/AuthService';
 import decode from 'jwt-decode';
 
-
 class UserProfile extends Component {
 
   constructor(props) {
@@ -25,52 +24,97 @@ class UserProfile extends Component {
     listName: "",
     listValue: "",
     listBool: false,
-    lists: [
-      {
-        title: "",
-        body: ""
-      }
-    ]
+    lists: [],
+    userEmail: '',
+    userId: '',
+    userName: '',
+    shelf: [],
+    recommendations: [],
+    userImage: '',
   };
-
 
   componentDidMount() {
-    API.getUserLists('5a77a903dd1f581f28fbf335')
-      .then(res => {
-        console.log(res)
-        if (res.data === null) {
-          return null;
-        } else {
-          this.setState({
-            lists: res.data.lists
-          })
-        }
-      })
+    console.log('this.state after component mounted', this.state)
+    this.loadUserLists()
+    this.loadUserShelf()
+    this.loadUserReviews()
   };
-
 
   componentWillMount() {
     let userInfo = this.Auth.getProfile();
-    console.log(userInfo); 
+    console.log(userInfo)
+
+    if (!userInfo) {
+      window.location.replace("/")
+    } else {
+      this.setState({
+          userEmail: userInfo.email,
+          userId: userInfo._id,
+          userName: userInfo.name,
+          lists: userInfo.lists,
+          userShelf: userInfo.shelf,
+          userRecommendations: userInfo.recommendations,
+          userImage: userInfo.img
+      })
+    }
   }
 
-  // loadReviews = () => {
-  //   API.getReviewsByUser()
-  //     .then(res =>
-  //       this.setState({ reviews: res.data }))
-  // };
-  
+  loadUserLists = () => {
+      API.getUserLists(this.state.userId)
+          .then(res => {
+              console.log(res)
+              if (res.data === null) {
+                  return null;
+              } else {
+                  console.log(['getting user lists', res.data])
+                  this.setState({
+                      lists: res.data.lists
+                  })
+              }
+          })
+  }
+
+  loadUserShelf = () => {
+    API.getUserShelf(this.state.userId)
+        .then(res => {
+          console.log(res)
+          if (res.data === null) {
+            return null
+          } else {
+            console.log(['getting user shelf', res.data])
+            this.setState({
+                shelf: res.data.shelf
+            })
+          }
+        })
+  }
+
+  loadUserReviews = () => {
+    API.getUserReviews(this.state.userId)
+        .then(res => {
+          console.log(res)
+          if (res.data === null) {
+            return null
+          } else {
+            console.log(['getting user reviews', res.data])
+            this.setState({
+                recommendations: res.data.recommendations
+            })
+          }
+        })
+  }
+
   //Adds Review to the Schema
   handleReviewSubmit = event => {
     event.preventDefault();
     console.log(this.state.reviewValue, this.state.reviewName);
       API.saveReview({
         headline: this.state.reviewName,
-        author: "5a77a903dd1f581f28fbf335",
-        mediaItem: "5a77a903dd1f581f28fbf335",
+        author: this.state.userId,
+        mediaItem: "5a807337d4d4860e3f3536df",
         body: this.state.reviewValue
       })
-      .then(res => console.log('this happened', res));
+      .then(res => this.loadUserReviews());
   };
 
   //Adds Lists to the User Schema
@@ -78,8 +122,8 @@ class UserProfile extends Component {
     event.preventDefault();
     console.log(this.state.listValue, this.state.listName);
     let newList = {title: this.state.listName, body: this.state.listValue}
-    API.pushUserLists('5a77a903dd1f581f28fbf335', newList)
-      .then(res => console.log('this happened', res));
+    API.pushUserLists(this.state.userId, newList)
+      .then(res => this.loadUserLists());
   };
 
   //Handles the inputs made to the modals
@@ -88,7 +132,6 @@ class UserProfile extends Component {
     this.setState({
       [ name ] : value
     });
-
   };
 
   //These methods allow the Modals to open for their respective sections
@@ -117,25 +160,27 @@ class UserProfile extends Component {
         <UserHeader 
           headerItems={this.userHeaderArr}
         />
-        <UserInfo />
+        <UserInfo
+          userName={this.state.userName}
+        />
         <Avatar 
-          userImage='https://dw9to29mmj727.cloudfront.net/properties/2016/432-SeriesThumbnails_SM__400x320.jpg'
+          userImage={this.state.userImage !== '' ? this.state.userImage : 'https://dw9to29mmj727.cloudfront.net/properties/2016/432-SeriesThumbnails_SM__400x320.jpg'}
         />
         <UserModules 
-                      reviewValue={this.state.reviewValue}
-                      reviewBool={this.state.reviewBool}
-                      reviewName={this.state.reviewName}
-                      handleReviewSubmit={this.handleReviewSubmit}
-                      reviewModalTrigger={this.reviewModalTrigger}
-                      handleEventChange={this.handleEventChange}
-                      listValue={this.state.listValue}
-                      listName={this.state.listName}
-                      listBool={this.state.listBool}
-                      listModalTrigger={this.listModalTrigger}
-                      listResultName={this.state.listResultName}
-                      listResultBody={this.state.listResultBody}
-                      handleListSubmit={this.handleListSubmit}
-                      lists={this.state.lists}
+          reviewValue={this.state.reviewValue}
+          reviewBool={this.state.reviewBool}
+          reviewName={this.state.reviewName}
+          handleReviewSubmit={this.handleReviewSubmit}
+          reviewModalTrigger={this.reviewModalTrigger}
+          handleEventChange={this.handleEventChange}
+          listValue={this.state.listValue}
+          listName={this.state.listName}
+          listBool={this.state.listBool}
+          listModalTrigger={this.listModalTrigger}
+          listResultName={this.state.listResultName}
+          listResultBody={this.state.listResultBody}
+          handleListSubmit={this.handleListSubmit}
+          lists={this.state.lists}
         />
         <Footer />
       </div>
