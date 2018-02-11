@@ -15,7 +15,7 @@ export const UserInfo = (props) => (
         <div className="col s12 m6">
             <div className="card grey darken-1" style={Style.cardContainerRight}>
                 <div className="card-content white-text">
-                <span className="card-title" style={Style.cardTitle}>Billy Bob</span>
+                <span className="card-title" style={Style.cardTitle}>{props.userName}</span>
                 </div>
             </div>
         </div>

@@ -2,66 +2,88 @@ import React, { Component } from 'react';
 import {FriendCard} from '../../components/FriendCard';
 import {Input} from '../../components/Input'
 import {SmallFriendContainer} from "../../components/SmallFriendContainer";
+import AuthService from '../../components/modules/AuthService';
+import decode from 'jwt-decode';
 
 class UserFriends extends Component {
+    constructor(props) {
+        super(props);
+        this.Auth = new AuthService();
+    }
+
   state = {
     userSearchInput: '',
     userFriends: [],
-    userSearchResults: []
+    userSearchResults: [],
+    userEmail: '',
+    userId: '',
+    userName: '',
   };
 
   componentWillMount() {
-    this.setState({
-        userSearchResults: [
-            {
-                username: 'Catslug',
-                img: 'https://i.pinimg.com/736x/48/e1/5f/48e15fc94fd3acb71afe3cc958ea6db6.jpg'
-            }, {
-                username: 'PrincessBear',
-                img: 'http://payload289.cargocollective.com/1/2/66131/8080627/herop-copy_860.jpg'
-            }, {
-                username: 'SailorDoom',
-                img: 'https://i.pinimg.com/originals/ab/b0/9a/abb09a6f77f47d9877c7e09ea18c0969.jpg'
-            }, {
-                username: 'Moonicorn',
-                img: 'https://cdn.shopify.com/s/files/1/1307/5347/products/Screen_Shot_2017-04-19_at_8.18.16_pm.png?v=1492598993'
-            }, {
-                username: 'WitchesHex',
-                img: 'https://img.etsystatic.com/il/9a1884/1414657676/il_fullxfull.1414657676_dkii.jpg'
-            }, {
-                username: 'TrashPanda',
-                img: 'http://i.imgur.com/vAH0fOa.jpg'
-            }, {
-                username: 'QueenOfTrashHeaps',
-                img: 'https://ih0.redbubble.net/image.191992670.6757/flat,800x800,070,f.u1.jpg'
-            }
-        ],
-        userFriends: [
-            {
-                username: 'Catslug',
-                img: 'https://i.pinimg.com/736x/48/e1/5f/48e15fc94fd3acb71afe3cc958ea6db6.jpg'
-            }, {
-                username: 'PrincessBear',
-                img: 'http://payload289.cargocollective.com/1/2/66131/8080627/herop-copy_860.jpg'
-            }, {
-                username: 'SailorDoom',
-                img: 'https://i.pinimg.com/originals/ab/b0/9a/abb09a6f77f47d9877c7e09ea18c0969.jpg'
-            }, {
-                username: 'Moonicorn',
-                img: 'https://cdn.shopify.com/s/files/1/1307/5347/products/Screen_Shot_2017-04-19_at_8.18.16_pm.png?v=1492598993'
-            }, {
-                username: 'WitchesHex',
-                img: 'https://img.etsystatic.com/il/9a1884/1414657676/il_fullxfull.1414657676_dkii.jpg'
-            }, {
-                username: 'TrashPanda',
-                img: 'http://i.imgur.com/vAH0fOa.jpg'
-            }, {
-                username: 'QueenOfTrashHeaps',
-                img: 'https://ih0.redbubble.net/image.191992670.6757/flat,800x800,070,f.u1.jpg'
-            }
-        ]
-    })
-      // API call to get user's friends and put into the array
+      let userInfo = this.Auth.getProfile();
+      console.log(userInfo)
+
+      if (!userInfo) {
+          window.location.replace("/")
+      } else {
+          this.setState({
+              userEmail: userInfo.email,
+              userId: userInfo._id,
+              userName: userInfo.name,
+          })
+      }
+
+    // this.setState({
+    //     userSearchResults: [
+    //         {
+    //             username: 'Catslug',
+    //             img: 'https://i.pinimg.com/736x/48/e1/5f/48e15fc94fd3acb71afe3cc958ea6db6.jpg'
+    //         }, {
+    //             username: 'PrincessBear',
+    //             img: 'http://payload289.cargocollective.com/1/2/66131/8080627/herop-copy_860.jpg'
+    //         }, {
+    //             username: 'SailorDoom',
+    //             img: 'https://i.pinimg.com/originals/ab/b0/9a/abb09a6f77f47d9877c7e09ea18c0969.jpg'
+    //         }, {
+    //             username: 'Moonicorn',
+    //             img: 'https://cdn.shopify.com/s/files/1/1307/5347/products/Screen_Shot_2017-04-19_at_8.18.16_pm.png?v=1492598993'
+    //         }, {
+    //             username: 'WitchesHex',
+    //             img: 'https://img.etsystatic.com/il/9a1884/1414657676/il_fullxfull.1414657676_dkii.jpg'
+    //         }, {
+    //             username: 'TrashPanda',
+    //             img: 'http://i.imgur.com/vAH0fOa.jpg'
+    //         }, {
+    //             username: 'QueenOfTrashHeaps',
+    //             img: 'https://ih0.redbubble.net/image.191992670.6757/flat,800x800,070,f.u1.jpg'
+    //         }
+    //     ],
+    //     userFriends: [
+    //         {
+    //             username: 'Catslug',
+    //             img: 'https://i.pinimg.com/736x/48/e1/5f/48e15fc94fd3acb71afe3cc958ea6db6.jpg'
+    //         }, {
+    //             username: 'PrincessBear',
+    //             img: 'http://payload289.cargocollective.com/1/2/66131/8080627/herop-copy_860.jpg'
+    //         }, {
+    //             username: 'SailorDoom',
+    //             img: 'https://i.pinimg.com/originals/ab/b0/9a/abb09a6f77f47d9877c7e09ea18c0969.jpg'
+    //         }, {
+    //             username: 'Moonicorn',
+    //             img: 'https://cdn.shopify.com/s/files/1/1307/5347/products/Screen_Shot_2017-04-19_at_8.18.16_pm.png?v=1492598993'
+    //         }, {
+    //             username: 'WitchesHex',
+    //             img: 'https://img.etsystatic.com/il/9a1884/1414657676/il_fullxfull.1414657676_dkii.jpg'
+    //         }, {
+    //             username: 'TrashPanda',
+    //             img: 'http://i.imgur.com/vAH0fOa.jpg'
+    //         }, {
+    //             username: 'QueenOfTrashHeaps',
+    //             img: 'https://ih0.redbubble.net/image.191992670.6757/flat,800x800,070,f.u1.jpg'
+    //         }
+    //     ]
+    // })
   };
 
   handleInputChange = (event, inputName) => {
@@ -72,7 +94,6 @@ class UserFriends extends Component {
 
   handleButtonPress = (value, buttonName) => {
       console.log(['you searched for', this.state.userSearchInput])
-
   }
 
   renderFriendsList = (props, userFriends) => {

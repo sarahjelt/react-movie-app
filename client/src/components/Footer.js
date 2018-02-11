@@ -1,6 +1,6 @@
 import React from "react";
 import Link from "react-router-dom";
-import { login, logout, isLoggedin } from '../utils/AuthService';
+// import { login, logout, isLoggedin } from '../utils/AuthService';
 
 
 export const Footer = (props) => (

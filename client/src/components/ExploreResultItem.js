@@ -1,5 +1,6 @@
 import React from 'react';
 import Media from '../pages/Media';
+import {ConfirmationModal} from "./ConfirmationModal";
 
 export const ExploreResultItem = (props) => (
     <div>
@@ -19,8 +20,9 @@ export const ExploreResultItem = (props) => (
             </div>
             <a
                 style={Style.fabButton}
-                className="btn-floating btn-large waves-effect waves-light red"
-                onClick={() => props.handleAddButtonPress(props.title, props.date, props.overview, props.posterPath, props.mediaType)}
+                className="btn-floating btn-large waves-effect waves-light red modal-trigger"
+                href={hrefDeterminer(props.id)}
+                onClick={() => props.handleAddButtonPress(props.title, props.date, props.overview, props.posterPath, props.mediaType, props.id)}
             >
                 <i className="material-icons">add</i>
             </a>
@@ -33,6 +35,20 @@ export const ExploreResultItem = (props) => (
             title={props.title}
             date={props.date}
         />
+        <ConfirmationModal
+            id={props.id}
+            title={props.title}
+            indexOfResultItem={props.indexOfResultItem}
+            indexOfActiveAddModal={props.indexOfActiveAddModal}
+            handleRadioToggle={props.handleRadioToggle}
+            radioToggleValue={props.radioToggleValue}
+            overview={props.overview}
+            date={props.date}
+            posterPath={props.posterPath}
+            mediaType={props.mediaType}
+            handleConfirmationModalClose={props.handleConfirmationModalClose}
+            handleShelfItemSubmit={props.handleShelfItemSubmit}
+        />
   </div>
 )
 
@@ -40,8 +56,8 @@ const iconDeterminer = (mediaType) => {
     return mediaType === "tv" ? 'live_tv' : 'local_movies';
 }
 
-const hrefDeterminer = (indexOfResultItem) => {
-    return `#modal${indexOfResultItem}`
+const hrefDeterminer = (identifier) => {
+    return `#modal${identifier}`
 }
 
 const Style = {

@@ -1,7 +1,6 @@
 import React from 'react';
 import {SmallButton} from "./SmallButton";
 import {Link} from 'react-router-dom'
-// import { login, logout, isLoggedIn } from '../utils/AuthService';
 
 export const AboutInfoBanner = (props) => (
     <div style={Style.container}>
@@ -9,23 +8,21 @@ export const AboutInfoBanner = (props) => (
         <p style={Style.subtitle}>Connect with your friends to see what everyone's watching. Review, add, and track what's on your next watch list!</p>
         <div style={Style.buttonContainer}>
             <div>
-                <Link to="/login" >
                 <SmallButton
                     style={Style.buttonContainerItem}
                     title='login'
                     iconName='local_movies'
+                    href='/login'
                 />
-                </Link>
             </div>
             <p style={Style.buttonContainerItem}> - OR - </p>
             <div>
-                <Link to="/signup" >
                     <SmallButton
                         style={Style.buttonContainerItem}
                         title='sign up'
                         iconName='movie_filter'
+                        href='/signup'
                     />
-                </Link>
             </div>
         </div>
     </div>
