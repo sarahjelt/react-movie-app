@@ -55,13 +55,13 @@ export default class AuthService {
     logout() {
         // Clear user token and profile data from localStorage
         localStorage.removeItem('id_token'); 
+        window.location.replace("/");
     }
 
     getProfile() {
         // Using jwt-decode npm package to decode the token
         return decode(this.getToken());
     }
-
 
     // fetch(url, options) {
     //     // performs api calls sending the required authentication headers

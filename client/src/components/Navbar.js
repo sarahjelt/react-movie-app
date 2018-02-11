@@ -21,13 +21,13 @@ export class Navbar extends React.Component {
                 (this.Auth.loggedIn() ) ? <li><a href='/user'>Profile</a></li> : ''
               }
               {
-                (this.Auth.loggedIn() ) ? <li className='friends-page'><Link to='/friends'>Friends</Link></li> : ''
+                (this.Auth.loggedIn() ) ? <li className='friends-page'><a href='/friends'>Friends</a></li> : ''
               }
               {
                 (this.Auth.loggedIn() ) ? (
                   <li className="log" 
                     onClick={() => this.Auth.logout()}>
-                      <a href='/logout'>Log Out
+                      <a href='#'>Log Out
                       </a>
                   </li> 
                 ) : (
