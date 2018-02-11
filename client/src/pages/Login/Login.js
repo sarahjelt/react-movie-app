@@ -1,9 +1,18 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {LoginForm} from '../../components/LoginForm'
 import {PageInfoTitle} from '../../components/PageInfoTitle'
 import API from '../../utils/API'
+import AuthService from '../../components/modules/AuthService';
+
 
 export default class Login extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.Auth = new AuthService();
+    }
+
     state = {
         loginEmail: '',
         loginPassword: '',
@@ -24,7 +33,19 @@ export default class Login extends React.Component {
         }
 
         API.authenticateUser(userData)
-            .then(res => console.log(res))
+            .then(res => {
+                this.Auth.setToken(res.data.token);
+                window.location.replace("/user");
+            })
+
+
+        // this.Auth.login(this.state.loginEmail, this.state.loginPassword)
+        //     .then(res => {
+        //         window.location.replace("/")
+        //     })
+        //     .catch(err => {
+        //         alert(err)
+        //     })
     }
 
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { login, logout, isLoggedIn } from '../utils/AuthService';
+// import { login, logout, isLoggedIn } from '../utils/AuthService';
 import './Navbar.css';
 
 export const Navbar = (props) => (

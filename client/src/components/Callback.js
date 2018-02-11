@@ -1,22 +1,22 @@
-import React, { Component } from 'react';
-import { setIdToken, setAccessToken } from '../utils/AuthService';
+// import React, { Component } from 'react';
+// // import { setIdToken, setAccessToken } from '../utils/AuthService';
 
-class Callback extends Component {
+// class Callback extends Component {
 
-  constructor(props) {
-    super(props)
-  }
+//   constructor(props) {
+//     super(props)
+//   }
 
-  componentDidMount() {
-    setAccessToken();
-    setIdToken();
-    console.log("TEST !-2-3!")
-    window.location.href = "/user";
-  }
+//   componentDidMount() {
+//     setAccessToken();
+//     setIdToken();
+//     console.log("TEST !-2-3!")
+//     window.location.href = "/user";
+//   }
 
-  render() {
-    return null;
-  }
-}
+//   render() {
+//     return null;
+//   }
+// }
 
-export default Callback;
+// export default Callback;

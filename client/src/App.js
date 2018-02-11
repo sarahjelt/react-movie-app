@@ -12,8 +12,9 @@ import UserFriends from './pages/UserFriends'
 // import UserLists from './pages/UserLists'
 import UserProfile from './pages/UserProfile'
 // import UserShelf from './pages/UserShelf'
-import { requireAuth } from './utils/AuthService'
-import Callback from './components/Callback'
+// import AuthService from './components/modules/AuthService'
+// import WithAuth from './components/modules/withAuth'
+// import Callback from './components/Callback'
 
 class App extends Component {
     state = {
@@ -41,7 +42,6 @@ class App extends Component {
                     <Route exact path="/signup" component={SignUp} />
                     <Route exact path="/user" component={UserProfile} />
                     <Route exact path="/explore" component={Explore} />
-                    <Route path="/callback" component={Callback} />
                     <Route exact path="/friends" component={UserFriends} />
                     <Route exact path="/media/:query" component={Media} />
                     <Route path="/explore/:query" component={Explore} />

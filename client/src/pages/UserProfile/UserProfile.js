@@ -5,8 +5,17 @@ import { UserInfo } from '../../components/UserInfo';
 import { UserModules } from '../../components/UserModules';
 import { Footer } from '../../components/Footer';
 import API from '../../utils/API'
+import AuthService from '../../components/modules/AuthService';
+import decode from 'jwt-decode';
+
 
 class UserProfile extends Component {
+
+  constructor(props) {
+      super(props);
+      this.Auth = new AuthService();
+  }
+
   state = {
     reviews:[],
     reviewMovie: "",
@@ -29,12 +38,20 @@ class UserProfile extends Component {
     API.getUserLists('5a77a903dd1f581f28fbf335')
       .then(res => {
         console.log(res)
-        this.setState({lists: res.data.lists})})
+        if (res.data === null) {
+          return null;
+        } else {
+          this.setState({
+            lists: res.data.lists
+          })
+        }
+      })
   };
 
 
   componentWillMount() {
-
+    let userInfo = this.Auth.getProfile();
+    console.log(userInfo); 
   }
 
   // loadReviews = () => {
@@ -44,7 +61,7 @@ class UserProfile extends Component {
   // };
   
   //Adds Review to the Schema
-  handleReviewSubmit= event => {
+  handleReviewSubmit = event => {
     event.preventDefault();
     console.log(this.state.reviewValue, this.state.reviewName);
       API.saveReview({
