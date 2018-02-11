@@ -8,7 +8,6 @@ import API from '../../utils/API'
 import AuthService from '../../components/modules/AuthService';
 import decode from 'jwt-decode';
 
-
 class UserProfile extends Component {
 
   constructor(props) {
