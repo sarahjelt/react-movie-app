@@ -3,7 +3,6 @@ import API from '../../utils/API'
 import {ExploreResultItem} from "../../components/ExploreResultItem";
 import Media from "../Media";
 
-
 export default class Explore extends React.Component {
     state = {
         searchValue: '',
@@ -74,7 +73,6 @@ export default class Explore extends React.Component {
 
     handleRadioToggle = (e) => {
         let toggleValue = e.target.name === 'watchedIt' ? true : false
-
         this.setState({
             radioToggleValue: toggleValue
         })
@@ -95,12 +93,15 @@ export default class Explore extends React.Component {
     }
 
     handleConfirmationModalClose = () => {
+        console.log('trying to close the modal')
+
         this.setState({
             indexOfActiveAddModal: null
         })
     }
 
     handleShelfItemSubmit = (title, date, synopsis, img, mediaType) => {
+        console.log('trying to close the modal')
         console.log(['you are trying to add an item to your shelf', title, date, synopsis, img, mediaType, this.state.radioToggleValue])
 
         this.setState({
