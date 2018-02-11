@@ -123,9 +123,10 @@ module.exports = {
           .catch(err => res.status(422).json(err));
     },
     findReviewByUserId: function(req, res) {
+        console.log(req.params)
         db.Review
             .find({ author: req.params.id })
-            .populate("User")
+            .populate('mediaItem')
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err))
     },
