@@ -28,8 +28,15 @@ class UserProfile extends Component {
   componentDidMount() {
     API.getUserLists('5a77a903dd1f581f28fbf335')
       .then(res => {
-        console.log(res)
-        this.setState({lists: res.data.lists})})
+        console.log('user lists', res)
+        this.setState({lists: res.data.lists})
+      })
+
+    API.getUserReviews('5a77a903dd1f581f28fbf335')
+      .then(res => {
+        console.log('user reviews', res)
+        this.setState({reviews: res.data})
+      })
   };
 
 
@@ -119,6 +126,7 @@ class UserProfile extends Component {
                       listResultBody={this.state.listResultBody}
                       handleListSubmit={this.handleListSubmit}
                       lists={this.state.lists}
+                      reviews={this.state.reviews}
         />
         <Footer />
       </div>
