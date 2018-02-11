@@ -49,7 +49,7 @@ export default {
         return axios.post('/api/movieApp/review', reviewData)
     },
     addItemToUserShelf: function(userId, mediaItemId) {
-        return axios.post()
+        return axios.put(`/api/movieApp/user/shelf/${userId}`, {mediaItemId: mediaItemId})
     },
     authenticateUser: function(userData) {
         return axios.post("/api/authenticate/signin", userData)

@@ -1,5 +1,6 @@
 import React from 'react';
 import Media from '../pages/Media';
+import {ConfirmationModal} from "./ConfirmationModal";
 
 export const ExploreResultItem = (props) => (
     <div>
@@ -20,7 +21,7 @@ export const ExploreResultItem = (props) => (
             <a
                 style={Style.fabButton}
                 className="btn-floating btn-large waves-effect waves-light red"
-                onClick={() => props.handleAddButtonPress(props.title, props.date, props.overview, props.posterPath, props.mediaType)}
+                onClick={() => props.handleAddButtonPress(props.title, props.date, props.overview, props.posterPath, props.mediaType, props.indexOfResultItem)}
             >
                 <i className="material-icons">add</i>
             </a>
@@ -32,6 +33,19 @@ export const ExploreResultItem = (props) => (
             overview={props.overview}
             title={props.title}
             date={props.date}
+        />
+        <ConfirmationModal
+            title={props.title}
+            indexOfResultItem={props.indexOfResultItem}
+            indexOfActiveAddModal={props.indexOfActiveAddModal}
+            handleRadioToggle={props.handleRadioToggle}
+            radioToggleValue={props.radioToggleValue}
+            overview={props.overview}
+            date={props.date}
+            posterPath={props.posterPath}
+            mediaType={props.mediaType}
+            handleConfirmationModalClose={props.handleConfirmationModalClose}
+            handleShelfItemSubmit={props.handleShelfItemSubmit}
         />
   </div>
 )

@@ -28,9 +28,11 @@ module.exports = {
     getUserShelf: function(req, res) {
         db.User
             .findOne({ _id: req.params.id})
-            .populate("Media")
-            .then(dbUser => res.json(dbUser))
-            .catch(err => res.status(422).json(err))
+            .populate("shelf")
+            .exec(function(err, data) {
+                if (err) console.log(err)
+                else res.json(data)
+            })
     },
     getUserLists: function(req, res) {
         db.User

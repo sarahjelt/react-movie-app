@@ -1,16 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 export const Media = (props) => (
-      // <div style={Style.container} className='container'>
-      //   <div className='row'>
-      //     <div className='mediaImage col s4'>
-      //       <img style={Style.img} src='https://www.hollywoodreporter.com/sites/default/files/2011/03/got_-_official_poster.jpg' />
-      //     </div>
-      //     <div className='info col s8'></div>
-      //   </div>
-      // </div>
-          //<h2 class="header">Horizontal Card</h2>
-
     <div id={divIdDeterminer(props.indexOfResultItem)} className={props.indexOfOpenModal === props.indexOfResultItem ? 'modal open' : 'modal'}>
         <div className="card horizontal">
             <div className="card-image">
@@ -34,14 +24,5 @@ export const Media = (props) => (
 const divIdDeterminer = (indexOfResultItem) => {
     return `modal${indexOfResultItem}`
 }
-
-// const Style = {
-//   container: {
-//     height: '80vh'
-//   },
-//   img: {
-//     height: '80vh'
-//   }
-// }
 
 export default Media;

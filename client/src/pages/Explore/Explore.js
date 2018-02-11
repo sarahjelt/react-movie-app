@@ -9,6 +9,8 @@ export default class Explore extends React.Component {
         searchValue: '',
         results: [],
         indexOfOpenModal: null,
+        indexOfActiveAddModal: null,
+        radioToggleValue: false
     }
 
     componentWillMount() {
@@ -70,9 +72,13 @@ export default class Explore extends React.Component {
         })
     }
 
-    // goToMediaProfile = (id) => {
+    handleRadioToggle = (e) => {
+        let toggleValue = e.target.name === 'watchedIt' ? true : false
 
-    // }
+        this.setState({
+            radioToggleValue: toggleValue
+        })
+    }
 
     handleModalOpen = (index) => {
         this.setState({
@@ -80,9 +86,28 @@ export default class Explore extends React.Component {
         })
     }
 
-    handleAddButtonPress = (title, date, synopsis, img, mediaType) => {
-        console.log(['you pressed the add button', title, date, synopsis, img, mediaType])
-        let userId = 1
+    handleAddModalOpen = (index) => {
+        console.log('trying to open the add shelf item modal', index)
+
+        this.setState({
+            indexOfActiveAddModal: index
+        })
+    }
+
+    handleConfirmationModalClose = () => {
+        this.setState({
+            indexOfActiveAddModal: null
+        })
+    }
+
+    handleShelfItemSubmit = (title, date, synopsis, img, mediaType) => {
+        console.log(['you are trying to add an item to your shelf', title, date, synopsis, img, mediaType, this.state.radioToggleValue])
+
+        this.setState({
+            indexOfActiveAddModal: null
+        })
+
+        let userId = '5a7f2c7ec65382c1d975d3f3'
         let mediaItem = {
             title,
             date,
@@ -91,10 +116,10 @@ export default class Explore extends React.Component {
             mediaType
         }
 
-        let userData = {
-            userId,
-            mediaItem
-        }
+        // let userData = {
+        //     userId,
+        //     mediaItem
+        // }
 
         API.getMediaItemIdIfExists(mediaItem)
             .then(res => {
@@ -107,12 +132,22 @@ export default class Explore extends React.Component {
                                .then(res2 => {
                                    let mediaItemId = res2.data[0]._id
                                    console.log(['we added the item to the db and this is the new id for the mediaItem', mediaItemId])
+                                   API.addItemToUserShelf(userId, mediaItemId)
+                                       .then(res => console.log(res))
                                })
                        })
                 } else {
                     console.log(['this item already exists in the db', res.data[0]._id])
+                    API.addItemToUserShelf(userId, res.data[0]._id)
+                        .then(res => console.log(res))
                 }
             })
+    }
+
+    handleAddButtonPress = (title, date, synopsis, img, mediaType, index) => {
+        console.log(['you pressed the add button', title, date, synopsis, img, mediaType])
+
+        this.handleAddModalOpen(index)
     }
 
     render() {
@@ -130,13 +165,15 @@ export default class Explore extends React.Component {
                         key={index}
                         indexOfResultItem={index}
                         indexOfOpenModal={this.state.indexOfOpenModal}
-                        handleAddButtonPress={this.handleAddButtonPress}
                         handleModalOpen={this.handleModalOpen}
+                        handleAddButtonPress={this.handleAddButtonPress}
+                        handleRadioToggle={this.handleRadioToggle}
+                        radioToggleValue={this.state.radioToggleValue}
+                        indexOfActiveAddModal={this.state.indexOfActiveAddModal}
+                        handleConfirmationModalClose={this.handleConfirmationModalClose}
+                        handleShelfItemSubmit={this.handleShelfItemSubmit}
                     />
                 ))}
-                <Media 
-                
-                />
             </div>
         )
     }
