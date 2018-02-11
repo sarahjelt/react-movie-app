@@ -24,7 +24,7 @@ export default class Login extends React.Component {
         }
 
         API.authenticateUser(userData)
-            .then(res => console.log(res))
+            .then(res => console.log([res, res.data.token]))
     }
 
 
