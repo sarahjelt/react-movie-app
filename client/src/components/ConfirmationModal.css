@@ -1,0 +1,16 @@
+[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after {
+    background-color: #ed4635;
+}
+
+[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:before, [type="radio"].with-gap:checked+label:after {
+    border: 2px solid #ed4635;
+}
+
+label {
+    color: #3e3e3e;
+    font-size: 18px;
+}
+
+.confirmationModal {
+    transition: transform 2s ease;
+}
