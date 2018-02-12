@@ -8,6 +8,7 @@ export const ReviewModal = (props) => (
                 <div onSubmit={(event) => props.handleReviewSubmit(event)}>
                      <label>
                          <input placeholder='Name your review' name='reviewName' value={props.reviewName} onChange={(event) => props.handleEventChange(event)} />
+                         <input placeholder="Media you'd like to review" name='reviewMovie' value={props.reviewMovie} onChange={(event) => props.handleEventChange(event)} />
                          <textarea placeholder='Please write review here' name='reviewValue' value={props.reviewValue} onChange={(event) => props.handleEventChange(event)} />
                      </label>
                      <a className='waves-effect waves-light btn cyan lighten-1' value="Add List" type="submit">Submit</a>
