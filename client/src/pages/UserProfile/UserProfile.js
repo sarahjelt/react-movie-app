@@ -15,7 +15,6 @@ class UserProfile extends Component {
   }
 
   state = {
-    reviews:[],
     reviewMovie: "",
     reviewName: "",
     reviewBool: false,
@@ -94,7 +93,7 @@ class UserProfile extends Component {
           } else {
             console.log(['getting user reviews', res.data])
             this.setState({
-                recommendations: res.data.recommendations
+                recommendations: res.data
             })
           }
         })
@@ -107,7 +106,6 @@ class UserProfile extends Component {
       API.saveReview({
         headline: this.state.reviewName,
         author: this.state.userId,
-        mediaItem: "5a807337d4d4860e3f3536df",
         body: this.state.reviewValue
       })
       .then(res => this.loadUserReviews());
@@ -177,6 +175,7 @@ class UserProfile extends Component {
           listResultBody={this.state.listResultBody}
           handleListSubmit={this.handleListSubmit}
           lists={this.state.lists}
+          recommendations={this.state.recommendations}
           shelf={this.state.shelf}
         />
       </div>

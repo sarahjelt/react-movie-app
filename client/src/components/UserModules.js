@@ -32,14 +32,9 @@ export const UserModules = (props) => (
         <div className='card red lighten-1'>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>Reviews</span>
-            {/*{props.reviews.map((result, index)=>(*/}
-              {/*<ReviewRender*/}
-                {/*key={index}*/}
-                {/*mediaItem={result.mediaItem.title}*/}
-                {/*headline={result.headline}*/}
-                {/*review={result.body}*/}
-              {/*/>*/}
-            {/*))}            */}
+            <ReviewRender
+              recommendations={props.recommendations}
+            />       
             <input href='#reviewModal' className='modal-trigger' type="button" onClick={() => props.reviewModalTrigger()} />
           </div>
         </div>
@@ -64,6 +59,7 @@ export const UserModules = (props) => (
 
   </div>
 )
+
 
 const Style = {
   titles: {
