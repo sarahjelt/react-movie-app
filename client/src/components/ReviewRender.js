@@ -6,7 +6,7 @@ export const ReviewRender = (props) => {
   } else {
     return props.recommendations.map((result, index) => (
       <ul key={index}>
-        <li style={Style.reviewTitle}>{result.headline} - {result.movieTitle}</li>
+        <li style={Style.reviewTitle}>{result.headline}</li>
         <li>{result.body}</li>
       </ul>
     ))
