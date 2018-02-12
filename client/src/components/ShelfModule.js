@@ -19,13 +19,6 @@ export const ShelfModule = props => (
     </div>
 )
 
-const boolDeterminer = (bool) => {
-    console.log('trying to access the bool', bool)
-    // let bool = shelf.watched !== undefined ? props.shelf[0].watched : props.shelf
-
-    return bool.toString()
-}
-
 const Style = {
     moduleContainer: {
         display: 'flex',
