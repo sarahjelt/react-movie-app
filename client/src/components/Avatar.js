@@ -18,6 +18,7 @@ const Style = {
         verticalAlign: 'middle',
         width: 280,
         height: 280,
+        objectFit: 'cover',
         border: '10px solid white'
     }
 }

@@ -43,7 +43,7 @@ const Style = {
     },
     itemTitle: {
         fontSize: '16px',
-        marginTop: '5px',
+        marginTop: '-50px',
         textAlign: 'center'
     },
     title: {
