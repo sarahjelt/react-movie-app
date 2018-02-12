@@ -6,7 +6,7 @@ import { UserModules } from '../../components/UserModules';
 import API from '../../utils/API'
 import AuthService from '../../components/modules/AuthService';
 import '../../resources/js/logic'
-import $ from 'jquery'
+// import $ from 'jquery'
 import decode from 'jwt-decode';
 
 class UserProfile extends Component {

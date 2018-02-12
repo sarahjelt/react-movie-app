@@ -44,6 +44,16 @@ $(document).ready(function() {
     })
 })
 
+$(document).ready(function() {
+    $('.profile-page').on('click', function() {
+        setTimeout(initiateSlickUserHeader, 500)
+    })
+
+    $('.authenticate-button').on('click', function() {
+        setTimeout(initiateSlickUserHeader, 500)
+    })
+})
+
 const initiateMasonry = () => {
     $('.grid').masonry({
         // options
@@ -53,3 +63,13 @@ const initiateMasonry = () => {
     });
 }
 
+const initiateSlickUserHeader = () => {
+    $('.userHeader').slick({
+        dots: false,
+        infinite: true,
+        autoplay: true,
+        speed: 500,
+        fade: true,
+        cssEase: 'linear'
+    })
+}

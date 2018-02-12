@@ -80,7 +80,8 @@ const Style = {
       color: "white",
       marginBottom: '20px',
       letterSpacing: '4px'
-  }
+  },
   module: {
       minHeight: '100vh'
+  }
 }

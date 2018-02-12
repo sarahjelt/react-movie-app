@@ -36,7 +36,7 @@ export default class Login extends React.Component {
             .then(res => {
                 this.Auth.setToken(res.data.token);
                 window.location.replace("/user");
-            })
+            }).catch();                
     }
 
 
