@@ -25,8 +25,11 @@ const userSchema = new Schema({
         type: String
     },
     shelf: [{
-        type: Schema.Types.ObjectId,
-        ref: "Media"
+        watched: Boolean,
+        item: {
+            type: Schema.Types.ObjectId,
+            ref: "Media"
+        }
     }],
     friends: [{
         type: Schema.Types.ObjectId,

@@ -127,14 +127,11 @@ export default class Explore extends React.Component {
     }
 
     handleShelfItemSubmit = (title, date, synopsis, img, mediaType) => {
-        console.log('trying to close the modal')
-        console.log(['you are trying to add an item to your shelf', title, date, synopsis, img, mediaType, this.state.radioToggleValue])
-
         this.setState({
             indexOfActiveAddModal: null
         })
 
-        let userId = '5a7f2c7ec65382c1d975d3f3'
+        let userId = this.state.userId
         let mediaItem = {
             title,
             date,
@@ -142,11 +139,6 @@ export default class Explore extends React.Component {
             img,
             mediaType
         }
-
-        // let userData = {
-        //     userId,
-        //     mediaItem
-        // }
 
         API.getMediaItemIdIfExists(mediaItem)
             .then(res => {
@@ -159,13 +151,13 @@ export default class Explore extends React.Component {
                                .then(res2 => {
                                    let mediaItemId = res2.data[0]._id
                                    console.log(['we added the item to the db and this is the new id for the mediaItem', mediaItemId])
-                                   API.addItemToUserShelf(userId, mediaItemId)
+                                   API.addItemToUserShelf(userId, mediaItemId, this.state.radioToggleValue)
                                        .then(res => console.log(res))
                                })
                        })
                 } else {
                     console.log(['this item already exists in the db', res.data[0]._id])
-                    API.addItemToUserShelf(userId, res.data[0]._id)
+                    API.addItemToUserShelf(userId, res.data[0]._id, this.state.radioToggleValue)
                         .then(res => console.log(res))
                 }
             })
