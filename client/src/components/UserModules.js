@@ -11,7 +11,7 @@ export const UserModules = (props) => (
         <div className='card blue'>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>Lists</span>
-            {props.lists.map((result, index)=>(
+            {props.lists.map((result, index) => (
               <ListRender
                 key={index}
                 title={result.title}
@@ -33,7 +33,7 @@ export const UserModules = (props) => (
         <div className='card teal'>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>Reviews</span>
-            {props.reviews.map((result, index)=>(
+            {props.reviews.map((result, index) => (
               <ReviewRender
                 key={index}
                 mediaItem={result.mediaItem.title}
