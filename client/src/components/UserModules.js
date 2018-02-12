@@ -32,30 +32,36 @@ export const UserModules = (props) => (
         <div className='card red lighten-1'>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>Reviews</span>
-            {props.reviews.map((result, index)=>(
-              <ReviewRender
-                key={index}
-                mediaItem={result.mediaItem.title}
-                headline={result.headline}
-                review={result.body}
-              />
-            ))}            
+            {/*{props.reviews.map((result, index)=>(*/}
+              {/*<ReviewRender*/}
+                {/*key={index}*/}
+                {/*mediaItem={result.mediaItem.title}*/}
+                {/*headline={result.headline}*/}
+                {/*review={result.body}*/}
+              {/*/>*/}
+            {/*))}            */}
             <input href='#reviewModal' className='modal-trigger' type="button" onClick={() => props.reviewModalTrigger()} />
           </div>
         </div>
       </div>
     </div>
-    <ReviewModal reviewValue={props.reviewValue}
-                 reviewName={props.reviewName}
-                 reviewBool={props.reviewBool}
-                 handleReviewSubmit={props.handleReviewSubmit}
-                 handleEventChange={props.handleEventChange}/>
 
-    <ListModal listValue={props.listValue}
-               listName={props.listName}
-               listBool={props.listBool}
-               handleListSubmit={props.handleListSubmit}
-               handleEventChange={props.handleEventChange}/>
+    <ReviewModal
+        reviewValue={props.reviewValue}
+        reviewName={props.reviewName}
+        reviewBool={props.reviewBool}
+        handleReviewSubmit={props.handleReviewSubmit}
+        handleEventChange={props.handleEventChange}
+    />
+
+    <ListModal
+        listValue={props.listValue}
+        listName={props.listName}
+        listBool={props.listBool}
+        handleListSubmit={props.handleListSubmit}
+        handleEventChange={props.handleEventChange}
+    />
+
   </div>
 )
 
