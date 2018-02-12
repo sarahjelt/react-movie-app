@@ -180,7 +180,7 @@ export default class Explore extends React.Component {
                         date={result.date}
                         overview={result.overview}
                         mediaType={result.mediaType}
-                        posterPath={`http://image.tmdb.org/t/p/w500/${result.posterPath}`}
+                        posterPath={`http://image.tmdb.org/t/p/w780/${result.posterPath}`}
                         key={index}
                         indexOfResultItem={index}
                         indexOfOpenModal={this.state.indexOfOpenModal}
@@ -204,6 +204,7 @@ const Style = {
         marginLeft: '20%',
         marginRight: '20%',
         marginBottom: '15%',
+        minHeight: '80vh'
     },
     searchTextTitle: {
         fontSize: '20px',

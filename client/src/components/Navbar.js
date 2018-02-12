@@ -18,7 +18,7 @@ export class Navbar extends React.Component {
           <a href='/home' className='brand-logo center'>Lit Bayou</a>
           <ul id='nav-mobile' className='left hide-on-small-only'>
               {
-                (this.Auth.loggedIn() ) ? <li><a href='/user'>Profile</a></li> : ''
+                (this.Auth.loggedIn() ) ? <li className='profile-page'><a href='/user'>Profile</a></li> : ''
               }
               {
                 (this.Auth.loggedIn() ) ? <li className='friends-page'><a href='/friends'>Friends</a></li> : ''
