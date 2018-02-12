@@ -2,13 +2,14 @@ import React from 'react';
 import {ReviewModal} from './ReviewModal';
 import {ListModal} from './ListModal';
 import { ListRender } from './ListRender';
+import {ShelfModule} from './ShelfModule'
 import { ReviewRender } from './ReviewRender';
 
 export const UserModules = (props) => (
   <div>
     <div className='row' style={Style.container}>
       <div className='col s4'>
-        <div className='card blue'>
+        <div className='card red lighten-1'>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>Lists</span>
             {props.lists.map((result, index) => (
@@ -18,19 +19,23 @@ export const UserModules = (props) => (
                 body={result.body}
               />
             ))}
-            <input href='#listModal' className='modal-trigger' type="button" onClick={() => props.listModalTrigger()} />
+            <a value='Add list' 
+              href='#listModal' 
+              className='btn-floating btn-medium waves-effect waves-light cyan lighten-3 modal-trigger' 
+              type="button"
+              onClick={() => props.listModalTrigger()}>
+                <i className='material-icons'>add</i>
+            </a>
           </div>
         </div>
       </div>
+
+      <ShelfModule
+        shelf={props.shelf}
+      />
+
       <div className='col s4'>
-        <div className='card lime'>
-          <div className='card-content'>
-            <span className='card-title' style={Style.titles}>Shelf</span>
-          </div>
-        </div>
-      </div>
-      <div className='col s4'>
-        <div className='card teal'>
+        <div className='card red lighten-1'>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>Reviews</span>
             {props.reviews.map((result, index) => (
@@ -41,7 +46,14 @@ export const UserModules = (props) => (
                 review={result.body}
               />
             ))}            
-            <input href='#reviewModal' className='modal-trigger' type="button" onClick={() => props.reviewModalTrigger()} />
+            <a 
+              value='Add review' 
+              href='#reviewModal' 
+              className='btn-floating btn-medium waves-effect waves-light cyan lighten-3 modal-trigger' 
+              type="button" 
+              onClick={() => props.reviewModalTrigger()}>
+                <i className='material-icons'>add</i>
+            </a>
           </div>
         </div>
       </div>
@@ -65,6 +77,4 @@ const Style = {
       textAlign: "center",
       color: "white"
   }
-
-
 }

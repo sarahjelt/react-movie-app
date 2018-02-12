@@ -3,7 +3,6 @@ import { UserHeader } from '../../components/UserHeader';
 import { Avatar } from '../../components/Avatar';
 import { UserInfo } from '../../components/UserInfo';
 import { UserModules } from '../../components/UserModules';
-import { Footer } from '../../components/Footer';
 import API from '../../utils/API'
 import AuthService from '../../components/modules/AuthService';
 import decode from 'jwt-decode';
@@ -51,9 +50,6 @@ class UserProfile extends Component {
           userEmail: userInfo.email,
           userId: userInfo._id,
           userName: userInfo.name,
-          lists: userInfo.lists,
-          userShelf: userInfo.shelf,
-          userRecommendations: userInfo.recommendations,
           userImage: userInfo.img
       })
     }
@@ -182,8 +178,8 @@ class UserProfile extends Component {
           listResultBody={this.state.listResultBody}
           handleListSubmit={this.handleListSubmit}
           lists={this.state.lists}
+          shelf={this.state.shelf}
         />
-        <Footer />
       </div>
     )
   }
