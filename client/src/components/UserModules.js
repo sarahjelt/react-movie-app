@@ -9,7 +9,7 @@ export const UserModules = (props) => (
   <div>
     <div className='row' style={Style.container}>
       <div className='col s4'>
-        <div className='card red lighten-1'>
+        <div className='card red lighten-1'  style={Style.module}>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>Lists</span>
             {props.lists.map((result, index) => (
@@ -35,7 +35,7 @@ export const UserModules = (props) => (
       />
 
       <div className='col s4'>
-        <div className='card red lighten-1'>
+        <div className='card red lighten-1' style={Style.module}>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>Reviews</span>
            
@@ -78,5 +78,8 @@ const Style = {
   titles: {
       textAlign: "center",
       color: "white"
+  },
+  module: {
+      minHeight: '100vh'
   }
 }

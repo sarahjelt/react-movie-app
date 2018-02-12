@@ -5,7 +5,7 @@ export const FormButton = (props) => (
         id={props.buttonName}
         style={Style.container}
         onClick={(e) => props.handleButtonPress(e, props.buttonName)}
-        className="waves-effect waves-light btn">
+        className="waves-effect waves-light btn authenticate-button">
             {props.buttonText}
     </a>
 )

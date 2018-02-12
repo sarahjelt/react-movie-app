@@ -2,7 +2,7 @@ import React from 'react';
 
 export const ShelfModule = props => (
     <div className='col s4'>
-        <div className='card red lighten-1'>
+        <div className='card red lighten-1' style={Style.module}>
             <div className='card-content'>
                 <p className='card-title' style={Style.title}>SHELF</p>
                 <div style={Style.moduleContainer}>
@@ -28,6 +28,9 @@ const Style = {
         alignItems: 'flex-start',
         flexWrap: 'wrap',
         height: '100%',
+    },
+    module: {
+        minHeight: '100vh'
     },
     itemContainer: {
         display: 'flex',
