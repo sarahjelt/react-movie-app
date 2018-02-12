@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 export const ReviewModal = (props) => (
     <div id='reviewModal' className={props.reviewBool === true ? 'modal open' : 'modal'}>

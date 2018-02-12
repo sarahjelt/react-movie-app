@@ -48,6 +48,10 @@ $(document).ready(function() {
     $('.profile-page').on('click', function() {
         setTimeout(initiateSlickUserHeader, 500)
     })
+
+    $('.authenticate-button').on('click', function() {
+        setTimeout(initiateSlickUserHeader, 500)
+    })
 })
 
 const initiateMasonry = () => {

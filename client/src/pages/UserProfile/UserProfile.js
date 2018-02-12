@@ -5,6 +5,8 @@ import { UserInfo } from '../../components/UserInfo';
 import { UserModules } from '../../components/UserModules';
 import API from '../../utils/API'
 import AuthService from '../../components/modules/AuthService';
+import '../../resources/js/logic'
+import $ from 'jquery'
 import decode from 'jwt-decode';
 
 class UserProfile extends Component {
@@ -33,6 +35,15 @@ class UserProfile extends Component {
   };
 
   componentDidMount() {
+    // let slick = $.fn.slick
+    // $('.user-header').slick({
+    //     dots: false,
+    //     infinite: true,
+    //     autoplay: true,
+    //     speed: 500,
+    //     fade: true,
+    //     cssEase: 'linear'
+    // })
     console.log('this.state after component mounted', this.state)
     this.loadUserLists()
     this.loadUserShelf()
