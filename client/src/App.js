@@ -15,6 +15,7 @@ import UserProfile from './pages/UserProfile'
 // import AuthService from './components/modules/AuthService'
 // import WithAuth from './components/modules/withAuth'
 // import Callback from './components/Callback'
+import { Footer } from './components/Footer';
 
 class App extends Component {
     state = {
@@ -47,6 +48,7 @@ class App extends Component {
                     <Route path="/explore/:query" component={Explore} />
                     <Route component={NoMatch} />
                 </Switch>
+                <Footer />
             </div>
         </Router>
     )
