@@ -3,7 +3,7 @@ import React from 'react';
 export const ListRender = (props) => (
     <ul>
         <li>
-            <p>{props.title}</p>
+            <h5>{props.title}</h5>
             <p>{props.body}</p>
         </li>
     </ul>

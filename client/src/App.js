@@ -15,7 +15,6 @@ import UserProfile from './pages/UserProfile'
 // import UserShelf from './pages/UserShelf'
 // import AuthService from './components/modules/AuthService'
 // import WithAuth from './components/modules/withAuth'
-// import Callback from './components/Callback'
 import { Footer } from './components/Footer';
 
 class App extends Component {
