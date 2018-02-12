@@ -9,7 +9,7 @@ export const ShelfModule = props => (
                     {props.shelf.map((shelfItem, index) => (
                         <div style={Style.itemContainer} key={shelfItem._id} id={shelfItem._id}>
                             <img style={Style.img} src={shelfItem.item.img} alt={shelfItem.item.title} />
-                            <div style={{visibility: shelfItem.watched ? 'visible' : 'hidden'}} clasName="chips"><i style={Style.icon} className="material-icons">check_circle</i></div>
+                            <div style={{visibility: shelfItem.watched ? 'visible' : 'hidden'}} className="chips"><i style={Style.icon} className="material-icons">check_circle</i></div>
                             <p style={Style.itemTitle}>{shelfItem.item.title}</p>
                         </div>
                     ))}
