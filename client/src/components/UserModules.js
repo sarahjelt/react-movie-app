@@ -58,6 +58,7 @@ export const UserModules = (props) => (
         reviewValue={props.reviewValue}
         reviewName={props.reviewName}
         reviewBool={props.reviewBool}
+        reviewMovie={props.reviewMovie}
         handleReviewSubmit={props.handleReviewSubmit}
         handleEventChange={props.handleEventChange}
     />

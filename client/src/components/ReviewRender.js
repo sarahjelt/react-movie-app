@@ -6,9 +6,16 @@ export const ReviewRender = (props) => {
   } else {
     return props.recommendations.map((result, index) => (
       <ul key={index}>
-        <h5>{result.headline} — {result.movieTitle}</h5>
+        <li style={Style.reviewTitle}>{result.headline} - {result.movieTitle}</li>
         <li>{result.body}</li>
       </ul>
     ))
   }
+}
+
+const Style = {
+    reviewTitle: {
+        fontSize: '22px',
+        marginBottom: '5px',
+    }
 }
