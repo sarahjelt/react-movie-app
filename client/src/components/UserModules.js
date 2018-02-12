@@ -12,14 +12,20 @@ export const UserModules = (props) => (
         <div className='card red lighten-1'>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>Lists</span>
-            {props.lists.map((result, index)=>(
+            {props.lists.map((result, index) => (
               <ListRender
                 key={index}
                 title={result.title}
                 body={result.body}
               />
             ))}
-            <input href='#listModal' className='modal-trigger' type="button" onClick={() => props.listModalTrigger()} />
+            <a value='Add list' 
+              href='#listModal' 
+              className='btn-floating btn-medium waves-effect waves-light cyan lighten-3 modal-trigger' 
+              type="button"
+              onClick={() => props.listModalTrigger()}>
+                <i className='material-icons'>add</i>
+            </a>
           </div>
         </div>
       </div>
@@ -32,10 +38,17 @@ export const UserModules = (props) => (
         <div className='card red lighten-1'>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>Reviews</span>
-            <ReviewRender
+           
+          <ReviewRender
               recommendations={props.recommendations}
             />       
-            <input href='#reviewModal' className='modal-trigger' type="button" onClick={() => props.reviewModalTrigger()} />
+            <a 
+              href='#reviewModal' 
+              className='btn-floating btn-medium waves-effect waves-light cyan lighten-3 modal-trigger' 
+              type="button" 
+              onClick={() => props.reviewModalTrigger()}>
+                <i className='material-icons'>add</i>
+            </a>
           </div>
         </div>
       </div>

@@ -161,6 +161,7 @@ class UserProfile extends Component {
           userImage={this.state.userImage !== '' ? this.state.userImage : 'https://dw9to29mmj727.cloudfront.net/properties/2016/432-SeriesThumbnails_SM__400x320.jpg'}
         />
         <UserModules 
+          reviews={this.state.reviews}
           reviewValue={this.state.reviewValue}
           reviewBool={this.state.reviewBool}
           reviewName={this.state.reviewName}
