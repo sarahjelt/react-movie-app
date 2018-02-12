@@ -14,6 +14,7 @@ const Style = {
         textAlign: 'center',
         height: '350px',
         overflow: 'hidden',
+        objectFit: 'cover',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center'
