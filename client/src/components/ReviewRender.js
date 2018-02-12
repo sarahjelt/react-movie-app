@@ -1,10 +1,14 @@
 import React from 'react';
 
-export const ReviewRender = (props) => (
-    <ul>
-      <li>
-        <p>{props.mediaItem.title}<span>{props.headline}</span></p>
-        <p>{props.review}</p>
-      </li>
-    </ul>
-)
+export const ReviewRender = (props) => {
+  if (!props.recommendations) {
+    return <p>No Reviews Yet!</p>
+  } else {
+    return props.recommendations.map((result, index) => (
+      <ul key={index}>
+        <li>{result.headline} - {result.movieTitle}</li>
+        <li>{result.body}</li>
+      </ul>
+    ))
+  }
+}

@@ -15,7 +15,7 @@ export class Navbar extends React.Component {
     return(
       <nav>
         <div className='nav-wrapper cyan darken-1'>
-          <a href='/home' className='brand-logo center'>Movies and TV!</a>
+          <a href='/home' className='brand-logo center'>Lit Bayou</a>
           <ul id='nav-mobile' className='left hide-on-small-only'>
               {
                 (this.Auth.loggedIn() ) ? <li><a href='/user'>Profile</a></li> : ''

@@ -5,9 +5,6 @@ export default {
       return fetch(`https://api.themoviedb.org/3/search/multi?query=${query}&include_adult=false&page=1&language=en-US&api_key=a937c77bd6b12817df5f33d7b28db932`)
         .then(res => res.json())
     },
-    addMediaItemToUserShelf: function(userData) {
-        console.log('adding userData to the db', userData)
-    },
     addMediaItemToDB: function(mediaItem) {
         return axios.post('/api/movieApp/media', mediaItem)
     },
@@ -46,8 +43,8 @@ export default {
     saveReview: function(reviewData) {
         return axios.post('/api/movieApp/review', reviewData)
     },
-    addItemToUserShelf: function(userId, mediaItemId) {
-        return axios.put(`/api/movieApp/user/shelf/${userId}`, {mediaItemId: mediaItemId})
+    addItemToUserShelf: function(userId, mediaItemId, boolean) {
+        return axios.put(`/api/movieApp/user/shelf/${userId}`, {mediaItemId: mediaItemId, watched: boolean})
     },
     authenticateUser: function(userData) {
         return axios.post("/api/authenticate/signin", userData)

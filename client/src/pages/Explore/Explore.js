@@ -151,13 +151,13 @@ export default class Explore extends React.Component {
                                .then(res2 => {
                                    let mediaItemId = res2.data[0]._id
                                    console.log(['we added the item to the db and this is the new id for the mediaItem', mediaItemId])
-                                   API.addItemToUserShelf(userId, mediaItemId)
+                                   API.addItemToUserShelf(userId, mediaItemId, this.state.radioToggleValue)
                                        .then(res => console.log(res))
                                })
                        })
                 } else {
                     console.log(['this item already exists in the db', res.data[0]._id])
-                    API.addItemToUserShelf(userId, res.data[0]._id)
+                    API.addItemToUserShelf(userId, res.data[0]._id, this.state.radioToggleValue)
                         .then(res => console.log(res))
                 }
             })
