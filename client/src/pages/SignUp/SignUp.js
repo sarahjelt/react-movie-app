@@ -30,6 +30,7 @@ export default class SignUp extends React.Component {
 
         API.createNewUser(userData)
             .then(res => console.log(res))
+            window.location.replace("/login");
     }
 
     render() {
