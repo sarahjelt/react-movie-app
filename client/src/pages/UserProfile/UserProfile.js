@@ -115,39 +115,16 @@ class UserProfile extends Component {
   //Adds Review to the Schema
   handleReviewSubmit = event => {
     event.preventDefault();
-    console.log('HELLLLOOOOO')
-    console.log(this.state.reviewValue, this.state.reviewName, this.state.reviewMovie);
-    API.getMediaItemIdIfExists(this.state.reviewMovie)
-    .then(res => {
-        console.log([res.data.length === 0, res.data])
-        if (res.data.length < 1) {
-            console.log('this item does not exist in the db, so we should add it')
-            API.addMediaItemToDB(this.state.reviewMovie)
-               .then(response => {
-                   API.getMediaItemIdIfExists(this.state.reviewMovie)
-                       .then(res2 => {
-                           let mediaItemId = res2.data[0]._id
-                           console.log(['we added the item to the db and this is the new id for the mediaItem', mediaItemId])
-                           API.saveReview({
-                             headline: this.state.reviewName,
-                             author: this.state.userId,
-                             mediaItem: mediaItemId,
-                             body: this.state.reviewValue
-                           })
-                           .then(res => console.log(res))
-                       })
-               })
-        } else {
-            console.log(['this item already exists in the db', res.data[0]._id])
-            API.saveReview({
-              headline: this.state.reviewName,
-              author: this.state.userId,
-              mediaItem: res.data[0]._id,
-              body: this.state.reviewValue
-            })
-            .then(res => console.log(res))
-        }
-    })
+    console.log(this.state.reviewValue, this.state.reviewName);
+      API.saveReview({
+        headline: this.state.reviewName,
+        author: this.state.userId,
+        body: this.state.reviewValue
+      })
+      .then(res => {
+        this.loadUserReviews();
+        this.setState({ reviewBool: false });
+      });
   };
 
   //Adds Lists to the User Schema
@@ -156,7 +133,10 @@ class UserProfile extends Component {
     console.log(this.state.listValue, this.state.listName);
     let newList = {title: this.state.listName, body: this.state.listValue}
     API.pushUserLists(this.state.userId, newList)
-      .then(res => this.loadUserLists());
+      .then(res => {
+        this.loadUserLists();
+        this.setState({ listBool: false });
+      });
   };
 
   //Handles the inputs made to the modals
