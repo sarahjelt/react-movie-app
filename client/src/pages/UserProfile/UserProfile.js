@@ -108,7 +108,10 @@ class UserProfile extends Component {
         author: this.state.userId,
         body: this.state.reviewValue
       })
-      .then(res => this.loadUserReviews());
+      .then(res => {
+        this.setState({reviewBool: false});
+        this.loadUserReviews();
+      });
   };
 
   //Adds Lists to the User Schema
@@ -117,7 +120,10 @@ class UserProfile extends Component {
     console.log(this.state.listValue, this.state.listName);
     let newList = {title: this.state.listName, body: this.state.listValue}
     API.pushUserLists(this.state.userId, newList)
-      .then(res => this.loadUserLists());
+      .then(res => {
+        this.setState({listBool: false});
+        this.loadUserLists();
+      });
   };
 
   //Handles the inputs made to the modals
