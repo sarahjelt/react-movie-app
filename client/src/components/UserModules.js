@@ -13,14 +13,11 @@ export const UserModules = (props) => (
         <div className='card red lighten-1'  style={Style.module}>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>LISTS</span>
-            {props.lists.map((result, index) => (
+
               <ListRender
-                key={index}
-                title={result.title}
-                body={result.body}
-                openExpandedReviewModal={props.openExpandedReviewModal}
+                  lists={props.lists}
+                  openExpandedReviewModal={props.openExpandedReviewModal}
               />
-            ))}
 
               {renderAddListButton(props.isOwnProfile, props.listModalTrigger)}
           </div>
