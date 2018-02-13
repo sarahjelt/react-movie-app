@@ -4,6 +4,7 @@ import {LoginForm} from '../../components/LoginForm'
 import {PageInfoTitle} from '../../components/PageInfoTitle'
 import API from '../../utils/API'
 import AuthService from '../../components/modules/AuthService';
+import Materialize from 'materialize-css';
 
 
 export default class Login extends React.Component {
@@ -36,7 +37,9 @@ export default class Login extends React.Component {
             .then(res => {
                 this.Auth.setToken(res.data.token);
                 window.location.assign("/user");
-            }).catch();                
+            }).catch(
+                Materialize.toast('Wrong email/password combo!', 4000, 'red', 'right')
+            );
     }
 
 
