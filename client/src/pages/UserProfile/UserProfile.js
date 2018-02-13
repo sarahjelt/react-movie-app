@@ -49,7 +49,7 @@ class UserProfile extends Component {
   componentWillMount() {
     let userInfo = this.Auth.getProfile();
     if (!userInfo) {
-      window.location.replace("/")
+      window.location.assign("/")
     } else {
 
       this.setState({

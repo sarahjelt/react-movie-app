@@ -21,26 +21,23 @@ export const UserModules = (props) => (
                 openExpandedReviewModal={props.openExpandedReviewModal}
               />
             ))}
+
               {renderAddListButton(props.isOwnProfile, props.listModalTrigger)}
           </div>
         </div>
       </div>
-
       <ShelfModule
         shelf={props.shelf}
       />
-
       <div className='col s4'>
         <div className='card red lighten-1' style={Style.module}>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>REVIEWS</span>
-           
               <ReviewRender
                   recommendations={props.recommendations}
                   openExpandedReviewModal={props.openExpandedReviewModal}
               />
               {renderAddReviewButton(props.isOwnProfile, props.reviewModalTrigger)}
-
           </div>
         </div>
       </div>
