@@ -25,11 +25,9 @@ export default {
         return axios.get(`/api/movieApp/user/${id}`)
     },
     getUserShelf: function(id) {
-        console.log('getUserShelfItems', id)
         return axios.get(`/api/movieApp/user/shelf/${id}`)
     },
     getUserLists: function(id) {
-        console.log('getUserLists', id)
         return axios.get(`/api/movieApp/user/lists/${id}`)
     },
     pushUserLists: function(id, data) {

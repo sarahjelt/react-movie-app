@@ -6,9 +6,6 @@ export const ConfirmationModal = (props) => (
          className={props.indexOfActiveAddModal === props.id ? 'modal open' : 'modal'}
     >
         <div className="card-panel cyan lighten-4" style={Style.container}>
-            <div style={Style.closeIconContainer}>
-                <a style={Style.icon} className='waves waves-effect' onClick={() => props.handleConfirmationModalClose()}><i className="material-icons">clear</i></a>
-            </div>
             <div style={Style.modalContent}>
                 <p style={Style.text}>Add {props.title} to your shelf?</p>
                 <form>

@@ -4,6 +4,7 @@ import { ListModal } from './ListModal';
 import { ListRender } from './ListRender';
 import { ShelfModule } from './ShelfModule'
 import { ReviewRender } from './ReviewRender';
+import {ReviewExpandedModal} from "./ReviewExpandedModal";
 
 export const UserModules = (props) => (
   <div>
@@ -12,9 +13,15 @@ export const UserModules = (props) => (
         <div className='card red lighten-1'  style={Style.module}>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>LISTS</span>
-            <ListRender
-              lists={props.lists}
-            />
+            {props.lists.map((result, index) => (
+              <ListRender
+                key={index}
+                title={result.title}
+                body={result.body}
+                openExpandedReviewModal={props.openExpandedReviewModal}
+              />
+            ))}
+
               {renderAddListButton(props.isOwnProfile, props.listModalTrigger)}
           </div>
         </div>
@@ -26,9 +33,10 @@ export const UserModules = (props) => (
         <div className='card red lighten-1' style={Style.module}>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>REVIEWS</span>
-            <ReviewRender
-              recommendations={props.recommendations}
-            />
+              <ReviewRender
+                  recommendations={props.recommendations}
+                  openExpandedReviewModal={props.openExpandedReviewModal}
+              />
               {renderAddReviewButton(props.isOwnProfile, props.reviewModalTrigger)}
           </div>
         </div>
@@ -50,6 +58,12 @@ export const UserModules = (props) => (
         listBool={props.listBool}
         handleListSubmit={props.handleListSubmit}
         handleEventChange={props.handleEventChange}
+    />
+
+    <ReviewExpandedModal
+        expandedReviewBody={props.expandedReviewBody}
+        expandedReviewTitle={props.expandedReviewTitle}
+        expandedReviewModalVisible={props.expandedReviewModalVisible}
     />
 
   </div>
@@ -95,6 +109,8 @@ const Style = {
       letterSpacing: '4px'
   },
   module: {
-      minHeight: '100vh'
+      minHeight: '100vh',
+      maxHeight: '20vh',
+      overFlow: 'scroll'
   }
 }
