@@ -2,7 +2,7 @@ import React from 'react';
 import { ShelfMap } from './ShelfMap';
 
 export const ShelfModule = props => (
-    <div className='col s4'>
+    <div className='col s6'>
         <div className='card red lighten-1' style={Style.module}>
             <div className='card-content'>
                 <p className='card-title' style={Style.title}>SHELF</p>

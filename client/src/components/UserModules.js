@@ -7,9 +7,15 @@ import { ReviewRender } from './ReviewRender';
 
 export const UserModules = (props) => (
   <div>
+
     <div className='row' style={Style.container}>
-      <div className='col s4'>
-        <div className='card red lighten-1'  style={Style.module}>
+      <ShelfModule
+        shelf={props.shelf}
+      />
+
+      <div className = 'col s6'>
+      <div>
+        <div className='card red lighten-1'  style={Style.listbox}>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>LISTS</span>
             <ListRender
@@ -19,11 +25,9 @@ export const UserModules = (props) => (
           </div>
         </div>
       </div>
-      <ShelfModule
-        shelf={props.shelf}
-      />
-      <div className='col s4'>
-        <div className='card red lighten-1' style={Style.module}>
+
+      <div>
+        <div className='card red lighten-1' style={Style.modules}>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>REVIEWS</span>
             <ReviewRender
@@ -33,6 +37,8 @@ export const UserModules = (props) => (
           </div>
         </div>
       </div>
+      </div>
+
     </div>
 
     <ReviewModal
@@ -94,7 +100,11 @@ const Style = {
       marginBottom: '20px',
       letterSpacing: '4px'
   },
-  module: {
-      minHeight: '100vh'
+  listbox: {
+      minHeight:'50vh',
+      marginBottom: '10px'
+  },
+  modules: {
+      minHeight: '50vh'
   }
 }
