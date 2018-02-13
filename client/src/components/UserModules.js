@@ -15,13 +15,7 @@ export const UserModules = (props) => (
             <ListRender
               lists={props.lists}
             />
-            <a value='Add list' 
-              href='#listModal' 
-              className='btn-floating btn-medium waves-effect waves-light cyan lighten-3 modal-trigger' 
-              type="button"
-              onClick={() => props.listModalTrigger()}>
-                <i className='material-icons'>add</i>
-            </a>
+              {renderAddListButton(props.isOwnProfile, props.listModalTrigger)}
           </div>
         </div>
       </div>
@@ -34,14 +28,8 @@ export const UserModules = (props) => (
             <span className='card-title' style={Style.titles}>REVIEWS</span>
             <ReviewRender
               recommendations={props.recommendations}
-            />       
-            <a 
-              href='#reviewModal' 
-              className='btn-floating btn-medium waves-effect waves-light cyan lighten-3 modal-trigger' 
-              type="button" 
-              onClick={() => props.reviewModalTrigger()}>
-                <i className='material-icons'>add</i>
-            </a>
+            />
+              {renderAddReviewButton(props.isOwnProfile, props.reviewModalTrigger)}
           </div>
         </div>
       </div>
@@ -67,6 +55,37 @@ export const UserModules = (props) => (
   </div>
 )
 
+const renderAddReviewButton = (isOwnProfile, reviewModalTrigger) => {
+    if (!isOwnProfile) {
+        return null
+    } else {
+        return (
+            <a
+                href='#reviewModal'
+                className='btn-floating btn-medium waves-effect waves-light cyan lighten-3 modal-trigger'
+                type="button"
+                onClick={() => reviewModalTrigger()}>
+                <i className='material-icons'>add</i>
+            </a>
+        )
+    }
+}
+
+const renderAddListButton = (isOwnProfile, listModalTrigger) => {
+    if (!isOwnProfile) {
+        return null
+    } else {
+        return (
+            <a value='Add list'
+               href='#listModal'
+               className='btn-floating btn-medium waves-effect waves-light cyan lighten-3 modal-trigger'
+               type="button"
+               onClick={() => listModalTrigger()}>
+                <i className='material-icons'>add</i>
+            </a>
+        )
+    }
+}
 
 const Style = {
   titles: {

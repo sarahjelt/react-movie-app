@@ -32,20 +32,12 @@ class UserProfile extends Component {
     shelf: [],
     recommendations: [],
     userImage: '',
-    userHeaderArr: []
+    userHeaderArr: [],
+    profileId: '',
+    isOwnProfile: false,
   };
 
   componentDidMount() {
-    // let slick = $.fn.slick
-    // $('.user-header').slick({
-    //     dots: false,
-    //     infinite: true,
-    //     autoplay: true,
-    //     speed: 500,
-    //     fade: true,
-    //     cssEase: 'linear'
-    // })
-    console.log('this.state after component mounted', this.state)
     this.loadUserLists()
     this.loadUserShelf()
     this.loadUserReviews()
@@ -58,17 +50,46 @@ class UserProfile extends Component {
     if (!userInfo) {
       window.location.replace("/")
     } else {
+
       this.setState({
           userEmail: userInfo.email,
           userId: userInfo._id,
           userName: userInfo.name,
           userImage: userInfo.img
       })
+      this.setUserIdParamsFromMatch(this.props)
     }
   }
 
+    setUserIdParamsFromMatch = (props) => {
+      let currentProfileId = props.match.params.id !== undefined ? props.match.params.id : null
+      if (currentProfileId === null || currentProfileId === this.state.userId) {
+          this.setState({
+              profileId: currentProfileId,
+              isOwnProfile: true,
+          })
+      } else {
+          API.findUserById(currentProfileId)
+              .then(res => {
+                  this.setState({
+                      profileId: currentProfileId,
+                      isOwnProfile: false,
+                      profileImg: res.data.img,
+                      profileName: res.data.name
+                  })
+                  this.loadUserLists()
+                  this.loadUserReviews()
+                  this.loadUserShelf()
+              })
+      }
+
+
+    }
+
   loadUserLists = () => {
-      API.getUserLists(this.state.userId)
+      let profileTarget = this.state.isOwnProfile ? this.state.userId : this.state.profileId
+
+      API.getUserLists(profileTarget)
           .then(res => {
               console.log(res)
               if (res.data === null) {
@@ -83,7 +104,9 @@ class UserProfile extends Component {
   }
 
   loadUserShelf = () => {
-    API.getUserShelf(this.state.userId)
+      let profileTarget = this.state.isOwnProfile ? this.state.userId : this.state.profileId
+
+      API.getUserShelf(profileTarget)
         .then(res => {
           console.log(res)
           if (res.data === null) {
@@ -99,7 +122,9 @@ class UserProfile extends Component {
   }
 
   loadUserReviews = () => {
-    API.getUserReviews(this.state.userId)
+      let profileTarget = this.state.isOwnProfile ? this.state.userId : this.state.profileId
+
+      API.getUserReviews(profileTarget)
         .then(res => {
           console.log(res)
           if (res.data === null) {
@@ -190,10 +215,10 @@ class UserProfile extends Component {
           headerItems={this.state.userHeaderArr}
         />
         <UserInfo
-          userName={this.state.userName}
+          userName={this.state.isOwnProfile ? this.state.userName : this.state.profileName}
         />
         <Avatar 
-          userImage={this.state.userImage !== '' ? this.state.userImage : 'https://dw9to29mmj727.cloudfront.net/properties/2016/432-SeriesThumbnails_SM__400x320.jpg'}
+          userImage={this.state.userImage !== '' && this.state.isOwnProfile ? this.state.userImage : this.state.profileImg}
         />
         <UserModules 
           reviews={this.state.reviews}
@@ -214,6 +239,7 @@ class UserProfile extends Component {
           lists={this.state.lists}
           recommendations={this.state.recommendations}
           shelf={this.state.shelf}
+          isOwnProfile={this.state.isOwnProfile}
         />
       </div>
     )
