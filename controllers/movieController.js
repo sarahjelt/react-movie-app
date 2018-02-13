@@ -15,7 +15,7 @@ module.exports = {
     },
     findUserByName: function(req, res) {
         db.User
-            .findOne({ name: req.params.name })
+            .find({ name: {$in: req.params.name } })
             .then(dbModel => res.json(dbModel))
             .catch(err => res.status(422).json(err))
     },
@@ -29,6 +29,15 @@ module.exports = {
         db.User
             .findOne({ _id: req.params.id})
             .populate("shelf.item")
+            .exec(function(err, data) {
+                if (err) console.log(err)
+                else res.json(data)
+            })
+    },
+    getUserFriends: function(req, res) {
+        db.User
+            .findOne({_id: req.params.id})
+            .populate("friends")
             .exec(function(err, data) {
                 if (err) console.log(err)
                 else res.json(data)
@@ -61,9 +70,15 @@ module.exports = {
           .catch(err => res.status(422).json(err));
     },
     addMediaItemToShelf: function(req, res) {
-        console.log('hitting the addMediaItemToShelf route', req.body)
         db.User
             .findOneAndUpdate({_id: req.params.id}, { $push: {shelf: {item: req.body.mediaItemId, watched: req.body.watched}}}, { new: true })
+            .then(dbUser => res.json(dbUser))
+            .catch(err => res.status(422).json(err))
+    },
+    addFriendToUser: function(req, res) {
+        console.log('adding Friend to User', req.body)
+        db.User
+            .findOneAndUpdate({_id: req.params.id}, {$push: {friends: req.body.friendId}}, { new: true })
             .then(dbUser => res.json(dbUser))
             .catch(err => res.status(422).json(err))
     },

@@ -9,8 +9,12 @@ router
 router
   .route("/user/:id")
   .get(movieController.findUserById)
-  .put(movieController.updateUser)
+  .put(movieController.addFriendToUser)
   .delete(movieController.removeUser);
+
+router
+    .route("/user/friends/:id")
+    .get(movieController.getUserFriends)
 
 router
     .route("/user/name/:name")

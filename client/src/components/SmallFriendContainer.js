@@ -9,14 +9,17 @@ export const SmallFriendContainer = (props) => (
     </div>
 )
 
-const renderUserFriends = (userFriends) => (
-    userFriends.map((friend, index) => (
+const renderUserFriends = (userFriends) => {
+    console.log('trying to render user friends', userFriends)
+    return userFriends.map((friend, index) => (
         <div style={Style.smallFriendIcon} key={index}>
-            <img style={Style.img} src={friend.img} alt={friend.username} />
-            <p style={Style.smallFriendUsername}>{friend.username}</p>
+            <img style={Style.img} src={friend.img} alt={friend.name} />
+            <p style={Style.smallFriendUsername}>{friend.name}</p>
         </div>
     ))
-)
+}
+
+
 
 
 const Style = {
