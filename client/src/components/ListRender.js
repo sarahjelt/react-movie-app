@@ -1,9 +1,10 @@
 import React from 'react';
 
-function createMarkup(props) {
-    let innerString = props.body.replace(/\n/g, "</p><br /><p>");
+const createMarkup = (body) => {
+  let innerString = body.replace(/\n/g, "</p><br /><p>");
   return {__html: innerString};
 }
+
 export const ListRender = (props) => {
     if (props.lists.length === 0) {
       return <p>No Lists Yet!</p>
@@ -12,7 +13,7 @@ export const ListRender = (props) => {
         <ul key={index}>
           <li>
             <p style={Style.listTitle}>{results.title}</p>
-            <div style={Style.lineHeight} dangerouslySetInnerHTML={createMarkup(props)} />
+            <div style={Style.lineHeight} dangerouslySetInnerHTML={createMarkup(results.body)} />
           </li>
         </ul>
       ))
