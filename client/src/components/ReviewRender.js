@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const ReviewRender = (props) => {
-  if (!props.recommendations) {
+  if (props.recommendations.length === 0) {
     return <p>No Reviews Yet!</p>
   } else {
     return props.recommendations.map((result, index) => (
