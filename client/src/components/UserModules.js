@@ -12,32 +12,24 @@ export const UserModules = (props) => (
         <div className='card red lighten-1'  style={Style.module}>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>LISTS</span>
-            {props.lists.map((result, index) => (
-              <ListRender
-                key={index}
-                title={result.title}
-                body={result.body}
-              />
-            ))}
+            <ListRender
+              lists={props.lists}
+            />
               {renderAddListButton(props.isOwnProfile, props.listModalTrigger)}
           </div>
         </div>
       </div>
-
       <ShelfModule
         shelf={props.shelf}
       />
-
       <div className='col s4'>
         <div className='card red lighten-1' style={Style.module}>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>REVIEWS</span>
-           
-              <ReviewRender
-                  recommendations={props.recommendations}
-              />
+            <ReviewRender
+              recommendations={props.recommendations}
+            />
               {renderAddReviewButton(props.isOwnProfile, props.reviewModalTrigger)}
-
           </div>
         </div>
       </div>
