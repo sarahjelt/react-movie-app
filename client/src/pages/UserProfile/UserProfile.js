@@ -138,6 +138,7 @@ class UserProfile extends Component {
       .then(res => {
         this.loadUserLists();
         this.setState({ listBool: false });
+        Materialize.toast('List Added!', 4000);
       });
   };
 
