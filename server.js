@@ -7,27 +7,27 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const jwt = require('express-jwt');
 const jwks = require('jwks-rsa');
-const cors = require('cors');
+// const cors = require('cors');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
 //auth stuff
-app.use(cors());
+// app.use(cors());
 
-const authCheck = jwt({
-  secret: jwks.expressJwtSecret({
-        cache: true,
-        rateLimit: true,
-        jwksRequestsPerMinute: 5,
-        jwksUri: "https://teamgudetama.auth0.com/.well-known/jwks.json"
-    }),
-    // This is the identifier we set when we created the API
-    audience: 'https://react-movie-app.com',
-    issuer: 'teamgudetama.auth0.com',
-    algorithms: ['RS256']
-});
+// const authCheck = jwt({
+//   secret: jwks.expressJwtSecret({
+//         cache: true,
+//         rateLimit: true,
+//         jwksRequestsPerMinute: 5,
+//         jwksUri: "https://teamgudetama.auth0.com/.well-known/jwks.json"
+//     }),
+//     // This is the identifier we set when we created the API
+//     audience: 'https://react-movie-app.com',
+//     issuer: 'teamgudetama.auth0.com',
+//     algorithms: ['RS256']
+// });
 
 // Serve up static assets (usually on heroku)
 if (process.env.NODE_ENV === "production") {
@@ -58,11 +58,11 @@ mongoose.connect(
 
 
 
-app.use(authCheck);
+// app.use(authCheck);
 
-app.get('/authorized', function (req, res) {
-  res.send('Secured Resource');
-});
+// app.get('/authorized', function (req, res) {
+//   res.send('Secured Resource');
+// });
 
 // Send every request to the React app
 // Define any API routes before this runs
