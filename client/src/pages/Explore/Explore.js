@@ -4,6 +4,7 @@ import {ExploreResultItem} from "../../components/ExploreResultItem";
 import Media from "../Media";
 import AuthService from '../../components/modules/AuthService';
 import decode from 'jwt-decode';
+import Materialize from 'materialize-css';
 
 export default class Explore extends React.Component {
     constructor(props) {
@@ -127,6 +128,7 @@ export default class Explore extends React.Component {
     }
 
     handleShelfItemSubmit = (title, date, synopsis, img, mediaType) => {
+        Materialize.toast(`${title} added to your shelf!`, 4000);
         this.setState({
             indexOfActiveAddModal: null
         })
