@@ -52,5 +52,11 @@ export default {
     },
     signOutUser: function(userData) {
         return axios.post("/api/authenticate/signup", userData)
+    },
+    addUserToFriends: function(userId, friendId) {
+        return axios.put(`/api/movieApp/user/${userId}`, {friendId: friendId})
+    },
+    getUserFriends: function(userId) {
+        return axios.get(`/api/movieApp/user/friends/${userId}`)
     }
 }

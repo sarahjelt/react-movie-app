@@ -4,6 +4,7 @@ import {Input} from '../../components/Input'
 import {SmallFriendContainer} from "../../components/SmallFriendContainer";
 import AuthService from '../../components/modules/AuthService';
 import decode from 'jwt-decode';
+import API from '../../utils/API'
 
 class UserFriends extends Component {
     constructor(props) {
@@ -18,6 +19,7 @@ class UserFriends extends Component {
     userEmail: '',
     userId: '',
     userName: '',
+    hasSearched: false,
   };
 
   componentWillMount() {
@@ -33,58 +35,30 @@ class UserFriends extends Component {
               userName: userInfo.name,
           })
       }
+  }
 
-    // this.setState({
-    //     userSearchResults: [
-    //         {
-    //             username: 'Catslug',
-    //             img: 'https://i.pinimg.com/736x/48/e1/5f/48e15fc94fd3acb71afe3cc958ea6db6.jpg'
-    //         }, {
-    //             username: 'PrincessBear',
-    //             img: 'http://payload289.cargocollective.com/1/2/66131/8080627/herop-copy_860.jpg'
-    //         }, {
-    //             username: 'SailorDoom',
-    //             img: 'https://i.pinimg.com/originals/ab/b0/9a/abb09a6f77f47d9877c7e09ea18c0969.jpg'
-    //         }, {
-    //             username: 'Moonicorn',
-    //             img: 'https://cdn.shopify.com/s/files/1/1307/5347/products/Screen_Shot_2017-04-19_at_8.18.16_pm.png?v=1492598993'
-    //         }, {
-    //             username: 'WitchesHex',
-    //             img: 'https://img.etsystatic.com/il/9a1884/1414657676/il_fullxfull.1414657676_dkii.jpg'
-    //         }, {
-    //             username: 'TrashPanda',
-    //             img: 'http://i.imgur.com/vAH0fOa.jpg'
-    //         }, {
-    //             username: 'QueenOfTrashHeaps',
-    //             img: 'https://ih0.redbubble.net/image.191992670.6757/flat,800x800,070,f.u1.jpg'
-    //         }
-    //     ],
-    //     userFriends: [
-    //         {
-    //             username: 'Catslug',
-    //             img: 'https://i.pinimg.com/736x/48/e1/5f/48e15fc94fd3acb71afe3cc958ea6db6.jpg'
-    //         }, {
-    //             username: 'PrincessBear',
-    //             img: 'http://payload289.cargocollective.com/1/2/66131/8080627/herop-copy_860.jpg'
-    //         }, {
-    //             username: 'SailorDoom',
-    //             img: 'https://i.pinimg.com/originals/ab/b0/9a/abb09a6f77f47d9877c7e09ea18c0969.jpg'
-    //         }, {
-    //             username: 'Moonicorn',
-    //             img: 'https://cdn.shopify.com/s/files/1/1307/5347/products/Screen_Shot_2017-04-19_at_8.18.16_pm.png?v=1492598993'
-    //         }, {
-    //             username: 'WitchesHex',
-    //             img: 'https://img.etsystatic.com/il/9a1884/1414657676/il_fullxfull.1414657676_dkii.jpg'
-    //         }, {
-    //             username: 'TrashPanda',
-    //             img: 'http://i.imgur.com/vAH0fOa.jpg'
-    //         }, {
-    //             username: 'QueenOfTrashHeaps',
-    //             img: 'https://ih0.redbubble.net/image.191992670.6757/flat,800x800,070,f.u1.jpg'
-    //         }
-    //     ]
-    // })
-  };
+  componentDidMount() {
+      this.loadUserFriends(this.state.userId)
+  }
+
+  loadUserFriends = (userId) => {
+      API.getUserFriends(userId)
+          .then(res => {
+              let userCurrentFriends = []
+              if (res.data.friends.length !== 0) {
+                  for (let i = 0; i < res.data.friends.length; i++) {
+                      let friendData = {
+                          img: res.data.friends[i].img,
+                          name: res.data.friends[i].name
+                      }
+                      userCurrentFriends.push(friendData)
+                  }
+                  this.setState({
+                      userFriends: userCurrentFriends
+                  })
+              }
+          })
+  }
 
   handleInputChange = (event, inputName) => {
       this.setState({
@@ -94,22 +68,59 @@ class UserFriends extends Component {
 
   handleButtonPress = (value, buttonName) => {
       console.log(['you searched for', this.state.userSearchInput])
+      API.findUserByName(this.state.userSearchInput)
+          .then(res => {
+              let searchResults = []
+
+              if (res.data.length !== 0) {
+                  for (let i = 0; i < res.data.length; i++) {
+                      let userData = {
+                          img: res.data[i].img,
+                          name: res.data[i].name,
+                          id: res.data[i]._id
+                      }
+                      searchResults.push(userData)
+                  }
+                  this.setState({
+                      userSearchResults: searchResults,
+                      hasSearched: true,
+                      userSearchInput: '',
+                  })
+              } else {
+                  this.setState({
+                      hasSearched: true,
+                      userSearchInput: ''
+                  })
+              }
+          })
   }
 
-  renderFriendsList = (props, userFriends) => {
-        if (userFriends.length !== 0) {
+  handleAddFriendButtonPress = (id) => {
+      console.log('adding this friend id', id)
+      API.addUserToFriends(this.state.userId, id)
+          .then(res => this.loadUserFriends(this.state.userId))
+  }
+
+  renderUserSearchResults = (props, userSearchResults) => {
+        if (userSearchResults.length !== 0 && this.state.hasSearched) {
             return (
-                userFriends.map((friend, index) => (
+                userSearchResults.map((friend, index) => (
                     <FriendCard
-                        username={friend.username}
+                        name={friend.username}
                         img={friend.img}
-                        key={index}
+                        id={friend.id}
+                        key={friend.id}
+                        handleAddFriendButtonPress={this.handleAddFriendButtonPress}
                     />
                 ))
             )
-        } else {
+        } else if (userSearchResults.length === 0 && this.state.hasSearched) {
             return (
-                <h1>You don't have any friends yet! Search to connect.</h1>
+                <h4>No users were found matching that name.</h4>
+            )
+        } else if (!this.state.hasSearched) {
+            return (
+                <h4>Search to connect.</h4>
             )
         }
     }
@@ -132,10 +143,10 @@ class UserFriends extends Component {
                 placeholder='search for friends...'
                 handleInputChange={this.handleInputChange}
             />
-            <a style={Style.searchButton} className="waves-effect waves-light btn"><i className="material-icons left">search</i>search</a>
+            <a onClick={() => this.handleButtonPress()} style={Style.searchButton} className="waves-effect waves-light btn"><i className="material-icons left">search</i>search</a>
           </div>
           <div className="grid" data-masonry='{ "itemSelector": ".grid-item", "columnWidth": 70, "gutter": 10 }' style={Style.gridContainer}>
-            {this.renderFriendsList(this.props, this.state.userSearchResults)}
+            {this.renderUserSearchResults(this.props, this.state.userSearchResults)}
           </div>
         </div>
       </div>

@@ -4,11 +4,11 @@ export const FriendCard = (props) => (
         <div className="grid-item">
             <div className="card-panel" style={Style.cardContainer}>
                 <div className="card-content" style={Style.cardContentContainer}>
-                    <img src={props.img} style={Style.img} alt={props.username} />
-                    <span className="card-title" style={Style.username}>{props.username}</span>
+                    <img className='circle responsive-img' src={props.img} style={Style.img} alt={props.name} />
+                    <span className="card-title" style={Style.username}>{props.name}</span>
                     <div style={Style.iconRow}>
-                        <a style={Style.icon} className="btn-floating waves-effect waves-light red"><i className="material-icons">add</i></a>
-                        <a style={Style.icon} className="btn-floating waves-effect waves-light red"><i className="material-icons">favorite</i></a>
+                        <a onClick={() => props.handleAddFriendButtonPress(props.id)} style={Style.icon} className="btn-floating waves-effect waves-light red"><i className="material-icons">add</i></a>
+                        {/*<a style={Style.icon} className="btn-floating waves-effect waves-light red"><i className="material-icons">favorite</i></a>*/}
                     </div>
                 </div>
             </div>
@@ -17,12 +17,16 @@ export const FriendCard = (props) => (
 
 const Style = {
     cardContainer: {
-        maxWidth: '100%',
+        width: '100%',
+        maxWidth: '250px'
     },
     img: {
         position: 'relative',
-        width: '160px',
-        borderRadius: '80px',
+        minWidth: '160px',
+        maxWidth: '200px',
+        height: 'auto',
+        borderRadius: '150px',
+        objectFit: 'cover'
     },
     cardContentContainer: {
         display: 'flex',
