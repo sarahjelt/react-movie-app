@@ -188,7 +188,7 @@ export default class Explore extends React.Component {
                         handleAddButtonPress={this.handleAddButtonPress}
                         handleRadioToggle={this.handleRadioToggle}
                         radioToggleValue={this.state.radioToggleValue}
-                        indexOfActiveAddModal={this.state.indexOfActiveAddModal}
+                        indexOfActiveAddModfal={this.state.indexOfActiveAddModal}
                         handleConfirmationModalClose={this.handleConfirmationModalClose}
                         handleShelfItemSubmit={this.handleShelfItemSubmit}
                     />
