@@ -41,7 +41,7 @@ export default class Explore extends React.Component {
         console.log(userInfo)
 
         if (!userInfo) {
-            window.location.replace("/")
+            window.location.assign("/")
         } else {
             this.setState({
                 userEmail: userInfo.email,
