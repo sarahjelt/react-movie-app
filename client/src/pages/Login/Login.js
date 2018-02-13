@@ -35,7 +35,7 @@ export default class Login extends React.Component {
         API.authenticateUser(userData)
             .then(res => {
                 this.Auth.setToken(res.data.token);
-                window.location.replace("/user");
+                window.location.assign("/user");
             }).catch();                
     }
 
