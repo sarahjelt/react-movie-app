@@ -37,8 +37,9 @@ export default class Login extends React.Component {
             .then(res => {
                 this.Auth.setToken(res.data.token);
                 window.location.assign("/user");
-            }).catch(
+            }).catch(function(err) {
                 Materialize.toast('Wrong email/password combo!', 4000, 'red', 'right')
+            }
             );
     }
 
