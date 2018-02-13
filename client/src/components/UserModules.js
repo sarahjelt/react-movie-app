@@ -112,6 +112,8 @@ const Style = {
       letterSpacing: '4px'
   },
   module: {
-      minHeight: '100vh'
+      minHeight: '100vh',
+      maxHeight: '20vh',
+      overFlow: 'scroll'
   }
 }

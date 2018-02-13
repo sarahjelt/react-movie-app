@@ -25,7 +25,9 @@ const Style = {
         height: '100%',
     },
     module: {
-        minHeight: '100vh'
+        minHeight: '100vh',
+        maxHeight: '200vh',
+        overFlow: 'scroll'
     },
     title: {
         textAlign: "center",
