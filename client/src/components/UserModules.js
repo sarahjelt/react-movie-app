@@ -1,8 +1,8 @@
 import React from 'react';
-import {ReviewModal} from './ReviewModal';
-import {ListModal} from './ListModal';
+import { ReviewModal } from './ReviewModal';
+import { ListModal } from './ListModal';
 import { ListRender } from './ListRender';
-import {ShelfModule} from './ShelfModule'
+import { ShelfModule } from './ShelfModule'
 import { ReviewRender } from './ReviewRender';
 
 export const UserModules = (props) => (
