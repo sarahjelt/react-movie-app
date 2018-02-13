@@ -13,14 +13,15 @@ const renderUserFriends = (userFriends) => {
     console.log('trying to render user friends', userFriends)
     return userFriends.map((friend, index) => (
         <div style={Style.smallFriendIcon} key={index}>
-            <img style={Style.img} src={friend.img} alt={friend.name} />
+            <a href={hrefDeterminer(friend.id)}><img style={Style.img} src={friend.img} alt={friend.name} /></a>
             <p style={Style.smallFriendUsername}>{friend.name}</p>
         </div>
     ))
 }
 
-
-
+const hrefDeterminer = (id) => {
+    return `/user/${id}`
+}
 
 const Style = {
     container: {

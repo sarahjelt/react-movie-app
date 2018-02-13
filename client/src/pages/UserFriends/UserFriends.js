@@ -49,7 +49,8 @@ class UserFriends extends Component {
                   for (let i = 0; i < res.data.friends.length; i++) {
                       let friendData = {
                           img: res.data.friends[i].img,
-                          name: res.data.friends[i].name
+                          name: res.data.friends[i].name,
+                          id: res.data.friends[i]._id
                       }
                       userCurrentFriends.push(friendData)
                   }

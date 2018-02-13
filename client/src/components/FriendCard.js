@@ -4,16 +4,19 @@ export const FriendCard = (props) => (
         <div className="grid-item">
             <div className="card-panel" style={Style.cardContainer}>
                 <div className="card-content" style={Style.cardContentContainer}>
-                    <img className='circle responsive-img' src={props.img} style={Style.img} alt={props.name} />
+                    <a href={hrefDeterminer(props.id)}><img className='circle responsive-img' src={props.img} style={Style.img} alt={props.name} /></a>
                     <span className="card-title" style={Style.username}>{props.name}</span>
                     <div style={Style.iconRow}>
                         <a onClick={() => props.handleAddFriendButtonPress(props.id)} style={Style.icon} className="btn-floating waves-effect waves-light red"><i className="material-icons">add</i></a>
-                        {/*<a style={Style.icon} className="btn-floating waves-effect waves-light red"><i className="material-icons">favorite</i></a>*/}
                     </div>
                 </div>
             </div>
         </div>
 )
+
+const hrefDeterminer = (id) => {
+    return `/user/${id}`
+}
 
 const Style = {
     cardContainer: {
