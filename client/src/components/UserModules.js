@@ -12,13 +12,9 @@ export const UserModules = (props) => (
         <div className='card red lighten-1'  style={Style.module}>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>LISTS</span>
-            {props.lists.map((result, index) => (
-              <ListRender
-                key={index}
-                title={result.title}
-                body={result.body}
-              />
-            ))}
+            <ListRender
+              lists={props.lists}
+            />
             <a value='Add list' 
               href='#listModal' 
               className='btn-floating btn-medium waves-effect waves-light cyan lighten-3 modal-trigger' 
@@ -29,17 +25,14 @@ export const UserModules = (props) => (
           </div>
         </div>
       </div>
-
       <ShelfModule
         shelf={props.shelf}
       />
-
       <div className='col s4'>
         <div className='card red lighten-1' style={Style.module}>
           <div className='card-content'>
             <span className='card-title' style={Style.titles}>REVIEWS</span>
-           
-          <ReviewRender
+            <ReviewRender
               recommendations={props.recommendations}
             />       
             <a 
