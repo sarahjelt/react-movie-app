@@ -8,6 +8,7 @@ import AuthService from '../../components/modules/AuthService';
 import '../../resources/js/logic'
 // import $ from 'jquery'
 import decode from 'jwt-decode';
+import Materialize from 'materialize-css';
 
 class UserProfile extends Component {
 
@@ -124,6 +125,7 @@ class UserProfile extends Component {
       .then(res => {
         this.loadUserReviews();
         this.setState({ reviewBool: false });
+        Materialize.toast('Review Added!', 4000);
       });
   };
 
