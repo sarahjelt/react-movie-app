@@ -4,6 +4,7 @@ import { ListModal } from './ListModal';
 import { ListRender } from './ListRender';
 import { ShelfModule } from './ShelfModule'
 import { ReviewRender } from './ReviewRender';
+import {ReviewExpandedModal} from "./ReviewExpandedModal";
 
 export const UserModules = (props) => (
   <div>
@@ -17,6 +18,7 @@ export const UserModules = (props) => (
                 key={index}
                 title={result.title}
                 body={result.body}
+                openExpandedReviewModal={props.openExpandedReviewModal}
               />
             ))}
               {renderAddListButton(props.isOwnProfile, props.listModalTrigger)}
@@ -35,6 +37,7 @@ export const UserModules = (props) => (
            
               <ReviewRender
                   recommendations={props.recommendations}
+                  openExpandedReviewModal={props.openExpandedReviewModal}
               />
               {renderAddReviewButton(props.isOwnProfile, props.reviewModalTrigger)}
 
@@ -58,6 +61,12 @@ export const UserModules = (props) => (
         listBool={props.listBool}
         handleListSubmit={props.handleListSubmit}
         handleEventChange={props.handleEventChange}
+    />
+
+    <ReviewExpandedModal
+        expandedReviewBody={props.expandedReviewBody}
+        expandedReviewTitle={props.expandedReviewTitle}
+        expandedReviewModalVisible={props.expandedReviewModalVisible}
     />
 
   </div>

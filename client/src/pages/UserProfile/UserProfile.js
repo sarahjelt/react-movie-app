@@ -35,6 +35,9 @@ class UserProfile extends Component {
     userHeaderArr: [],
     profileId: '',
     isOwnProfile: false,
+    expandedReviewTitle: '',
+    expandedReviewBody: '',
+    expandedReviewModalVisible: false,
   };
 
   componentDidMount() {
@@ -45,8 +48,6 @@ class UserProfile extends Component {
 
   componentWillMount() {
     let userInfo = this.Auth.getProfile();
-    console.log(userInfo)
-
     if (!userInfo) {
       window.location.replace("/")
     } else {
@@ -91,11 +92,9 @@ class UserProfile extends Component {
 
       API.getUserLists(profileTarget)
           .then(res => {
-              console.log(res)
               if (res.data === null) {
                   return null;
               } else {
-                  console.log(['getting user lists', res.data])
                   this.setState({
                       lists: res.data.lists
                   })
@@ -108,11 +107,9 @@ class UserProfile extends Component {
 
       API.getUserShelf(profileTarget)
         .then(res => {
-          console.log(res)
           if (res.data === null) {
             return null
           } else {
-            console.log(['getting user shelf', res.data])
             this.setState({
                 shelf: res.data.shelf
             })
@@ -126,11 +123,9 @@ class UserProfile extends Component {
 
       API.getUserReviews(profileTarget)
         .then(res => {
-          console.log(res)
           if (res.data === null) {
             return null
           } else {
-            console.log(['getting user reviews', res.data])
             this.setState({
                 recommendations: res.data
             })
@@ -141,7 +136,6 @@ class UserProfile extends Component {
   //Adds Review to the Schema
   handleReviewSubmit = event => {
     event.preventDefault();
-    console.log(this.state.reviewValue, this.state.reviewName);
       API.saveReview({
         headline: this.state.reviewName,
         author: this.state.userId,
@@ -157,7 +151,6 @@ class UserProfile extends Component {
   //Adds Lists to the User Schema
   handleListSubmit= event => {
     event.preventDefault();
-    console.log(this.state.listValue, this.state.listName);
     let newList = {title: this.state.listName, body: this.state.listValue}
     API.pushUserLists(this.state.userId, newList)
       .then(res => {
@@ -187,6 +180,15 @@ class UserProfile extends Component {
       listBool: true
     });
   };
+
+  openExpandedReviewModal = (title, body) => {
+      console.log(['trying to open the review modal', title, body])
+      this.setState({
+          expandedReviewTitle: title,
+          expandedReviewBody: body,
+          expandedReviewModalVisible: true
+      })
+  }
 
   setUserHeaderArr = (shelf) => {
       if (shelf.length !== 0) {
@@ -240,6 +242,10 @@ class UserProfile extends Component {
           recommendations={this.state.recommendations}
           shelf={this.state.shelf}
           isOwnProfile={this.state.isOwnProfile}
+          expandedReviewTitle={this.state.expandedReviewTitle}
+          expandedReviewBody={this.state.expandedReviewBody}
+          expandedReviewModalVisible={this.state.expandedReviewModalVisible}
+          openExpandedReviewModal={this.openExpandedReviewModal}
         />
       </div>
     )
