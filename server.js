@@ -7,14 +7,14 @@ const PORT = process.env.PORT || 3001;
 const app = express();
 const jwt = require('express-jwt');
 const jwks = require('jwks-rsa');
-// const cors = require('cors');
+const cors = require('cors');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 
 //auth stuff
-// app.use(cors());
+app.use(cors());
 
 // const authCheck = jwt({
 //   secret: jwks.expressJwtSecret({
