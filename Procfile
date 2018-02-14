@@ -1,2 +1,2 @@
-web: npm run installDeps && npm start && npm client
+web: npm run installDeps && npm client
 
