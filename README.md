@@ -49,6 +49,3 @@ The shelf is for media that the user has seen or would like to watch. A blue che
 Users can also write reviews, which will show up on their profile page in truncated format. To view the entire review, you can click on the review title.
 
 ![screenshot of profile page](docs/fullreview.png)
-
-
-
