@@ -2,14 +2,14 @@
 
 ***Lit Bayou*** is a social media app for movie and TV enthusiasts. 
 
-![screenshot of homepage](docs/Screen Shot 2018-02-16 at 6.16.20 PM.png)
+![screenshot of homepage](docs/homepage.png)
 
 ## How does it work?
 Anyone can use *Lit Bayou* to search for movies and television shows (powered by The Movie Database API). In order to get the most out of it though, you'll need to sign up and log in. From there you can add movies and shows to your shelf, write reviews, and make lists of your favorites. You can also add friends and see what they've been watching and enjoying/hating!
 
 ### Searching
 
-![screenshot of search results](docs/Screen Shot 2018-03-18 at 3.01.08 PM.png)
+![screenshot of search results](docs/searchresults.png)
 
 Use the search bar in the upper right to find the media you're looking for. You can search by title, directors' name, actors' names, etc.
 
@@ -22,9 +22,9 @@ Click on the film or TV symbol to the left of search results for more informatio
 
 You can add media to your shelf by clicking the round button with the plus sign next to the search result of your choice. You'll be prompted with a modal to choose whether you've watched the show/movie yet. 
 
-![screenshot of confirmation modal](docs/Screen Shot 2018-03-18 at 3.02.07 PM.png)
+![screenshot of confirmation modal](docs/confirmmodal.png)
 
-![screenshot of toast](docs/Screen Shot 2018-03-18 at 3.02.11 PM.png)
+![screenshot of toast](docs/addedtoast.png)
 
 ### Making Friends
 
