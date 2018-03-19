@@ -15,7 +15,7 @@ Use the search bar in the upper right to find the media you're looking for. You 
 
 Click on the film or TV symbol to the left of search results for more information about that movie or show.
 
-![screenshot of media modal](docs/rashomoncard.png)
+![screenshot of media modal](docs/sevensamuraicard.png)
 
 
 ### Adding Media
