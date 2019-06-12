@@ -16,7 +16,7 @@ export const Footer = (props) => (
             </ul>
           </div>
           <div className="col l4 s12">
-            <img src="https://www.themoviedb.org/static_cache/v4/logos/408x161-powered-by-rectangle-blue-10d3d41d2a0af9ebcb85f7fb62ffb6671c15ae8ea9bc82a2c6941f223143409e.png" alt="The Movie Database" style={Style.img}/>
+            <img src="images/tmdb.png" alt="The Movie Database" style={Style.img}/>
           </div>
 
         </div>
