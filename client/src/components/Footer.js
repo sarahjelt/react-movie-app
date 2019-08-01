@@ -18,7 +18,6 @@ export const Footer = (props) => (
           <div className="col l4 s12">
             <img src="images/tmdb.png" alt="The Movie Database" style={Style.img}/>
           </div>
-
         </div>
       </div>
       <div className="footer-copyright">
